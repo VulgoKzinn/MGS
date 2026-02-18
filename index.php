@@ -1,3 +1,4 @@
+<!-- KAUÃ -->
 <!doctype html>
 <html lang="pt-br">
 
@@ -15,17 +16,7 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <img src="img/logo.svg" alt="logo" class="logo">
-            <ul class="menu">
-                <li><a href="#MgsFourth">SOBRE</a></li>
-                <li><a href="#suporte">SUPORTE</a></li>
-                <li><a href="cadastrar-usuario.php">CADASTRE-SE</a></li>
-            </ul>
-            <a href="login.php" class="user-icon"><i class="fa-solid fa-user"></i></a>
-        </nav>
-    </header>
+    <?php require_once "templates/header.php" ?>
     <main>
         <id id="container">
             <section id="MgsPrimary">
@@ -72,41 +63,7 @@
             </section>
         </id>
     </main>
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="img/logo.svg" alt="MatchWork Logo">
-                <div class="social">
-                    <a href="#"><i class="fa-brands fa-instagram fa-2xl"></i></a>
-                    <a href="#"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <div class="column">
-                    <h4>Página Principal</h4>
-                    <ul>
-                        <li><a href="#">Página Inicial</a></li>
-                        <li><a href="#">Nosso trabalho</a></li>
-                        <li><a href="#">Benefícios</a></li>
-                        <li><a href="#">Sobre Nós</a></li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h4>Informações Adicionais</h4>
-                    <ul>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div id="cop">
-        © MatchWork - 2026 - Todos os direitos reservados.
-    </div>
+    <?php require_once "templates/footer.php" ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

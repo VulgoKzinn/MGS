@@ -1,3 +1,4 @@
+/* <!-- KAUÃ --> */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
@@ -16,19 +17,16 @@ header {
     padding: 10px 20px;
 }
 
-/* MENU */
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* LOGO */
 .logo {
     width: 50px;
 }
 
-/* MENU */
 .menu {
     display: flex;
     list-style: none;
@@ -36,7 +34,6 @@ header nav {
     margin: 0;
     padding: 0;
     justify-content: center;
-    /* centraliza os links */
 }
 
 .menu a {
@@ -47,15 +44,10 @@ header nav {
     font-size: 25px;
 }
 
-/* ICON */
 .user-icon {
     display: flex;
     color: #6750A4;
     font-size: 25px;
-}
-
-.user-icon:hover {
-    background-color: #6750A4;
 }
 
 /* SECTION 1 */
@@ -239,7 +231,6 @@ header nav {
     font-size: 16px;
     color: #000;
     font-weight: bold;
-    /* destaque */
 }
 
 .column ul li {
@@ -260,3 +251,133 @@ header nav {
     color: #FFF;
     padding: 10px;
 }
+
+/* LOGIN */
+#login {
+    /* IMG FUNDO */
+    background-color: #6750A4;
+    background-image: url("../img/index/fundo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    /* IMG FUNDO */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#ImgLogon {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#ImgLogon img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#Logon form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#Logon form h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #6750a4;
+}
+
+.input-group .form-control {
+    border-radius: 0 10px 10px 0;
+}
+
+.input-group-text {
+    border-radius: 10px 0 0 10px;
+    background: #f0f0f0;
+}
+
+button, .btn{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+#Logon form a {
+    display: block;
+    text-align: right;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #6750a4;
+    text-decoration: none;
+}
+
+#Logon form a:hover {
+    text-decoration: underline;
+}
+
+#Logon form .extra-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+#Logon form .extra-links a {
+    display: inline-block;
+    margin: 5px;
+    color: #6750a4;
+    font-weight: bold;
+}
+
+/* CADASTRO CANDIDATO */
+#cadastroCand {
+    /* IMG FUNDO */
+    background-color: #6750A4;
+    background-image: url("../img/index/fundo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    /* IMG FUNDO */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#CadCand form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#CadCand form h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #6750a4;
+}
+
+/* Botão */
+#CadCand form button {
+    background: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+#CadCand form button:hover {
+    background: #45a049;
+}
+
+/* <!-- KAUÃ --> */
