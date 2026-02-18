@@ -17,7 +17,7 @@
 
 <body id="cadastroCand">
     <div id="ImgLogon">
-        <a href="index.html"><img src="img/Logomaior.png" alt="Logo"></a>
+        <a href="index.php"><img src="img/Logomaior.png" alt="Logo"></a>
     </div>
     <!-- Formulário -->
     <main id="CadCand">

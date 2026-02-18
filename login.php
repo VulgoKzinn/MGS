@@ -17,7 +17,7 @@
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.html"><img src="img/Logomaior.png" alt="Logo"></a>
+        <a href="index.php"><img src="img/Logomaior.png" alt="Logo"></a>
     </div>
     <main id="Logon">
         <form action="" method="post">
