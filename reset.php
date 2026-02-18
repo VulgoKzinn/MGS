@@ -21,27 +21,22 @@
     </div>
     <main id="Logon">
         <form action="" method="post">
-            <h2 class="text-center mb-4">Login</h2>
-            <!--  Email -->
-            <div class="input-group mb-3">
-                <span class="input-group-text"> <i class="fa-light fa-envelope fa-lg" style="color: #6750a4;"></i>
-                </span>
-                <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="E-mail"> <label
-                        for="floatingInputEmail">E-mail</label>
-                </div>
-            </div>
+            <h2 class="text-center mb-4">Nova senha</h2>
             <!--  Senha -->
             <div class="input-group mb-3"> <span class="input-group-text"> <i class="fa-light fa-lock fa-lg"
                         style="color: #6750a4;"></i> </span>
                 <div class="form-floating"> <input type="password" class="form-control" id="floatingInputPassword"
                         placeholder="Senha"> <label for="floatingInputPassword">Senha</label> </div>
             </div>
-            <a href="esqueceu-senha.php">Esqueceu a senha?</a>
+            
+            <!--  Senha -->
+            <div class="input-group mb-3"> <span class="input-group-text"> <i class="fa-light fa-lock fa-lg"
+                        style="color: #6750a4;"></i> </span>
+                <div class="form-floating"> <input type="password" class="form-control" id="floatingInputPassword"
+                        placeholder="Senha"> <label for="floatingInputPassword">Confirmar senha</label> </div>
+            </div>
 
-            <button type="submit" class="btn btn-success mt-3">Logar</button>
-            <!-- Links extras -->
-            <div class="extra-links"> <a href="cadastro-candidato.php">Cadastrar Conta</a> <a href="cadastro-empresa.php">Cadastrar Empresa</a> </div>
+<button type="submit" class="btn btn-success mt-3">Redefinir</button>
         </form>
     </main>
 

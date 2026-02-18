@@ -380,4 +380,21 @@ button, .btn{
     background: #45a049;
 }
 
+/* PLANOS */
+
+#grid-plano{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.flat {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
 /* <!-- KAUÃ --> */

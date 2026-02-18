@@ -59,7 +59,16 @@
                             <option value="fundamental">Inglês</option>
                             <option value="medio">Espanhol</option>
                         </select>
-                    </div><!-- Resumo das qualificações -->
+                    </div>
+                    <div class="col-md-4">
+                        <label for="estado" class="form-label">Períodos</label>
+                        <select class="form-select" name="" id="">
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="fundamental">Integral</option>
+                            <option value="medio">Meio período</option>
+                        </select>
+                    </div>
+                    <!-- Resumo das qualificações -->
                     <div class="row mb-3">
                         <div class="col-md-9"> <label for="resumo" class="form-label">Resumo das qualificações</label>
                             <textarea class="form-control" id="resumo" rows="3"
@@ -80,8 +89,8 @@
                     </div>
 
                     <div class="text-end">
-                        <a href="planos.html"><button type="submit"
-                                class="btn btn-success">Cadastrar</button></a>
+                        <button type="submit"
+                                class="btn btn-success">Próximo</button>
                     </div>
         </form>
     </main>

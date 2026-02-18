@@ -1,4 +1,18 @@
 <!-- KAUÃ -->
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["pcd"]) && $_POST["pcd"] == "1") {
+        // Se checkbox foi marcado
+        header("Location: pcd.php");
+        exit;
+    } else {
+        // Se não foi marcado
+        header("Location: competencia-profissional.html");
+        exit;
+    }
+}
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -63,8 +77,8 @@
             <!-- Terceira linha -->
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="cargo" class="form-label">Cargo desejado</label>
-                    <input type="text" class="form-control" id="cargo" placeholder="Ex: Analista de Sistemas">
+                    <label for="cargo" class="form-label">Profissão</label>
+                    <input type="text" class="form-control" id="profissao" placeholder="Ex: Analista de Sistemas">
                 </div>
                 <div class="col-md-4">
                     <label for="salario" class="form-label">Pretensão salarial</label>
@@ -72,7 +86,7 @@
                 </div>
                 <div class="col-md-4 d-flex align-items-center">
                     <div class="form-check mt-4">
-                        <input class="form-check-input" type="checkbox" id="pcd">
+                        <input class="form-check-input" type="checkbox" id="pcd" value="1">
                         <label class="form-check-label" for="pcd">
                             Sou Pessoa com Deficiência (PCD)
                         </label>
@@ -81,7 +95,7 @@
             </div>
 
             <div class="text-end">
-                <a href="competencia-profissional.html"><button type="submit" class="btn btn-success">Próximo</button></a>
+                <button type="submit" class="btn btn-success">Próximo</button>
             </div>
         </form>
     </main>
