@@ -47,28 +47,27 @@
                     <input type="tel" class="form-control" id="telefoneEmp" placeholder="(XX) XXXXX-XXXX">
                 </div>
                 <div class="col-md-4">
-                    <label for="estado" class="form-label">Estado</label>
-                    <select id="estado" class="selectpicker form-select" data-live-search="true">
-                        <option value="">Selecione o estado</option>
-                    </select>
+                    <label for="cepEmp" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cepEmp" placeholder="00000-000">
                 </div>
                 <div class="col-md-4">
-                    <label for="cidade" class="form-label">Cidade</label>
-                    <select id="municipio" class="selectpicker form-select" data-live-search="true">
-                        <option value="">Selecione o município</option>
-                    </select>
+                    <label for="cepEmp" class="form-label">Número</label>
+                    <input type="number" class="form-control" id="numeroEmp" placeholder="Nº 30">
+                </div>
                 </div>
             </div>
 
             <!-- Terceira linha -->
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="cepEmp" class="form-label">CEP</label>
-                    <input type="text" class="form-control" id="cepEmp" placeholder="00000-000">
+                    <label for="cepEmp" class="form-label">Complemnto</label>
+                    <input type="text" class="form-control" id="complementoEmp" placeholder="Casa">
                 </div>
                 <div class="col-md-4">
-                    <label for="area" class="form-label">Área de Atuação</label>
-                    <input type="text" class="form-control" id="area" placeholder="Ex: Tecnologia">
+                    <label for="area" class="form-label">Ramo de Atuação</label>
+                    <select class="form-select" name="" id="">
+                        <option value="" disabled selected>Selecione...</option>
+                    </select>
                 </div>
                 <div class="col-md-4 d-flex align-items-center">
                     <div class="form-check mt-4">
@@ -98,12 +97,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
-    <script src="js/APIIBGE.js"></script>
+    <script src="js/APICORREIO.js"></script>
     <script>
         $(document).ready(function () {
             $('#cnpj').mask('00.000.000/0000-00');   // CNPJ
             $('#telefoneEmp').mask('(00) 00000-0000'); // Telefone
             $('#cepEmp').mask('00000-000');          // CEP
+            $('#numeroEmp').mask('0000');          // NÚMERO
         });
 
         $('.selectpicker').selectpicker('refresh');

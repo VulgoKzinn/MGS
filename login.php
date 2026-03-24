@@ -1,4 +1,18 @@
 <!-- KAUÃ -->
+<?php
+    require_once "backend/includes/funcoes.php";
+
+    $mensagem = '';
+    $email = '';
+
+    if(isset($_POST['login'])){
+        $email = filter_input(INPUT_POST,'email');
+        $senha = filter_input(INPUT_POST,'senha');
+
+        $mensagem = login($email,$senha);
+        $email = $email;
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 
@@ -27,15 +41,15 @@
                 <span class="input-group-text"> <i class="fa-light fa-envelope fa-lg" style="color: #6750a4;"></i>
                 </span>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="E-mail"> <label
-                        for="floatingInputEmail">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail"> <label
+                        for="email">E-mail</label>
                 </div>
             </div>
             <!--  Senha -->
             <div class="input-group mb-3"> <span class="input-group-text"> <i class="fa-light fa-lock fa-lg"
                         style="color: #6750a4;"></i> </span>
-                <div class="form-floating"> <input type="password" class="form-control" id="floatingInputPassword"
-                        placeholder="Senha"> <label for="floatingInputPassword">Senha</label> </div>
+                <div class="form-floating"> <input type="password" class="form-control" id="senha"
+                        placeholder="Senha"> <label for="senha">Senha</label> </div>
             </div>
             <a href="esqueceu-senha.php">Esqueceu a senha?</a>
 
