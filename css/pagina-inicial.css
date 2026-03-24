@@ -1,0 +1,32 @@
+/* BOTÃO PADRÃO */
+.btn-custom {
+    background-color: #6750a4;
+    color: #fff;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #5741a0;
+}
+
+/* BOTÃO PUBLICAR */
+.btn-success {
+    background-color: #6750a4;
+    border-color: #6750a4;
+}
+
+.btn-success:hover {
+    background-color: #5741a0;
+    border-color: #5741a0;
+}
+
+/* HEADER DO MODAL */
+.modal-header {
+    background-color: #6750a4;
+    color: #fff;
+}
+
+/* BOTÃO FECHAR (X) ficar branco */
+.btn-close {
+    filter: invert(1);
+}
