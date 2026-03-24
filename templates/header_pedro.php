@@ -3,7 +3,7 @@
         <nav>
             <img src="img/logo.svg" alt="logo" class="logo">
             <ul class="menu">
-                <li><a href="#MgsFourth">SOBRE</a></li>
+                <li><a href="#MgsFourth">PÁGINA INICIAL</a></li>
                 <li><a href="#suporte">SUPORTE</a></li>
                 <li><a href="cadastro-candidato.php">HOME</a></li>
             </ul>

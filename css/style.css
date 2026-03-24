@@ -398,8 +398,37 @@ button, .btn{
 }
 
 /* <!-- KAUÃ --> */
+
 /* Perfil Canditado */
-#banner-perfil-c{
-    background-image: url("../img/perfil-candidato/54320c6eb76b0403b21e02dc508917df.jpg");
-  
+#banner-perfil-c {
+   
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
 }
+
+.banner {
+    position: relative;
+    height: 200px;
+    background-image: url("../img/perfil-candidato/Gemini_Generated_Image_kajkswkajkswkajk.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+/* Foto estilo LinkedIn */
+.foto-perfil {
+    position: absolute;
+    bottom: -50px; /* faz ela "sair" do banner */
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    background-color: #fff;
+    
+}
+
+    
+   
