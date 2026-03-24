@@ -58,3 +58,9 @@ transition:0.2s;
 /* aumenta o tamanho do botão em 10% */
 transform:scale(1.1);
 }
+
+/* ===========QUEM SOMOS=========== */
+.quem-somos{
+    color:#6750a4;
+    /* font-weight: bold; */
+}
