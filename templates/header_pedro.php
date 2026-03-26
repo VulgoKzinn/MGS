@@ -5,7 +5,7 @@
             <ul class="menu">
                 <li><a href="#MgsFourth">PÁGINA INICIAL</a></li>
                 <li><a href="#suporte">SUPORTE</a></li>
-                <li><a href="cadastro-candidato.php">HOME</a></li>
+                <li><a href="cadastro-candidato.php">VAGAS DISPONIVEIS</a></li>
             </ul>
             <a href="login.php" class="user-icon"><i class="fa-solid fa-user"></i></a>
         </nav>

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<?php require_once "templates/header.php" ?>
+<?php require_once "templates/header_pedro.php" ?>
 
 <main class="container mt-4">
 
