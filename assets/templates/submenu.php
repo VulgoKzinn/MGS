@@ -27,6 +27,7 @@ if ($acao === 'logout') {
     }
 </style>
 
+
 <div class="dropdown">
     <a href="#" class="user-icon" data-bs-toggle="dropdown">
         <i class="fa-solid fa-user"></i>
