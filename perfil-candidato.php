@@ -23,7 +23,7 @@
                 </a>
 
                 <div class="container-foto">
-                    <img class="foto-perfil" src="img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" alt="Foto de perfil">
+                    <img class="foto-perfil" src="assets/img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" alt="Foto de perfil">
                 </div>
             </div>
 

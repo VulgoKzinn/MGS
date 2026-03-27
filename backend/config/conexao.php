@@ -3,7 +3,7 @@ try{
     define("SERVIDOR","localhost");
     define("USUARIO","root");
     define("SENHA","");
-    define("BANCO","db_MGS");
+    define("BANCO","db_mgs");
 
     $conexao = new PDO("mysql:host=".SERVIDOR.";dbname=".BANCO.";charset=utf8mb4",USUARIO,SENHA);
 

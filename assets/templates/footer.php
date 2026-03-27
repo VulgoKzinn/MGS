@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <img src="img/logo.svg" alt="MatchWork Logo">
+                <img src="assets/img/logo.svg" alt="MatchWork Logo">
                 <div class="social">
                     <a href="#"><i class="fa-brands fa-instagram fa-2xl"></i></a>
                     <a href="#"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
@@ -32,5 +32,5 @@
         </div>
     </footer>
     <div id="cop">
-        © MatchWork - 2026 - Todos os direitos reservados.
+        &copy MatchWork - <?= date('Y');?> - Todos os direitos reservados.
     </div>

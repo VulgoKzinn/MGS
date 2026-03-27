@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | Matchwork</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/logo.svg">
+    <link rel="shortcut icon" href="assets/img/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,7 +17,7 @@
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.php"><img src="img/Logomaior.png" alt="Logo"></a>
+        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main>
         <div id="grid-plano">

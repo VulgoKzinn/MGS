@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home | Matchwork</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/logo.svg">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/img/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php require_once "templates/header.php" ?>
+    <?php require_once "assets/templates/header.php" ?>
     <main>
         <id id="container">
             <section id="MgsPrimary">
@@ -25,45 +25,45 @@
                     <p>Com o MatchWork, você pode dar um Match na vaga dos seus sonhos tudo isso coma a nossa comunidade
                         empresarial que está buscando novos profissionais capacitados.</p>
                 </div>
-                <img src="img/index/MGS-primary.png" alt="Pessoa usando o Matchwork">
+                <img src="assets/img/index/MGS-primary.png" alt="Pessoa usando o Matchwork">
             </section>
 
             <section id="MgsSecondary">
                 <div id="cards">
                     <div id="empresario">
-                        <img src="img/index/cards/empresario.png">
+                        <img src="assets/img/index/cards/empresario.png">
                         <p>Empresário</p>
                     </div>
                     <div id="mgs">
-                        <img src="img/index/cards/mgs.png">
+                        <img src="assets/img/index/cards/mgs.png">
                         <p>Juntos ao MatchWork</p>
                     </div>
                     <div id="candidato">
-                        <img src="img/index/cards/candidato.png">
+                        <img src="assets/img/index/cards/candidato.png">
                         <p>Candidato</p>
                     </div>
                 </div>
             </section>
 
             <section id="MgsThird">
-                <img src="img/index/section3.png" alt="Fluxograma de possibilidades">
+                <img src="assets/img/index/section3.png" alt="Fluxograma de possibilidades">
             </section>
 
 
             <section id="MgsFourth">
-                <img src="img/index/historia.png" alt="Nossa História">
+                <img src="assets/img/index/historia.png" alt="Nossa História">
                 <div>
                     <h2>Nossa História</h2>
                     <p>Na Matchwork, acreditamos que encontrar o emprego ideal ou o talento perfeito não deveria ser uma
                         jornada complexa.
                         Somos uma plataforma inovadora dedicada a revolucionar o processo de recrutamento e seleção,
                         tornando-o mais eficiente, intuitivo e, acima de tudo, humano.</p>
-                    <button><a href="">Cadastre-se</a></button>
+                    <button><a href="cadastrar-candidato.php">Cadastre-se</a></button>
                 </div>
             </section>
         </id>
     </main>
-    <?php require_once "templates/footer.php" ?>
+    <?php require_once "assets/templates/footer.php" ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

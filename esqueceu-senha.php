@@ -1,4 +1,17 @@
 <!-- KAUÃ -->
+<?php
+require_once "../backend/includes/funcoes.php";
+
+$mensagem = '';
+
+if (isset($_POST['recuperar'])) {
+    // captura o e-mail preenchido pelo usuario
+    $email = $_POST['email'];
+
+    $mensagem = recuperarSenha($email);
+}
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -7,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | Matchwork</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/logo.svg">
+    <link rel="shortcut icon" href="assets/img/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,21 +30,37 @@
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.php"><img src="img/Logomaior.png" alt="Logo"></a>
+        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main id="Logon">
         <form action="" method="post">
             <h2 class="text-center mb-4">Redefinir senha</h2>
             <!--  Email -->
             <div class="input-group mb-3">
-                <span class="input-group-text"> <i class="fa-light fa-envelope fa-lg" style="color: #6750a4;"></i>
+                <span class="input-group-text">
+                    <i class="fa-light fa-envelope fa-lg" style="color: #6750a4;"></i>
                 </span>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="E-mail"> <label
-                        for="floatingInputEmail">E-mail cadastrado</label>
+                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="E-mail" required>
+                    <label for="floatingInputEmail">E-mail cadastrado</label>
                 </div>
             </div>
-<button type="submit" class="btn btn-success mt-3">Enviar código</button>
+            <!-- Mensagem -->
+            <?php if (!empty($mensagem)): ?>
+                <div class="text-sm text-indigo-300 bg-indigo-900/20 border border-indigo-800 p-2 rounded">
+                    <?= $mensagem; ?>
+                </div>
+            <?php endif; ?>
+
+            <button type="submit" class="btn btn-success mt-3">Enviar código</button>
+
+            <!-- Voltar -->
+            <div class="text-center">
+                <a href="../index.php"
+                    class="text-sm text-gray-400 hover:text-gray-200 transition">
+                    ← Voltar para login
+                </a>
+            </div>
         </form>
     </main>
 
