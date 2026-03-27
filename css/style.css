@@ -430,5 +430,54 @@ button, .btn{
     
 }
 
+
+
+/* Engrenagem na PARTE DE BAIXO do banner */
+.btn-config {
+    position: absolute;
+    bottom: 10px; /* Alinhado ao fundo */
+    right: 15px;  /* Alinhado à direita */
+    color: #6f42c1; /* Roxo solicitado */
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.4s ease;
+    z-index: 10;
+}
+
+.btn-config:hover {
+    color: #59359a;
+    transform: rotate(90deg);
+}
+
+/* Estilo dos Botões e Badges (Roxo) */
+.btn-custom {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #59359a;
+    border-color: #59359a;
+    color: white;
+}
+
+.badge-custom {
+    background-color: #6f42c1;
+    color: white;
+}
+
+
+
+
+/* Estilo Geral */
+body {
+    background-color: #f4f7f6;
+}
+
+.card {
+    border-radius: 15px;
+}
     
    

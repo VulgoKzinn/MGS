@@ -1,76 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Perfil - Pedro</title>
-<link rel="stylesheet" href="css/style.css">
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Pedro</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<?php require_once "templates/header.php" ?>
+    <?php require_once "templates/header_pedro.php" ?>
 
-<main class="container mt-4">
+    <main class="container mt-4">
 
-    <!-- BANNER + FOTO -->
-    <div class="card border-0 shadow-sm">
-        <div class="banner position-relative rounded-top">
-            <img class="foto-perfil" src="img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" alt="Foto de perfil">
-        </div>
+        <div class="card border-0 shadow-sm overflow-hidden">
+            <div class="banner position-relative">
+                
+                <a href="configuracoes.php" class="btn-config" title="Configurações">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
 
-        <div class="p-4 pt-5">
-            <h1 class="mb-0">Pedro</h1>
-            <p class="text-muted">Técnico em T.I</p>
-        </div>
-    </div>
-
-    <!-- CONTEÚDO -->
-    <div class="row mt-4">
-
-        <!-- SOBRE -->
-        <aside class="col-md-4">
-            <div class="card p-3 shadow-sm">
-                <h5>Sobre</h5>
-                <p>
-                    Profissional de Tecnologia da Informação com conhecimento em desenvolvimento web,
-                    suporte técnico e design gráfico.
-                </p>
-
-                <h5>Certificados</h5>
-                <div class="d-flex flex-wrap gap-2">
-                    <span class="badge bg-primary">JavaScript</span>
-                    <span class="badge bg-primary">PHP</span>
-                    <span class="badge bg-primary">Photoshop</span>
+                <div class="container-foto">
+                    <img class="foto-perfil" src="img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" alt="Foto de perfil">
                 </div>
-
-                <button class="btn btn-primary mt-3">Entrar em contato</button>
             </div>
-        </aside>
 
-        <!-- EXPERIÊNCIA -->
-        <section class="col-md-8">
-            <div class="card p-3 shadow-sm">
-                <h5>Experiência</h5>
-                <p>💻 Desenvolvimento de sistemas web.</p>
-                <p>🖥 Manutenção de computadores.</p>
-                <p>🎨 Edição de imagens utilizando Photoshop.</p>
-
-                <h5 class="mt-3">Habilidades</h5>
-                <p>HTML • CSS • JavaScript • PHP • Photoshop</p>
+            <div class="card-body p-4 pt-5">
+                <h1 class="h3 mb-0">Pedro</h1>
+                <p class="text-muted">Técnico em T.I</p>
             </div>
-        </section>
+        </div>
 
-    </div>
+        <div class="row mt-4">
+            <aside class="col-md-4 mb-4">
+                <div class="card p-3 shadow-sm border-0">
+                    <h5 class="fw-bold">Sobre</h5>
+                    <p class="text-secondary">
+                        Profissional de Tecnologia da Informação com conhecimento em desenvolvimento web,
+                        suporte técnico e design gráfico.
+                    </p>
 
-    <div>
-        
-    </div>
+                    <h5 class="fw-bold mt-4">Certificados</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-custom">JavaScript</span>
+                        <span class="badge badge-custom">PHP</span>
+                        <span class="badge badge-custom">Photoshop</span>
+                    </div>
 
-</main>
+                    <button class="btn btn-custom w-100 mt-4">Entrar em contato</button>
+                </div>
+            </aside>
 
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+            <section class="col-md-8">
+                <div class="card p-4 shadow-sm border-0">
+                    <h5 class="fw-bold mb-3">Experiência</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">💻 Desenvolvimento de sistemas web.</li>
+                        <li class="mb-2">🖥 Manutenção de computadores.</li>
+                        <li class="mb-2">🎨 Edição de imagens utilizando Photoshop.</li>
+                    </ul>
+                    <hr>
+                    <h5 class="fw-bold mt-3">Habilidades Principais</h5>
+                    <p class="text-muted">HTML • CSS • JavaScript • PHP • Photoshop</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
