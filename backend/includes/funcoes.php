@@ -1,5 +1,5 @@
 <?php
-require_once('conexao.php');
+require_once('backend/config/conexao.php');
 require_once('envia-email.php');
 
 function login($email, $senha)
@@ -7,33 +7,43 @@ function login($email, $senha)
     try {
         global $conexao;
 
-        $sql = "SELECT id,email,ativo,id_nivel,s_temp FROM tb_login WHERE email=:email AND BINARY senha=:senha";
+        $sql = "SELECT id,email,senha,ativo,s_temp FROM tb_login WHERE email=:email";
 
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':email', $email);
-        $comando->bindValue(':senha', $senha);
 
         $comando->execute();
         $dados = $comando->fetch(PDO::FETCH_ASSOC);
 
         if ($dados != null) {
-            if ($dados['ativo'] == 0) {
-                return "Usuário bloqueado, entre em contato com o suporte!";
-            } else {
+            $senhaHashBanco = $dados['senha'];
+            if (password_verify($senha, $senhaHashBanco)) {
 
-                // Usuario correto e sem bloqueio algum, continua no login
-                session_start();
-
-                $_SESSION['id'] = $dados['id'];
-                $_SESSION['sistema'] = 'sis_login';
-                $_SESSION['email'] = $dados['email'];
-                $_SESSION['id_nivel'] = $dados['id_nivel'];
-
-                if ($dados['s_temp'] == 0) {
-                    header('location: admin/dashboard.php');
+                if ($dados['ativo'] == 0) {
+                    return "Usuário bloqueado, entre em contato com o suporte!";
                 } else {
-                    header('Location: usuario/nova-senha.php');
+
+                    // Usuario correto e sem bloqueio algum, continua no login
+                    session_start();
+
+                    // guarda o s_temp (senha temporario) 
+                    $_SESSION['id'] = $dados['id'];
+                    // guarda o s_temp (senha temporario) 
+                    $_SESSION['sistema'] = 'sis_login';
+                    // guarda o email 
+                    $_SESSION['email'] = $dados['email'];
+                    // guarda o s_temp (senha temporario) 
+                    $_SESSION['s_temp'] = $dados['s_temp'];
+
+                    if ($dados['s_temp'] == 0) {
+                        // redirecionar para painel admin
+                        header('location: admin/dashboard.php');
+                    } else {
+                        header('Location: usuario/nova-senha.php');
+                    }
                 }
+            } else {
+                return 'Usuário ou senha inválido!';
             }
         } else {
             // email ou senha incorreto
@@ -52,22 +62,10 @@ function validaAcesso()
     if ($_SESSION['sistema'] != 'sis_login') {
         header('Location: ../');
     }
-}
 
-function validaAdmin($id_nivel)
-{
-    if ($id_nivel != 1) {
-        header('Location: ../usuario/perfil.php');
+    if ($_SESSION['s_temp'] == 1) {
+        header('Location: ../usuario/nova-senha.php');
     }
-}
-
-function logout()
-{
-    session_start();
-    $_SESSION = [];
-    session_destroy();
-
-    header('Location: index.php');
 }
 
 function recuperarSenha($email)
@@ -114,33 +112,81 @@ function novaSenha($senha)
     try {
         global $conexao;
 
-        $sql = "SELECT id,senha,s_temp FROM tb_login WHERE senha=:senha";
+        $idUsuario = $_SESSION['id'];
+        $sql = "UPDATE tb_login SET senha=:senha, s_temp=0 WHERE id=:id";
 
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':senha', $senha);
+        $comando->bindValue(':id', $idUsuario);
+        $comando->execute();
+
+        logout();
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao validar os dados";
+    }
+}
+
+function logout()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $_SESSION = [];
+
+    session_destroy();
+
+    header('Location: ../');
+    exit;
+}
+
+function validaEmail($email, $senha)
+{
+    try {
+        global $conexao;
+
+        $sql = "SELECT email,ativo FROM tb_login WHERE email=:email";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':email', $email);
 
         $comando->execute();
         $dados = $comando->fetch(PDO::FETCH_ASSOC);
 
         if ($dados != null) {
-            if ($dados['s_temp'] == 0) {
-                $sql = "UPDATE tb_login SET senha = :senha WHERE id = :id";
-
-                $comando = $conexao->prepare($sql);
-                $comando->bindValue(':senha', $senha);
-                $comando->bindValue(':id', $dados['id']);
-                $comando->bindValue(':s_temp', 1);
-
-                $comando->execute();
-                $dados = $comando->fetch(PDO::FETCH_ASSOC);
-            } else {
-            return "Sua senha não é temporaria!";
-        }
+            return "E-mail já existe1";
         } else {
-            return "Deu bom não :(";
+            cadastrarUsuario($email, $senha);
         }
     } catch (PDOException $err) {
         error_log($err->getMessage());
-        return "Erro ao validar os dados";
+        return "Erro ao validar os dados!";
+    }
+}
+
+function cadastrarUsuario($email, $senha)
+{
+    global $conexao;
+
+    try {
+        $sql = "INSERT INTO tb_login 
+            (email,senha) 
+            VALUES (:email,:senha)";
+
+        $senhaHash = password_hash($senha, PASSWORD_ARGON2ID);
+
+        // var_dump($senhaHash);
+        // exit;
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':email', $email);
+        $comando->bindValue(':senha', $senhaHash);
+        $comando->execute();
+
+        return "E-mail cadastrado com sucesso!";
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao cadastrar usuario!";
     }
 }

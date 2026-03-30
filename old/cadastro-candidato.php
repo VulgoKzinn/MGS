@@ -1,4 +1,18 @@
 <!-- KAUÃ -->
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["pcd"]) && $_POST["pcd"] == "1") {
+        // Se checkbox foi marcado
+        header("Location: pcd.php");
+        exit;
+    } else {
+        // Se não foi marcado
+        header("Location: competencia-profissional.html");
+        exit;
+    }
+}
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -22,71 +36,69 @@
     <!-- Formulário -->
     <main id="CadCand">
         <form action="" method="post" class="p-4">
-            <h2 class="text-center mb-4">Crie sua Conta Empresa</h2>
+            <h2 class="text-center mb-4">Crie sua Conta Candidato</h2>
 
             <!-- Primeira linha -->
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="razao" class="form-label">Razão Social</label>
-                    <input type="text" class="form-control" id="razao" placeholder="Nome da empresa">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Seu nome completo">
                 </div>
                 <div class="col-md-4">
-                    <label for="cnpj" class="form-label">CNPJ</label>
-                    <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Seu e-mail">
                 </div>
                 <div class="col-md-4">
-                    <label for="emailEmp" class="form-label">E-mail Corporativo</label>
-                    <input type="email" class="form-control" id="emailEmp" placeholder="contato@empresa.com">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="tel" class="form-control" id="telefone" placeholder="(XX) XXXXX-XXXX">
                 </div>
             </div>
 
             <!-- Segunda linha -->
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="telefoneEmp" class="form-label">Telefone</label>
-                    <input type="tel" class="form-control" id="telefoneEmp" placeholder="(XX) XXXXX-XXXX">
-                </div>
-                <div class="col-md-4">
-                    <label for="cepEmp" class="form-label">CEP</label>
-                    <input type="text" class="form-control" id="cepEmp" placeholder="00000-000">
-                </div>
-                <div class="col-md-4">
-                    <label for="cepEmp" class="form-label">Número</label>
-                    <input type="number" class="form-control" id="numeroEmp" placeholder="Nº 30">
-                </div>
-                </div>
-            </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="estado" class="form-label">Estado</label>
+            <select id="estado" class="selectpicker form-select" data-live-search="true">
+                <option value="">Selecione o estado</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="cidade" class="form-label">Cidade</label>
+            <select id="municipio" class="selectpicker form-select" data-live-search="true">
+                <option value="">Selecione o município</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="cep" placeholder="00000-000">
+        </div>
+    </div>
 
             <!-- Terceira linha -->
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="cepEmp" class="form-label">Complemnto</label>
-                    <input type="text" class="form-control" id="complementoEmp" placeholder="Casa">
+                    <label for="cargo" class="form-label">Profissão</label>
+                    <input type="text" class="form-control" id="profissao" placeholder="Ex: Analista de Sistemas">
                 </div>
                 <div class="col-md-4">
-                    <label for="area" class="form-label">Ramo de Atuação</label>
-                    <select class="form-select" name="" id="">
-                        <option value="" disabled selected>Selecione...</option>
-                    </select>
+                    <label for="salario" class="form-label">Pretensão salarial</label>
+                    <input type="text" class="form-control" id="salario" placeholder="Ex: R$ 3.000,00">
                 </div>
                 <div class="col-md-4 d-flex align-items-center">
                     <div class="form-check mt-4">
-                        <input class="form-check-input" type="checkbox" id="pcd">
+                        <input class="form-check-input" type="checkbox" id="pcd" value="1">
                         <label class="form-check-label" for="pcd">
-                            Contrato Pessoa com Deficiência (PCD)
+                            Sou Pessoa com Deficiência (PCD)
                         </label>
                     </div>
                 </div>
             </div>
 
-            <!-- Botão -->
             <div class="text-end">
-                <button type="submit"
-                                class="btn btn-success">Próximo</button>
+                <button type="submit" class="btn btn-success">Próximo</button>
             </div>
         </form>
     </main>
-
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -97,13 +109,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
-    <script src="js/APICORREIO.js"></script>
+            <script src="js/APIIBGE.js"></script>
     <script>
         $(document).ready(function () {
-            $('#cnpj').mask('00.000.000/0000-00');   // CNPJ
-            $('#telefoneEmp').mask('(00) 00000-0000'); // Telefone
-            $('#cepEmp').mask('00000-000');          // CEP
-            $('#numeroEmp').mask('0000');          // NÚMERO
+            $('#telefone').mask('(00) 00000-0000');   
+            $('#cep').mask('00000-000');              
         });
 
         $('.selectpicker').selectpicker('refresh');
