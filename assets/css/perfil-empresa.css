@@ -86,19 +86,42 @@ transform:scale(1.1);
 }
 
 /* ===========FAÇA PARTE DO NOSSO TIME=========== */
-.faca-parte-time{
+
+.faca-parte{
     font-family: 'Montserrat', sans-serif;
     font-weight: 1000;
     color:#6750a4;
     font-size: 40px;
     letter-spacing: 1px;
 }
+.info-vaga{
+    background: #802dcd;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-/* titulo da vaga */
-.titulo-vaga{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
-    color:#000;
-    font-size: 10px;
-    letter-spacing: 1px;
+/* caixas */
+.custom-box{
+    background: #d9d9d9;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* áreas grandes */
+.area-grande{
+    min-height: 120px;
+    line-height: 1.5;
+}
+
+/* labels */
+.form-label{
+    font-size: 14px;
+}
+
+/* efeito leve (profissional) */
+.custom-box:hover{
+    transform: scale(1.01);
+    transition: 0.2s;
 }
