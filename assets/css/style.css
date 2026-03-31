@@ -479,5 +479,15 @@ body {
 .card {
     border-radius: 15px;
 }
-    
-   
+.Certificaos {
+    max-width: 600px;
+    margin: auto;
+}
+
+.carousel-item img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+
+   /*  Editar-Perfil-Canditado */
