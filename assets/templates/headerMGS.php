@@ -29,7 +29,7 @@
             <ul class="navbar-nav align-items-center gap-3">
 
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold" style="color: rgb(103,80,164);" href="#">
+                    <a class="nav-link fw-semibold" style="color: rgb(103,80,164);" href="matches.php">
                          Matches
                     </a>
                 </li>

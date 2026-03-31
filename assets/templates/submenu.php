@@ -34,7 +34,7 @@ if ($acao === 'logout') {
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end">
-        <li><a href="./perfil.php" class="dropdown-item">Perfil</a></li>
+        <li><a href="./perfil-candidato.php" class="dropdown-item">Perfil</a></li>
         <li><a href="" class="dropdown-item">Assinatura</a></li>
         <li><a href="" class="dropdown-item">Suporte</a></li>
         <li><a href="" class="dropdown-item">Inpulsionar</a></li>

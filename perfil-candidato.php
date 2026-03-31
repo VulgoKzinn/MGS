@@ -45,19 +45,24 @@
                         suporte técnico e design gráfico.
                     </p>
 
-                    <h5 class="fw-bold mt-4">Certificados</h5>
+                  <h5 class="fw-bold mt-4">Certificados</h5>
                     <div class="d-flex flex-wrap gap-2">
                         <span class="badge badge-custom">JavaScript</span>
                         <span class="badge badge-custom">PHP</span>
                         <span class="badge badge-custom">CSS</span>
-                         <span class="badge badge-custom">HTML</span>
-                          <span class="badge badge-custom">Photoshop</span>
-                        
+                        <span class="badge badge-custom">HTML</span>
+                        <span class="badge badge-custom">Photoshop</span>
                     </div>
 
-                    <button class="btn btn-custom w-100 mt-4">Entrar em contato</button>
-                </div>
-            </aside>
+                    <div class="mt-4 info-contato">
+                        <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i> pedro.c.azevedo@email.com</p>
+                        <p class="mb-0"><i class="bi bi-whatsapp me-2"></i> (19) 99999-9999</p>
+                    </div>
+
+                    <button class="btn btn-custom w-100 mt-3">
+                        <i class="bi bi-chat-dots-fill me-2"></i> Entrar em contato
+                    </button>
+                                </aside>
 
             <section class="col-md-8">
                 <div class="card p-4 shadow-sm border-0">

@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 py-2 rounded-pill mt-3 shadow-sm">
 
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="pag_inicial.php">
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="assets/img/logo.svg" alt="logo" height="32">
         </a>
 
