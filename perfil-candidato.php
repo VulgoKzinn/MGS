@@ -109,7 +109,7 @@
 
                     <hr class="my-4">
 
-                    <h5 class="fw-bold mb-3 titulo-roxo-curto">Projetos Recentes</h5>
+                    <h5 class="fw-bold mb-3 titulo-roxo-curto">Meus Projetos</h5>
 
                     <div class="projeto-card p-3 mb-3 shadow-sm">
                         <div class="d-flex align-items-center mb-2">
@@ -119,8 +119,13 @@
                         <p class="text-muted small mb-3">
                             Desenvolvimento de uma plataforma completa de cardápio digital e gestão de pedidos. O sistema permite a personalização de combos, escolha de pontos da carne e integração direta para pedidos.
                         </p>
-                        <h5 class="fw-bold mb-3 titulo-roxo-curto text-uppercase" style="font-size: 0.9rem; letter-spacing: 1px;">Meus Projetos</h5>
-
+                
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-primary border small">PHP 8</span>
+                            <span class="badge bg-light text-primary border small">MySQL</span>
+                            <span class="badge bg-light text-primary border small">Bootstrap 5</span>
+                        </div>
+                    <br>
                         <div class="projeto-card p-3 mb-3 shadow-sm">
                             <div class="d-flex align-items-center mb-2">
                                 <span class="fs-4 me-2">🍕</span>
@@ -195,11 +200,7 @@
                                 <span class="badge bg-light text-primary border small">Elementor</span>
                             </div>
                         </div>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-light text-dark border">PHP 8</span>
-                            <span class="badge bg-light text-dark border">MySQL</span>
-                            <span class="badge bg-light text-dark border">JavaScript</span>
-                        </div>
+                     
                     </div>
 
                     <hr class="my-4">
