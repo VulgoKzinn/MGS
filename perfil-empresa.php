@@ -5,16 +5,15 @@
 <head>
    <meta charset="UTF-8">
    <title>Perfil Empresarial</title>
+   <!-- Include Links -->
+   <?php
+   require_once 'assets/templates/head.php';
+   ?>
    <!-- Para garantir responsividade em mobile bootstrap -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- Bootstrap -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-   <!-- Fonte Awesome -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <!-- css da pagina -->
    <link rel="stylesheet" href="assets/css/perfil-empresa.css">
+   <!--OBS talvez tirar depois de padronizar a fonte -->
    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
@@ -31,7 +30,7 @@
 
          <!-- Configurações -->
          <div class="config-btn">
-            <i class="fa-solid fa-gear"></i>
+            <i class="fa-solid fa-pen-to-square"></i>
          </div>
 
       </div>
@@ -92,80 +91,89 @@
       <div class="container mt-5">
          <div class="info-vaga p-4">
 
-
-            <!-- Titulo da vaga -->
+            <!-- Título -->
             <div class="text-center mb-4">
                <h2 class="fw-bold text-dark">Analista de marketing digital</h2>
             </div>
 
-            <!-- Começo da descrição -->
             <div class="row g-3">
 
-               <div class="col-6">
+               <!-- IMAGEM -->
+
+               <div class="col-12 text-center">
+                  <img src="assets/img/perfil-empresa/amazon-empresa.jpg" class="img-fluid rounded">
+               </div>
+
+               <!-- CAMPOS PEQUENOS -->
+               <div class="col-md-6">
                   <label class="form-label text-light">Área de Atuação</label>
                   <div class="form-control custom-box">Marketing</div>
                </div>
 
-               <div class="col-6">
+               <div class="col-md-6">
                   <label class="form-label text-light">Modalidade da Vaga</label>
                   <div class="form-control custom-box">Período Integral</div>
                </div>
 
-               <div class="col-6">
+               <div class="col-md-6">
                   <label class="form-label text-light">Modelo de Trabalho</label>
                   <div class="form-control custom-box">Híbrido</div>
                </div>
 
-               <div class="col-6">
+               <div class="col-md-6">
                   <label class="form-label text-light">Localização</label>
-                  <div class="form-control custom-box">São João da Boa Vista -São Paulo</div>
+                  <div class="form-control custom-box">São João da Boa Vista - SP</div>
                </div>
 
-               <div class="col-6">
+               <div class="col-md-6">
                   <label class="form-label text-light">Salário</label>
                   <div class="form-control custom-box">A Combinar</div>
                </div>
 
-                <div class="col-6">
+               <div class="col-md-6">
                   <label class="form-label text-light">Benefícios</label>
-                  <div class="form-control custom-box">Vale Refeição, Vale Transporte e Plano de Saúde.</div>
-               </div>
-
-               <div class="col-6">
-                  <label class="form-label text-light">Descrição da Vaga</label>
-                  <div class="form-control custom-box area-grande">
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eligendi eaque consequatur amet
-                     commodi, voluptates pariatur aspernatur neque similique rerum distinctio id ipsum iste non earum
-                     explicabo maxime sunt asperiores!
-                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius, autem corrupti ut tempora, commodi
-                     reprehenderit blanditiis repellendus nemo minus itaque laborum architecto ipsam perspiciatis quia
-                     dignissimos, voluptatibus harum accusantium quam.
+                  <div class="form-control custom-box">
+                     Vale Refeição, Vale Transporte e Plano de Saúde
                   </div>
                </div>
 
-               <div class="col-6">
+               <!-- CAMPOS GRANDES -->
+               <div class="col-12">
+                  <label class="form-label text-light">Carga Horária</label>
+                  <div class="form-control custom-box">40 horas semanais</div>
+               </div>
+
+               <div class="col-12">
+                  <label class="form-label text-light">Descrição da Vaga</label>
+                  <div class="form-control custom-box area-grande">
+                     Lorem ipsum...
+                  </div>
+               </div>
+
+               <div class="col-12">
                   <label class="form-label text-light">Requisitos</label>
                   <div class="form-control custom-box area-grande">
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eligendi eaque consequatur
-                     amet
-                     commodi, voluptates pariatur aspernatur neque similique rerum distinctio id ipsum iste non earum
-                     explicabo maxime sunt asperiores!
+                     Lorem ipsum...
                   </div>
                </div>
 
             </div>
 
          </div>
+      </div>
 
+      <!--CANAIS OFICIAIS-->
+      <div class="canais-oficiais text-center mt-5 pt-5 mb-5">
+         <h1 class="text-center mt-5">CANAIS OFICIAIS</h1>
       </div>
 
 
    </main>
 
-   <!-- Bootstrap -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"></script>
+   <!-- Include JS -->
+   <?php
+   require_once 'assets/templates/js.php';
+   ?>
 </body>
 
 </html>
