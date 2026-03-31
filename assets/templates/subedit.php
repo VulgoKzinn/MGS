@@ -18,11 +18,9 @@
         border-color: rgba(255, 255, 255, 0.2);
     }
 </style>
-
-
 <div class="dropdown">
     <a href="#" class="user-icon" data-bs-toggle="dropdown">
-        <i class="fa-solid fa-user"></i>
+        <i class="fa-solid fa-pen-to-square"></i>
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end">

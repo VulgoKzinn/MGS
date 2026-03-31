@@ -23,7 +23,7 @@
         <div class="card border-0 shadow-sm overflow-hidden">
             <div class="banner position-relative">
 
-                <a href="configuracoes.php" class="btn-config" title="Configurações">
+                <a href="editar-perfil-candidato.php" class="btn-config" title="Configurações">
                     <i class="bi bi-gear-fill"></i>
                 </a>
 
@@ -52,7 +52,10 @@
                     <div class="d-flex flex-wrap gap-2">
                         <span class="badge badge-custom">JavaScript</span>
                         <span class="badge badge-custom">PHP</span>
-                        <span class="badge badge-custom">Photoshop</span>
+                        <span class="badge badge-custom">CSS</span>
+                         <span class="badge badge-custom">HTML</span>
+                          <span class="badge badge-custom">Photoshop</span>
+                        
                     </div>
 
                     <button class="btn btn-custom w-100 mt-4">Entrar em contato</button>
@@ -73,6 +76,67 @@
                 </div>
             </section>
         </div>
+
+<div class="Certificaos">
+<br><br>
+    <h1>CERTIFICADOS</h1>
+<br><br>
+    <div id="carouselCertificados" class="carousel slide"
+         data-bs-ride="carousel"
+         data-bs-interval="2500"
+         data-bs-pause="false"
+         data-bs-wrap="true">
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="4"></button>
+        </div>
+
+        <!-- Itens -->
+        <div class="carousel-inner text-center">
+
+            <div class="carousel-item active">
+                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="d-block mx-auto img-fluid">
+                <h5 class="mt-3">Certificado de HTML</h5>
+            </div>
+
+            <div class="carousel-item">
+                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="d-block mx-auto img-fluid">
+                <h5 class="mt-3">Certificado de CSS</h5>
+            </div>
+
+            <div class="carousel-item">
+                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="d-block mx-auto img-fluid">
+                <h5 class="mt-3">Certificado de Photoshop</h5>
+            </div>
+
+            <div class="carousel-item">
+                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="d-block mx-auto img-fluid">
+                <h5 class="mt-3">Certificado de JavaScript</h5>
+            </div>
+
+            <div class="carousel-item">
+                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="d-block mx-auto img-fluid">
+                <h5 class="mt-3">Certificado de PHP</h5>
+            </div>
+
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCertificados" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselCertificados" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

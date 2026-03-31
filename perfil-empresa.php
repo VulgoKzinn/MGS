@@ -30,7 +30,7 @@
 
          <!-- Configurações -->
          <div class="config-btn">
-            <i class="fa-solid fa-pen-to-square"></i>
+            <?php include "assets/templates/subedit.php"; ?>
          </div>
 
       </div>
