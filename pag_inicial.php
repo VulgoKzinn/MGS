@@ -21,7 +21,7 @@
 
     <!-- Empresa -->
     <div class="header">
-        <div class="logo"></div>
+        <img src="img/sabesp.png" class="logo">
         <h5 class="m-0">SABESP - SP</h5>
     </div>
 
@@ -40,16 +40,10 @@
     <!-- Ações (Formulário HTML) -->
     <form class="acoes">
         <button type="submit" class="btn-circle like">❤</button>
-        <button type="button" class="btn-circle info">i</button>
         <button type="submit" class="btn-circle dislike">✖</button>
     </form>
 
 </div>
-
-</body>
-
-</html>
-
 <footer>
 
 </footer>
