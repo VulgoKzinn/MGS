@@ -46,7 +46,7 @@ align-items:center;
 justify-content:center;
 
 /* define o tamanho do ícone */
-font-size:20px;
+font-size:30px;
 color:#6f42c1;
 
 box-shadow:0 4px 8px rgba(0,0,0,0.2);
@@ -124,4 +124,20 @@ transform:scale(1.1);
 .custom-box:hover{
     transform: scale(1.01);
     transition: 0.2s;
+}
+
+.custom-box img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ===========CANAIS OFICIAIS=========== */
+.canais-oficiais{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 1000;
+    color:#6750a4;
+    font-size: 40px;
+    letter-spacing: 1px;
 }
