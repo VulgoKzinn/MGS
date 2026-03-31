@@ -17,12 +17,45 @@
 
 <?php require_once "assets/templates/header_GUI.php" ?>
 
-        <footer>
+<div class="card-vaga">
 
-        </footer>
+    <!-- Empresa -->
+    <div class="header">
+        <div class="logo"></div>
+        <h5 class="m-0">SABESP - SP</h5>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
+    <!-- Conteúdo -->
+    <div class="conteudo">
+        <h5>Vaga: Leiturista – SABESP</h5>
+        <p>
+            A SABESP está em busca de um profissional responsável e comprometido para atuar como Leiturista.
+            A função consiste na leitura e registro do consumo de água nos hidrômetros, conferência de dados,
+            identificação de irregularidades e orientação básica aos clientes quando necessário.
+        </p>
+
+        <img src="https://via.placeholder.com/600x350" class="imagem">
+    </div>
+
+    <!-- Ações (Formulário HTML) -->
+    <form class="acoes">
+        <button type="submit" class="btn-circle like">❤</button>
+        <button type="button" class="btn-circle info">i</button>
+        <button type="submit" class="btn-circle dislike">✖</button>
+    </form>
+
+</div>
+
+</body>
+
+</html>
+
+<footer>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
 
 
 </body>

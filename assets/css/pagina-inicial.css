@@ -1,32 +1,66 @@
-/* BOTÃO PADRÃO */
-.btn-custom {
-    background-color: #6750a4;
-    color: #fff;
-    border: none;
-}
+body {
+            background-color: #f2f2f2;
+        }
 
-.btn-custom:hover {
-    background-color: #5741a0;
-}
+        .card-vaga {
+            max-width: 500px;
+            margin: 40px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: white;
+        }
 
-/* BOTÃO PUBLICAR */
-.btn-success {
-    background-color: #6750a4;
-    border-color: #6750a4;
-}
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid purple;
+            border-radius: 40px;
+            margin: 15px;
+        }
 
-.btn-success:hover {
-    background-color: #5741a0;
-    border-color: #5741a0;
-}
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 10px;
+        }
 
-/* HEADER DO MODAL */
-.modal-header {
-    background-color: #6750a4;
-    color: #fff;
-}
+        .conteudo {
+            background: linear-gradient(180deg, #8e2de2, #a044ff);
+            color: white;
+            padding: 20px;
+        }
 
-/* BOTÃO FECHAR (X) ficar branco */
-.btn-close {
-    filter: invert(1);
-}
+        .conteudo h5 {
+            font-weight: bold;
+        }
+
+        .imagem {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .acoes {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+        }
+
+        .btn-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: none;
+        }
+
+        .like { background: #ff4da6; color: white; }
+        .info { background: #000; color: white; }
+        .dislike { background: #ff3333; color: white; }
