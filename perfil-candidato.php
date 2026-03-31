@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - Pedro</title>
-   <!-- Include Links -->
-   <?php
-   require_once 'assets/templates/head.php';
-   ?>
-   
+    <!-- Include Links -->
+    <?php
+    require_once 'assets/templates/head.php';
+    ?>
+
 </head>
 
 <body id="bodypgs">
@@ -45,100 +45,240 @@
                         suporte técnico e design gráfico.
                     </p>
 
-                  <h5 class="fw-bold mt-4">Certificados</h5>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="badge badge-custom">JavaScript</span>
-                        <span class="badge badge-custom">PHP</span>
-                        <span class="badge badge-custom">CSS</span>
-                        <span class="badge badge-custom">HTML</span>
-                        <span class="badge badge-custom">Photoshop</span>
+                    <h5 class="fw-bold mt-4 mb-3 titulo-roxo-contato">Certificados</h5>
+
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <span class="badge badge-custom fs-6">JavaScript</span>
+                        <span class="badge badge-custom fs-6">PHP</span>
+                        <span class="badge badge-custom fs-6">CSS</span>
+                        <span class="badge badge-custom fs-6">HTML</span>
+                        <span class="badge badge-custom fs-6">Photoshop</span>
                     </div>
 
-                    <div class="mt-4 info-contato">
-                        <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i> pedro.c.azevedo@email.com</p>
-                        <p class="mb-0"><i class="bi bi-whatsapp me-2"></i> (19) 99999-9999</p>
+                    <div class="mt-4 info-contato-expandida">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-envelope-at-fill fs-4 me-3"></i>
+                            <span>pedro.c.azevedo@email.com</span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-whatsapp fs-4 me-3"></i>
+                            <span>(19) 99999-9999</span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="bi bi-geo-alt-fill fs-4 me-3"></i>
+                            <span>CEP: 13870-000 • São João da Boa Vista - SP</span>
+                        </div>
                     </div>
 
-                    <button class="btn btn-custom w-100 mt-3">
-                        <i class="bi bi-chat-dots-fill me-2"></i> Entrar em contato
-                    </button>
-                                </aside>
+                    <a href="https://wa.me/5519999999999" target="_blank" class="btn btn-custom-lg w-100 py-3 shadow">
+                        <i class="bi bi-chat-left-dots-fill me-2"></i>
+                        CONVERSAR NO WHATSAPP
+                    </a>
+
+                </div>
+            </aside>
 
             <section class="col-md-8">
-                <div class="card p-4 shadow-sm border-0">
-                    <h5 class="fw-bold mb-3">Experiência</h5>
+                <div class="card p-4 shadow-sm border-0 h-100">
+                    <h5 class="fw-bold mb-3 titulo-roxo-curto">Experiência</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2">💻 Desenvolvimento de sistemas web.</li>
-                        <li class="mb-2">🖥 Manutenção de computadores.</li>
-                        <li class="mb-2">🎨 Edição de imagens utilizando Photoshop.</li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="icone-roxo me-3"><i class="bi bi-code-slash"></i></span>
+                            <div>
+                                <strong>Desenvolvimento Web:</strong>
+                                Criação de interfaces responsivas e sistemas dinâmicos.
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="icone-roxo me-3"><i class="bi bi-pc-display"></i></span>
+                            <div>
+                                <strong>Suporte & Manutenção:</strong>
+                                Diagnóstico de hardware e configuração de redes/sistemas.
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="icone-roxo me-3"><i class="bi bi-palette"></i></span>
+                            <div>
+                                <strong>Design Gráfico:</strong>
+                                Edição profissional e criação de identidades visuais.
+                            </div>
+                        </li>
                     </ul>
-                    <hr>
-                    <h5 class="fw-bold mt-3">Habilidades Principais</h5>
-                    <p class="text-muted">HTML • CSS • JavaScript • PHP • Photoshop</p>
+
+                    <hr class="my-4">
+
+                    <h5 class="fw-bold mb-3 titulo-roxo-curto">Projetos Recentes</h5>
+
+                    <div class="projeto-card p-3 mb-3 shadow-sm">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="fs-4 me-2">🍔</span>
+                            <h6 class="fw-bold mb-0 text-dark">Sistema Hamburgueria Online</h6>
+                        </div>
+                        <p class="text-muted small mb-3">
+                            Desenvolvimento de uma plataforma completa de cardápio digital e gestão de pedidos. O sistema permite a personalização de combos, escolha de pontos da carne e integração direta para pedidos.
+                        </p>
+                        <h5 class="fw-bold mb-3 titulo-roxo-curto text-uppercase" style="font-size: 0.9rem; letter-spacing: 1px;">Meus Projetos</h5>
+
+                        <div class="projeto-card p-3 mb-3 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="fs-4 me-2">🍕</span>
+                                <h6 class="fw-bold mb-0 text-dark">Cardápio Digital: Pizza & Forno</h6>
+                            </div>
+                            <p class="text-muted small mb-3">
+                                Desenvolvimento de plataforma de cardápio interativo com foco em conversão. Sistema responsivo que permite a navegação por categorias de produtos, visualização de detalhes e integração para pedidos.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-primary border small">PHP 8</span>
+                                <span class="badge bg-light text-primary border small">UI/UX Design</span>
+                                <span class="badge bg-light text-primary border small">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="projeto-card p-3 mb-3 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="fs-4 me-2">📚</span>
+                                <h6 class="fw-bold mb-0 text-dark">Sistema de Gestão de Livraria</h6>
+                            </div>
+                            <p class="text-muted small mb-3">
+                                Sistema focado em operações CRUD (Criação, Leitura, Atualização e Exclusão) para controle de acervo literário. Inclui gerenciamento de autores, gêneros e controle de estoque automatizado via Banco de Dados.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-primary border small">MySQL</span>
+                                <span class="badge bg-light text-primary border small">PHP / SQL</span>
+                                <span class="badge bg-light text-primary border small">Backend</span>
+                            </div>
+                        </div>
+
+                        <div class="projeto-card p-3 mb-3 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="fs-4 me-2">🐾</span>
+                                <h6 class="fw-bold mb-0 text-dark">Portal de Cadastros Pet</h6>
+                            </div>
+                            <p class="text-muted small mb-3">
+                                Aplicação para registro e organização de dados de animais de estimação. Foco em organização de informações estruturadas e busca rápida, facilitando a gestão de clínicas ou abrigos.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-primary border small">Lógica CRUD</span>
+                                <span class="badge bg-light text-primary border small">Bootstrap 5</span>
+                                <span class="badge bg-light text-primary border small">PHP</span>
+                            </div>
+                        </div>
+
+                        <div class="projeto-card p-3 mb-3 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="fs-4 me-2">🎬</span>
+                                <h6 class="fw-bold mb-0 text-dark">Catálogo de Filmes e Mídias</h6>
+                            </div>
+                            <p class="text-muted small mb-3">
+                                Plataforma dinâmica para listagem e filtragem de conteúdo audiovisual. Utiliza lógica de programação para exibição de metadados (títulos, anos e gêneros) em uma interface moderna e intuitiva.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-primary border small">JSON / Arrays</span>
+                                <span class="badge bg-light text-primary border small">Frontend</span>
+                                <span class="badge bg-light text-primary border small">CSS Grid</span>
+                            </div>
+                        </div>
+
+                        <div class="projeto-card p-3 mb-3 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="fs-4 me-2">💈</span>
+                                <h6 class="fw-bold mb-0 text-dark">E-commerce de Serviços: Barbearia</h6>
+                            </div>
+                            <p class="text-muted small mb-3">
+                                Implementação de site profissional utilizando WordPress e Elementor. Foco na venda de serviços, agendamento online e SEO local para atração de clientes da região.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-primary border small">WordPress</span>
+                                <span class="badge bg-light text-primary border small">SEO Local</span>
+                                <span class="badge bg-light text-primary border small">Elementor</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border">PHP 8</span>
+                            <span class="badge bg-light text-dark border">MySQL</span>
+                            <span class="badge bg-light text-dark border">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h5 class="fw-bold mt-3 mb-3 titulo-roxo-curto">Habilidades & Tecnologias</h5>
+                    <div class="habilidades-grid d-flex flex-wrap gap-2">
+                        <span class="habilidade-tag">HTML5</span>
+                        <span class="habilidade-tag">CSS3</span>
+                        <span class="habilidade-tag">JavaScript (ES6+)</span>
+                        <span class="habilidade-tag">PHP / MySQL</span>
+                        <span class="habilidade-tag">Bootstrap 5</span>
+                        <span class="habilidade-tag">Adobe Photoshop</span>
+                        <span class="habilidade-tag">Git / GitHub</span>
+                    </div>
                 </div>
+            </section>
             </section>
         </div>
 
-<div class="Certificados-header">
-    <h1>CERTIFICADOS</h1>
-</div>
-<br><br>
-    <div id="carouselCertificados" class="carousel slide"
-         data-bs-ride="carousel"
-         data-bs-interval="2500"
-         data-bs-pause="false"
-         data-bs-wrap="true">
-
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="4"></button>
+        <div class="Certificados-header">
+            <h1>CERTIFICADOS</h1>
         </div>
+        <br><br>
+        <div id="carouselCertificados" class="carousel slide"
+            data-bs-ride="carousel"
+            data-bs-interval="2500"
+            data-bs-pause="false"
+            data-bs-wrap="true">
 
-        <!-- Itens -->
-        <div class="carousel-inner text-center">
-
-            <div class="carousel-item active">
-                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="d-block mx-auto img-fluid">
-                <h5 class="mt-3">Certificado de HTML</h5>
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#carouselCertificados" data-bs-slide-to="4"></button>
             </div>
 
-            <div class="carousel-item">
-                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="d-block mx-auto img-fluid">
-                <h5 class="mt-3">Certificado de CSS</h5>
+            <!-- Itens -->
+            <div class="carousel-inner text-center">
+
+                <div class="carousel-item active">
+                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="d-block mx-auto img-fluid">
+                    <h5 class="mt-3">Certificado de HTML</h5>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="d-block mx-auto img-fluid">
+                    <h5 class="mt-3">Certificado de CSS</h5>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="d-block mx-auto img-fluid">
+                    <h5 class="mt-3">Certificado de Photoshop</h5>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="d-block mx-auto img-fluid">
+                    <h5 class="mt-3">Certificado de JavaScript</h5>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="d-block mx-auto img-fluid">
+                    <h5 class="mt-3">Certificado de PHP</h5>
+                </div>
+
             </div>
 
-            <div class="carousel-item">
-                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="d-block mx-auto img-fluid">
-                <h5 class="mt-3">Certificado de Photoshop</h5>
-            </div>
+            <!-- Controles -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCertificados" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
 
-            <div class="carousel-item">
-                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="d-block mx-auto img-fluid">
-                <h5 class="mt-3">Certificado de JavaScript</h5>
-            </div>
-
-            <div class="carousel-item">
-                <img src="assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="d-block mx-auto img-fluid">
-                <h5 class="mt-3">Certificado de PHP</h5>
-            </div>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselCertificados" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
 
         </div>
-
-        <!-- Controles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCertificados" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselCertificados" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-
-    </div>
-</div>
+        </div>
 
         <div class="certificados-list">
 
@@ -194,9 +334,10 @@
 
         </div>
     </main>
-   <!-- Include JS -->
-   <?php
-   require_once 'assets/templates/js.php';
-   ?>
+    <!-- Include JS -->
+    <?php
+    require_once 'assets/templates/js.php';
+    ?>
 </body>
+
 </html>

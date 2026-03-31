@@ -466,27 +466,31 @@ button, .btn{
 
 /* <!-- KAUÃ --> */
 
-/* Perfil Canditado */
-#banner-perfil-c {
-   
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
+/* --- CONFIGURAÇÕES GERAIS --- */
+:root {
+    --roxo-padrao: #6f42c1;
+    --roxo-escuro: #59359a;
 }
 
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- BANNER E PERFIL (Estilo LinkedIn) --- */
 .banner {
     position: relative;
     height: 200px;
     background-image: url("../img/perfil-candidato/Gemini_Generated_Image_kajkswkajkswkajk.png");
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
+    border-radius: 15px 15px 0 0; /* Arredonda só em cima para o card */
 }
 
-/* Foto estilo LinkedIn */
 .foto-perfil {
     position: absolute;
-    bottom: -50px; /* faz ela "sair" do banner */
+    bottom: -50px; /* Efeito de sair do banner */
     left: 30px;
     width: 120px;
     height: 120px;
@@ -494,173 +498,188 @@ button, .btn{
     border: 4px solid white;
     object-fit: cover;
     background-color: #fff;
-    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-
-
-/* Engrenagem na PARTE DE BAIXO do banner */
+/* Engrenagem de Configuração */
 .btn-config {
     position: absolute;
-    bottom: 10px; /* Alinhado ao fundo */
-    right: 15px;  /* Alinhado à direita */
-    color: #6f42c1; /* Roxo solicitado */
-    font-size: 1.5rem;
+    bottom: 15px; 
+    right: 15px;  
+    color: white; /* Branco para destacar no banner escuro */
+    background-color: rgba(111, 66, 193, 0.7); /* Fundo roxo transparente */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     text-decoration: none;
-    transition: transform 0.4s ease;
+    transition: all 0.4s ease;
     z-index: 10;
 }
 
 .btn-config:hover {
-    color: #59359a;
-    transform: rotate(90deg);
+    background-color: var(--roxo-padrao);
+    color: #fff;
+    transform: rotate(90deg) scale(1.1);
 }
 
-/* Estilo dos Botões e Badges (Roxo) */
+/* --- COMPONENTES (BOTÕES E BADGES) --- */
 .btn-custom {
-    background-color: #6f42c1;
-    border-color: #6f42c1;
+    background-color: var(--roxo-padrao);
+    border-color: var(--roxo-padrao);
     color: white;
+    font-weight: 600;
     transition: all 0.3s;
 }
 
 .btn-custom:hover {
-    background-color: #59359a;
-    border-color: #59359a;
+    background-color: var(--roxo-escuro);
+    border-color: var(--roxo-escuro);
+    transform: translateY(-2px);
+}
+
+.btn-custom-lg {
+    background-color: var(--roxo-padrao);
     color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-custom-lg:hover {
+    background-color: var(--roxo-escuro);
+    color: white;
+    box-shadow: 0 8px 15px rgba(111, 66, 193, 0.3);
 }
 
 .badge-custom {
-    background-color: #6f42c1;
+    background-color: var(--roxo-padrao);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+/* --- SEÇÃO DE EXPERIÊNCIA E PROJETOS --- */
+.titulo-roxo-curto {
+    color: #333;
+    border-left: 5px solid var(--roxo-padrao);
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+.icone-roxo {
+    background: rgba(111, 66, 193, 0.1);
+    color: var(--roxo-padrao);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.projeto-card {
+    background: #fff;
+    border-left: 5px solid var(--roxo-padrao) !important;
+    transition: 0.3s;
+}
+
+.projeto-card:hover {
+    transform: translateX(8px);
+    background-color: #fcfaff;
+}
+
+.habilidade-tag {
+    background: white;
+    color: var(--roxo-padrao);
+    border: 1px solid var(--roxo-padrao);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.habilidade-tag:hover {
+    background: var(--roxo-padrao);
     color: white;
 }
 
-
-
-
-/* Estilo Geral */
-body {
-    background-color: #f4f7f6;
+/* --- CERTIFICADOS (CAROUSEL E LISTA) --- */
+.Certificados-header {
+    text-align: center;
+    margin: 60px 0 30px;
 }
 
-.card {
-    border-radius: 15px;
-}
-.Certificaos {
-    max-width: 600px;
-    margin: auto;
-}
-
-.carousel-item img {
-    max-height: 300px;
-    object-fit: contain;
+.Certificados-header h1 {
+    color: var(--roxo-padrao);
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
-
-   /*  Editar-Perfil-Canditado */
-/* Cores e Tipografia */
-body {
-    background-color: #f8f9fa;
-    color: #333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Títulos em Roxo */
-.titulo-roxo {
-    color: #6f42c1;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-    display: inline-block;
-}
-
-/* Linha decorativa embaixo do título */
-.titulo-roxo::after {
+.Certificados-header h1::after {
     content: '';
     display: block;
-    width: 50px;
-    height: 4px;
-    background-color: #6f42c1;
-    margin-top: 5px;
-    border-radius: 2px;
+    width: 80px;
+    height: 5px;
+    background-color: var(--roxo-padrao);
+    margin: 10px auto 0;
+    border-radius: 10px;
 }
 
-/* Descrição do Texto */
+.titulo-roxo {
+    color: var(--roxo-padrao);
+    font-weight: 700;
+    border-bottom: 3px solid var(--roxo-padrao);
+    padding-bottom: 5px;
+}
+
 .texto-descricao {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.6;
     color: #555;
     background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 15px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.05);
 }
 
-/* Estilo das Imagens de Certificado */
 .certificado-img {
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    border: 1px solid #ddd;
-    max-height: 300px; /* Ajuste para não ficar gigante */
+    transition: all 0.4s ease;
+    max-height: 320px;
+    border: 1px solid #eee;
 }
 
-/* Efeito Hover na Imagem */
 .certificado-img:hover {
-    transform: translateY(-5px) scale(1.02);
+    transform: scale(1.03);
     box-shadow: 0 15px 30px rgba(111, 66, 193, 0.2);
-    border-color: #6f42c1;
 }
 
-/* Espaçamento entre seções */
-.section-item {
-    padding: 40px 0;
-    border-bottom: 1px solid #eee;
+/* --- CONTATO --- */
+.info-contato-expandida i {
+    color: var(--roxo-padrao);
+    background: rgba(111, 66, 193, 0.1);
+    padding: 10px;
+    border-radius: 50%;
 }
 
-.section-item:last-child {
-    border-bottom: none;
-}
-
-/* Ajustes para Celular */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 767px) {
-    .titulo-roxo {
-        text-align: center;
-        display: block;
+    .foto-perfil {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -60px;
     }
-    .titulo-roxo::after {
-        margin: 5px auto;
-    }
-    .texto-descricao {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .certificado-img {
-        max-height: 250px;
-    }
-}
-.Certificados-header {
-    text-align: center; /* Centraliza o título na página */
-    margin-bottom: 50px;
-}
-
-.Certificados-header h1 {
-    color: #6f42c1;
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-    display: inline-block;
-}
-
-/* Linha decorativa embaixo do título principal */
-.Certificados-header h1::after {
-    content: '';
-    display: block;
-    width: 60%;
-    height: 5px;
-    background-color: #6f42c1;
-    margin: 10px auto 0;
-    border-radius: 10px;
+    
+    .Certificados-header h1 { font-size: 1.8rem; }
+    
+    .section-item { text-align: center; }
+    
+    .order-md-first { order: -1; }
 }
