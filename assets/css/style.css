@@ -683,3 +683,16 @@ body {
     
     .order-md-first { order: -1; }
 }
+.card-faq {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+}
+.perguntas{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
