@@ -684,15 +684,13 @@ body {
     .order-md-first { order: -1; }
 }
 .card-faq {
-    width: 45%;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    margin: 0px;
-}
-.perguntas{
-    justify-content: center;
-    align-items: center;
-    display: flex;
 }
