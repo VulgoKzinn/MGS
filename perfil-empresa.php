@@ -12,16 +12,22 @@ $id_nivel = $_SESSION['id_nivel'];
    <meta charset="UTF-8">
    <title>Perfil Empresarial</title>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4e5c075f356814a6ba1ded5e1c9a1652c264c858
    <!-- Include Links -->
    <?php
    require_once 'assets/templates/head.php';
    ?>
+<<<<<<< HEAD
 =======
     <!-- Include Links -->
     <?php
     require_once 'assets/templates/head.php';
     ?>
 >>>>>>> 0f3bd1529055a2388c9507f7139f10c65a033514
+=======
+>>>>>>> 4e5c075f356814a6ba1ded5e1c9a1652c264c858
    <!-- Para garantir responsividade em mobile bootstrap -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- css da pagina -->
@@ -30,11 +36,16 @@ $id_nivel = $_SESSION['id_nivel'];
    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
+<<<<<<< HEAD
 <body>
 <<<<<<< HEAD
 =======
     <?php include "assets/templates/headerMGS.php"; ?>
 >>>>>>> 0f3bd1529055a2388c9507f7139f10c65a033514
+=======
+<body id="bodypgs">
+    <?php require_once "assets/templates/headerMGS.php" ?>
+>>>>>>> 4e5c075f356814a6ba1ded5e1c9a1652c264c858
    <main class="container mt-4">
       <!-- PERFIL -->
       <div class="position-relative">
