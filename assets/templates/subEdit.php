@@ -17,6 +17,10 @@
     .dropdown-divider {
         border-color: rgba(255, 255, 255, 0.2);
     }
+
+    .user-icon i{
+    color: #6750a4;
+}
 </style>
 <div class="dropdown">
     <a href="#" class="user-icon" data-bs-toggle="dropdown">

@@ -38,7 +38,6 @@ right:30px;
 width:45px;
 height:45px;
 
-background:white;
 border-radius:50%;
 
 display:flex;
@@ -47,7 +46,7 @@ justify-content:center;
 
 /* define o tamanho do ícone */
 font-size:30px;
-color:#6f42c1;
+color:#6750A4;
 
 box-shadow:0 4px 8px rgba(0,0,0,0.2);
 /* define uma animação suave de 0.2 segundos quando algo muda */
@@ -134,10 +133,23 @@ transform:scale(1.1);
 }
 
 /* ===========CANAIS OFICIAIS=========== */
-.canais-oficiais{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 1000;
-    color:#6750a4;
-    font-size: 40px;
+.rodape{
+    color: #6750a4;
+}
+
+.titulo-rodape{
+    font-weight: 600;
     letter-spacing: 1px;
+}
+
+.icone{
+    font-size: 32px;
+    color: #6220d3;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icone:hover{
+    transform: scale(1.2);
+    color: #d1c4ff; 
 }
