@@ -70,9 +70,16 @@ function validaAcesso()
     }
 }
 
-function validaAdmin($id_nivel)
+function validaEmpresa($id_nivel)
 {
-    if ($id_nivel != 2) {
+    if ($id_nivel == 1) {
+        header('Location: pag_inicial_empresa.php');
+    }
+}
+
+function validaUsuario($id_nivel)
+{
+    if ($id_nivel == 2) {
         header('Location: pag_inicial.php');
     }
 }

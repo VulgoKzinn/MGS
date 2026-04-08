@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro | Matchwork</title>
+    <title>Cadastro Vaga| Matchwork</title>
    <!-- Include Links -->
    <?php
    require_once 'assets/templates/head.php';
@@ -16,20 +16,27 @@
     <div id="ImgLogon">
         <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
     </div>
+
     <!-- Formulário -->
     <main id="CadCand">
         <form action="" method="post" class="p-4">
-            <h2 class="text-center mb-4">Crie sua Conta Empresa</h2>
+            <h2 class="text-center mb-4">Anunciar Nova Vaga</h2>
 
             <!-- Primeira linha -->
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="razao" class="form-label">Razão Social</label>
-                    <input type="text" class="form-control" id="razao" placeholder="Nome da empresa">
+                    <label for="area-atuacao" class="form-label">Área de Atuação</label>
+                    <input type="text" class="form-control" id="area-atuacao" required>
                 </div>
+
                 <div class="col-md-4">
-                    <label for="cnpj" class="form-label">CNPJ</label>
-                    <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00">
+                    <label for="modalidade" class="form-label">Modalidade da Vaga</label>
+                    <select name="modalidade" id="modalidade" required>
+                        <option value="" selected disabled>Selecione...</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Home Office">Home Office</option>
+                        <option value="Híbrido">Híbrido</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="emailEmp" class="form-label">E-mail Corporativo</label>

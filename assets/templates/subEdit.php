@@ -17,6 +17,10 @@
     .dropdown-divider {
         border-color: rgba(255, 255, 255, 0.2);
     }
+
+    .user-icon i{
+    color: #6750a4;
+}
 </style>
 <div class="dropdown">
     <a href="#" class="user-icon" data-bs-toggle="dropdown">
@@ -24,7 +28,11 @@
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end">
-        <li><a href="./perfil.php" class="dropdown-item">Perfil</a></li>
-        <li><a href="./vaga.php" class="dropdown-item">Vaga</a></li>
+        <li><a href="#" class="dropdown-item">Editar Perfil</a></li>
+        <li><a href="#" class="dropdown-item">Anunciar Nova Vaga</a></li>
+        <li><a href="#" class="dropdown-item">Excluir Vaga</a></li>
+        <li><a href="#" class="dropdown-item">Editar Vaga</a></li>
+
+
     </ul>
 </div>
