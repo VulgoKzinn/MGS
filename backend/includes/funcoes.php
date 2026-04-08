@@ -62,18 +62,25 @@ function validaAcesso()
     session_start();
 
     if ($_SESSION['sistema'] != 'sis_login') {
-        header('Location: ../');
+        header('Location: index.php');
     }
 
     if ($_SESSION['s_temp'] == 1) {
-        header('Location: ../reset.php');
+        header('Location: reset.php');
     }
 }
 
-function validaAdmin($id_nivel)
+function validaEmpresa($id_nivel)
 {
-    if ($id_nivel != 2) {
-        header('Location: ../pag_inicial.php');
+    if ($id_nivel == 1) {
+        header('Location: pag_inicial_empresa.php');
+    }
+}
+
+function validaUsuario($id_nivel)
+{
+    if ($id_nivel == 2) {
+        header('Location: pag_inicial.php');
     }
 }
 
@@ -126,7 +133,7 @@ function novaSenha($senha)
         $idUsuario = $_SESSION['id'];
         $sql = "UPDATE tb_login SET senha=:senha, s_temp=0 WHERE id=:id";
 
-        $senha_hash = password_hash($senha,PASSWORD_ARGON2ID);
+        $senha_hash = password_hash($senha, PASSWORD_ARGON2ID);
 
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':senha', $senha_hash);
@@ -154,7 +161,7 @@ function logout()
     exit;
 }
 
-function validaEmail($email, $senha)
+function validaEmail($email, $senha, $empresa)
 {
     try {
         global $conexao;
@@ -168,9 +175,9 @@ function validaEmail($email, $senha)
         $dados = $comando->fetch(PDO::FETCH_ASSOC);
 
         if ($dados != null) {
-            return "E-mail já existe1";
+            return "E-mail já existe!";
         } else {
-            cadastrarUsuario($email, $senha);
+            criarConta($email, $senha,$empresa);
         }
     } catch (PDOException $err) {
         error_log($err->getMessage());
@@ -178,23 +185,29 @@ function validaEmail($email, $senha)
     }
 }
 
-function cadastrarUsuario($email, $senha)
+function criarConta($email, $senha, $empresa)
 {
     global $conexao;
 
     try {
-        $sql = "INSERT INTO tb_login 
-            (email,senha) 
-            VALUES (:email,:senha)";
+        $sql = "INSERT INTO tb_login (email,senha,id_nivel) VALUES (:email,:senha,:id_nivel)";
 
         $senhaHash = password_hash($senha, PASSWORD_ARGON2ID);
 
-        // var_dump($senhaHash);
+        // var_dump($empresa);
         // exit;
 
+        if($empresa == null){
+            $empresa = 2;
+        }else{
+            $empresa = 1;
+        }
+        // var_dump ($empresa);
+        // exit;
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':email', $email);
         $comando->bindValue(':senha', $senhaHash);
+        $comando->bindValue(':id_nivel', $empresa);
         $comando->execute();
 
         return "E-mail cadastrado com sucesso!";

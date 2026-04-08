@@ -8,13 +8,14 @@ if (isset($_POST['cadastrar'])) {
     // captura a senha preenchido pelo usuario
     $senha =  filter_input(INPUT_POST, 'senha');
     $confirma =  filter_input(INPUT_POST, 'confirma');
+    $empresa = filter_input(INPUT_POST, 'empresa');
 
     if ($senha == '' && $confirma == '') {
         $mensagem = 'Preencha a senha!';
     } elseif ($senha !== $confirma) {
         $mensagem = 'Senhas não conferem!';
     } else {
-        $mensagem = validaEmail($email, $senha);
+        $mensagem = validaEmail($email, $senha, $empresa);
     }
 }
 
@@ -27,10 +28,10 @@ if (isset($_POST['cadastrar'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro | Matchwork</title>
-   <!-- Include Links -->
-   <?php
-   require_once 'assets/templates/head.php';
-   ?>
+    <!-- Include Links -->
+    <?php
+    require_once 'assets/templates/head.php';
+    ?>
 </head>
 
 <body id="cadastroCand">
@@ -62,19 +63,19 @@ if (isset($_POST['cadastrar'])) {
 
             <!-- Termos -->
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" required>
+                <input class="form-check-input" type="checkbox" name="empresa" id="empresa">
                 <label class="form-check-label">
-                    Concordo com os termos de uso
+                    Perfil Empresarial
                 </label>
             </div>
 
             <!-- Mensagem -->
-            <?php if(!empty($mensagem)): ?>
+            <?php if (!empty($mensagem)): ?>
                 <div class="text-sm text-indigo-300 bg-indigo-900/20 border border-indigo-800 p-2 rounded">
                     <?= $mensagem; ?>
                 </div>
             <?php endif; ?>
-            
+
             <div class="text-end">
                 <button type="submit" class="btn btn-success w-100" name="cadastrar">
                     Criar Conta
@@ -84,10 +85,10 @@ if (isset($_POST['cadastrar'])) {
     </main>
 
 
-   <!-- Include JS -->
-   <?php
-   require_once 'assets/templates/js.php';
-   ?>
+    <!-- Include JS -->
+    <?php
+    require_once 'assets/templates/js.php';
+    ?>
 
 </body>
 

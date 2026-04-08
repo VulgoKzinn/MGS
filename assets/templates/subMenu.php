@@ -1,5 +1,12 @@
 <?php
 require_once "backend/includes/funcoes.php";
+
+$perfilLink = './perfil-candidato.php';
+
+if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
+    $perfilLink = './perfil-empresa.php';
+}
+
 $acao = $_GET['acao'] ?? null;
 
 if ($acao === 'logout') {
@@ -35,9 +42,9 @@ if ($acao === 'logout') {
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end">
-        <li><a href="./perfil-candidato.php" class="dropdown-item">Perfil</a></li>
-        <li><a href="assinatura.php" class="dropdown-item">Assinatura</a></li>
-        <li><a href="suporte.php" class="dropdown-item">Suporte</a></li>
+        <li><a href="<?= $perfilLink ?>" class="dropdown-item">Perfil</a></li>
+        <li><a href="" class="dropdown-item">Assinatura</a></li>
+        <li><a href="" class="dropdown-item">Suporte</a></li>
         <li><a href="" class="dropdown-item">Inpulsionar</a></li>
         <li>
             <hr class="dropdown-divider">
