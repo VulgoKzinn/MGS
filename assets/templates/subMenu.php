@@ -43,7 +43,7 @@ if ($acao === 'logout') {
 
     <ul class="dropdown-menu dropdown-menu-end">
         <li><a href="<?= $perfilLink ?>" class="dropdown-item">Perfil</a></li>
-        <li><a href="" class="dropdown-item">Assinatura</a></li>
+        <li><a href="assinatura.php" class="dropdown-item">Assinatura</a></li>
         <li><a href="" class="dropdown-item">Suporte</a></li>
         <li><a href="" class="dropdown-item">Inpulsionar</a></li>
         <li>
