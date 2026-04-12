@@ -24,7 +24,11 @@
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end">
-        <li><a href="./perfil.php" class="dropdown-item">Perfil</a></li>
-        <li><a href="./vaga.php" class="dropdown-item">Vaga</a></li>
+        <li><a href="#" class="dropdown-item">Editar Perfil</a></li>
+        <li><a href="./cadastro-vaga.php" class="dropdown-item">Anunciar Nova Vaga</a></li>
+        <li><a href="#" class="dropdown-item">Excluir Vaga</a></li>
+        <li><a href="#" class="dropdown-item">Editar Vaga</a></li>
+
+
     </ul>
 </div>
