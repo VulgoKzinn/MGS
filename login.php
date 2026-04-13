@@ -40,7 +40,7 @@ if (isset($_POST['login'])) {
                     <i class="fa-light fa-envelope fa-lg" style="color: #6750a4;"></i>
                 </span>
                 <div class="form-floating">
-                    <input type="email" value="<?= $email; ?>" class="form-control" id="email" placeholder="email@exemplo.com">
+                    <input type="email" value="<?= $email; ?>" class="form-control" name="email" id="email" placeholder="email@exemplo.com">
                     <label for="email">E-mail</label>
                 </div>
             </div>
@@ -49,7 +49,7 @@ if (isset($_POST['login'])) {
                 <span class="input-group-text">
                     <i class="fa-light fa-lock fa-lg" style="color: #6750a4;"></i>
                 </span>
-                <div class="form-floating"> <input type="password" class="form-control" id="senha" placeholder="Senha" required>
+                <div class="form-floating"> <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required>
                     <label for="senha">Senha</label>
                 </div>
             </div>
@@ -62,9 +62,10 @@ if (isset($_POST['login'])) {
                 </div>
             <?php endif; ?>
 
-            <button type="submit" class="btn btn-success mt-3">Logar</button>
+            <button type="submit" name="login" class="btn btn-success mt-3">Logar</button>
+
             <!-- Links extras -->
-            <div class="extra-links"> <a href="cadastro-candidato.php">Cadastrar Conta</a> <a href="cadastro-empresa.php">Cadastrar Empresa</a> </div>
+            <div class="extra-links"> <a href="criarConta.php">Cadastrar Conta</a>
         </form>
     </main>
 

@@ -7,7 +7,7 @@ function login($email, $senha)
     try {
         global $conexao;
 
-        $sql = "SELECT id,email,senha,ativo,s_temp FROM tb_login WHERE email=:email";
+        $sql = "SELECT id,email,senha,ativo,s_temp,id_nivel FROM tb_login WHERE email=:email";
 
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':email', $email);
@@ -32,14 +32,16 @@ function login($email, $senha)
                     $_SESSION['sistema'] = 'sis_login';
                     // guarda o email 
                     $_SESSION['email'] = $dados['email'];
+                    // guarda o id_nivel (se é admin ou user) 
+                    $_SESSION['id_nivel'] = $dados['id_nivel'];
                     // guarda o s_temp (senha temporario) 
                     $_SESSION['s_temp'] = $dados['s_temp'];
 
                     if ($dados['s_temp'] == 0) {
                         // redirecionar para painel admin
-                        header('location: admin/dashboard.php');
+                        header('location: pag_inicial.php');
                     } else {
-                        header('Location: usuario/nova-senha.php');
+                        header('Location: reset.php');
                     }
                 }
             } else {
@@ -60,11 +62,25 @@ function validaAcesso()
     session_start();
 
     if ($_SESSION['sistema'] != 'sis_login') {
-        header('Location: ../');
+        header('Location: index.php');
     }
 
     if ($_SESSION['s_temp'] == 1) {
-        header('Location: ../usuario/nova-senha.php');
+        header('Location: reset.php');
+    }
+}
+
+function validaEmpresa($id_nivel)
+{
+    if ($id_nivel == 1) {
+        header('Location: pag_inicial_empresa.php');
+    }
+}
+
+function validaUsuario($id_nivel)
+{
+    if ($id_nivel == 2) {
+        header('Location: pag_inicial.php');
     }
 }
 
@@ -86,10 +102,12 @@ function recuperarSenha($email)
                 return "Conta bloqueada, entre em contato com o suporte";
             } else {
                 $senha_temp = uniqid();
+                $senha_hash = password_hash($senha_temp, PASSWORD_ARGON2ID);
+
                 $sql = "UPDATE tb_login SET senha = :senha_temp, s_temp = :s_temp WHERE id = :id";
 
                 $comando = $conexao->prepare($sql);
-                $comando->bindValue(':senha_temp', $senha_temp);
+                $comando->bindValue(':senha_temp', $senha_hash);
                 $comando->bindValue(':id', $dados['id']);
                 $comando->bindValue(':s_temp', 1);
 
@@ -115,8 +133,10 @@ function novaSenha($senha)
         $idUsuario = $_SESSION['id'];
         $sql = "UPDATE tb_login SET senha=:senha, s_temp=0 WHERE id=:id";
 
+        $senha_hash = password_hash($senha, PASSWORD_ARGON2ID);
+
         $comando = $conexao->prepare($sql);
-        $comando->bindValue(':senha', $senha);
+        $comando->bindValue(':senha', $senha_hash);
         $comando->bindValue(':id', $idUsuario);
         $comando->execute();
 
@@ -137,11 +157,11 @@ function logout()
 
     session_destroy();
 
-    header('Location: ../');
+    header('Location: login.php');
     exit;
 }
 
-function validaEmail($email, $senha)
+function validaEmail($email, $senha, $empresa)
 {
     try {
         global $conexao;
@@ -155,9 +175,9 @@ function validaEmail($email, $senha)
         $dados = $comando->fetch(PDO::FETCH_ASSOC);
 
         if ($dados != null) {
-            return "E-mail já existe1";
+            return "E-mail já existe!";
         } else {
-            cadastrarUsuario($email, $senha);
+            criarConta($email, $senha,$empresa);
         }
     } catch (PDOException $err) {
         error_log($err->getMessage());
@@ -165,23 +185,29 @@ function validaEmail($email, $senha)
     }
 }
 
-function cadastrarUsuario($email, $senha)
+function criarConta($email, $senha, $empresa)
 {
     global $conexao;
 
     try {
-        $sql = "INSERT INTO tb_login 
-            (email,senha) 
-            VALUES (:email,:senha)";
+        $sql = "INSERT INTO tb_login (email,senha,id_nivel) VALUES (:email,:senha,:id_nivel)";
 
         $senhaHash = password_hash($senha, PASSWORD_ARGON2ID);
 
-        // var_dump($senhaHash);
+        // var_dump($empresa);
         // exit;
 
+        if($empresa == null){
+            $empresa = 2;
+        }else{
+            $empresa = 1;
+        }
+        // var_dump ($empresa);
+        // exit;
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':email', $email);
         $comando->bindValue(':senha', $senhaHash);
+        $comando->bindValue(':id_nivel', $empresa);
         $comando->execute();
 
         return "E-mail cadastrado com sucesso!";
@@ -190,3 +216,79 @@ function cadastrarUsuario($email, $senha)
         return "Erro ao cadastrar usuario!";
     }
 }
+function suporte($nome, $email, $descricao)
+{
+    global $conexao;
+
+    try {
+        $sql = "INSERT INTO tb_suporte 
+            (nome,email,descricao) 
+            VALUES (:nome,:email,:descricao)";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':nome', $nome);
+        $comando->bindValue(':email', $email);
+        $comando->bindValue(':descricao', $descricao);
+        $comando->execute();
+
+        return "Mensagem enviada com sucesso, em breve entraremos em contato";
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao enviar mensagem";
+    }
+}
+// ===========================================Ativar e inaivar=======================================================
+ function ativoEinativo($id){
+    try{
+        global $conexao;
+        $sql = "UPDATE tb_suporte
+        SET ativo = NOT ativo
+        WHERE id = :id";
+        $comando =$conexao->prepare($sql);
+        $comando->bindValue(':id' ,$id);
+        $comando->execute();
+        header("Location:lista_suporte.php");
+
+    }catch(PDOException $err){
+        error_log($err->getMessage());
+    }
+ }
+// ===========================================Ativar e inaivar=======================================================
+function deletarChamado($id){
+    try {
+
+        global $conexao;
+        $sql = "DELETE FROM tb_suporte WHERE id = :id";
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':id',$id);
+        $comando->execute();
+
+        header("Location: lista_suporte.php");
+
+    } catch (PDOException $err) {
+
+        echo $err->getMessage(); // mostre o erro real
+        error_log($err->getMessage());
+
+    }
+}
+// ============================================Lista Chamado============================================
+function listachamado()
+{
+    try {
+        global $conexao;
+
+        $sql = "SELECT * FROM tb_suporte";
+
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        echo $err->getMessage();
+
+        return "Erro ao listar";
+    }
+}
+// ============================================Lista Chamado============================================

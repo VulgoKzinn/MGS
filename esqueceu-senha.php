@@ -38,8 +38,8 @@ if (isset($_POST['recuperar'])) {
                     <i class="fa-light fa-envelope fa-lg" style="color: #6750a4;"></i>
                 </span>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="E-mail" required>
-                    <label for="floatingInputEmail">E-mail cadastrado</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+                    <label for="email">E-mail cadastrado</label>
                 </div>
             </div>
             <!-- Mensagem -->
@@ -49,11 +49,11 @@ if (isset($_POST['recuperar'])) {
                 </div>
             <?php endif; ?>
 
-            <button type="submit" class="btn btn-success mt-3">Enviar código</button>
+            <button type="submit" name="recuperar" class="btn btn-success mt-3">Enviar código</button>
 
             <!-- Voltar -->
             <div class="text-center">
-                <a href="../index.php"
+                <a href="login.php"
                     class="text-sm text-gray-400 hover:text-gray-200 transition">
                     ← Voltar para login
                 </a>

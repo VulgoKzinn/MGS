@@ -2,7 +2,7 @@
 require_once "backend/includes/funcoes.php";
 validaAcesso();
 $id_nivel = $_SESSION['id_nivel'];
-validaEmpresa($id_nivel);
+validaUsuario($id_nivel);
 
 ?>
 <!DOCTYPE html>
@@ -33,42 +33,8 @@ validaEmpresa($id_nivel);
             </div>
 
             <div class="conteudo">
-                <h5>Vaga: Leiturista – SABESP</h5>
+                <h5>TESTE</h5>
 
-                <p>
-                    A SABESP está em busca de um profissional responsável e comprometido para atuar como Leiturista. A função consiste na leitura e registro do consumo de água nos hidrômetros, conferência de dados, identificação de irregularidades e orientação básica aos clientes quando necessário. É importante ter atenção aos detalhes, boa organização, disposição para trabalho externo e compromisso com prazos e qualidade das informações coletadas.
-                </p>
-
-                <div class="conteudo-extra" id="conteudoExtra">
-                    <h5>Requisitos:</h5>
-                    <p>
-                        Ensino médio completo<br>
-                        CNH categoria A ou B<br>
-                        Noções básicas de leitura e escrita<br>
-                        Conhecimento básico de celular ou coletor de dados
-                    </p>
-
-                    <h5>Área de Atuação:</h5>
-                    <p>Leiturista</p>
-
-                    <h5>Modalidade:</h5>
-                    <p>Presencial</p>
-
-                    <h5>Localização:</h5>
-                    <p>São João da Boa Vista</p>
-
-                    <h5>Benefícios:</h5>
-                    <p>Não tem que pagar água</p>
-
-                    <h5>Carga Horária:</h5>
-                    <p>12 por 36</p>
-                </div>
-
-                <button class="btn btn-light mt-2 btn-ler-mais" onclick="toggleTexto()" id="btnLerMais">
-                Ler mais
-                </button>
-
-                <img src="./assets/img/image 2.jpg" class="imagem">
             </div>
 
 
@@ -82,6 +48,8 @@ validaEmpresa($id_nivel);
         </div>
 
     </div>
+
+    <footer></footer>
 
     <script>
         function toggleTexto() {
@@ -100,6 +68,10 @@ validaEmpresa($id_nivel);
     <?php
     require_once 'assets/templates/js.php';
     ?>
+
+
+
+
 </body>
 
 </html>

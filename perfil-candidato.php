@@ -1,3 +1,10 @@
+<?php
+require_once "backend/includes/funcoes.php";
+validaAcesso();
+$id_nivel = $_SESSION['id_nivel'];
+validaEmpresa($id_nivel);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

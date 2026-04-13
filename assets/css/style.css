@@ -694,3 +694,43 @@ body {
     justify-content: center;
     align-items: center;
 }
+/* Metch */
+    /* Estilização da Central de Matches */
+    .central-notificacoes {
+        background-color: #f8f9fa;
+        border-radius: 15px;
+    }
+
+    .candidato-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid transparent !important;
+        background: #ffffff;
+    }
+
+    /* Efeito de flutuar e borda roxa ao passar o mouse */
+    .candidato-card:hover {
+        transform: translateY(-5px);
+        border-color: #6f42c1 !important; /* Roxo padrão do seu perfil */
+        box-shadow: 0 8px 15px rgba(111, 66, 193, 0.15) !important;
+    }
+
+    .foto-perfil-notificacao {
+        object-fit: cover;
+        border: 3px solid #eee;
+        transition: border-color 0.3s ease;
+    }
+
+    .candidato-card:hover .foto-perfil-notificacao {
+        border-color: #6f42c1;
+    }
+
+    /* Ajuste para não quebrar texto em telas menores */
+    .text-truncate-custom {
+        display: block;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+/* metch */
