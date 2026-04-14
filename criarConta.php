@@ -49,7 +49,7 @@ if (isset($_POST['cadastrar'])) {
                 <input type="email" class="form-control" name="email" placeholder="email@exemplo.com" required>
             </div>
 
-            <!-- Senha -->
+            Senha
             <div class="mb-3">
                 <label class="form-label">Senha</label>
                 <input type="password" class="form-control" name="senha" placeholder="••••••••" required>
@@ -61,7 +61,7 @@ if (isset($_POST['cadastrar'])) {
                 <input type="password" class="form-control" name="confirma" placeholder="••••••••" required>
             </div>
 
-            <!-- Termos -->
+            <!-- Confir Empresa -->
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" name="empresa" id="empresa">
                 <label class="form-check-label">
