@@ -37,7 +37,7 @@ validaEmpresa($id_nivel);
             <!-- FOTO DE CAPA -->
             <div class="mb-3 text-center">
                 <label class="form-label">Foto de Capa</label><br>
-                <img id="previewCapa" src="https://via.placeholder.com/600x150"
+                <img id="previewCapa" src="assets/img/perfil-candidato/Gemini_Generated_Image_kajkswkajkswkajk.png"
                      class="img-fluid rounded mb-2" style="max-height:150px;">
                 <input type="file" class="form-control" id="capaInput" accept="image/*">
             </div>
@@ -45,7 +45,7 @@ validaEmpresa($id_nivel);
             <!-- FOTO DE PERFIL -->
             <div class="mb-3 text-center">
                 <label class="form-label">Foto de Perfil</label><br>
-                <img id="previewPerfil" src="https://via.placeholder.com/120"
+                <img id="previewPerfil" src="assets/img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png"
                      class="rounded-circle mb-2"
                      style="width:120px; height:120px; object-fit:cover;">
                 <input type="file" class="form-control" id="perfilInput" accept="image/*">
