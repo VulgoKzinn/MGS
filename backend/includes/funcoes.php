@@ -333,16 +333,18 @@ function cadastrarVaga($vaga,$area_atuacao,$modalidade,$modelo_de_trabalho,$loca
 // ===========================================Função upload imagem=======================================================
 function uploadImagem($imagem){
 
-    //define a pasta para upload 
+    //define a pasta para upload
     $pasta = "assets/img/uploads/";
 
     //captura a extensão da imagem
+    //strtolower passa a extensão para minusculo
     $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
 
     //gera um nome aleatorio para imagem e junta com a extensão
-    $nomeUpload =md5(uniqid()) . '.' . $extensao;
+    //ponto é soma
+    $nomeUpload = md5(uniqid()) . '.' . $extensao;
 
-    //faz o upload da imagem 
+    //faz o upload da imagem
     move_uploaded_file($imagem['tmp_name'],$pasta . $nomeUpload);
 
     //retorna o nome da imagem(hash)

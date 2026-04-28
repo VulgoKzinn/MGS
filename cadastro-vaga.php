@@ -4,24 +4,24 @@ require_once "backend/includes/funcoes.php";
 
 
 //caso seja clicado no botão cadastrar a função é executada
-if(isset($_POST['cadastrar'])){
-    $vaga =filter_input(INPUT_POST,'vaga');
-    $area_atuacao =filter_input(INPUT_POST,'area_atuacao');
-    $modalidade =filter_input(INPUT_POST,'modalidade');
-    $modelo_de_trabalho =filter_input(INPUT_POST,'modelo_de_trabalho');
-    $localizacao =filter_input(INPUT_POST,'localizacao');
-    $salario =filter_input(INPUT_POST,'salario');
-    $beneficio =filter_input(INPUT_POST,'beneficio');
-    $carga_horaria =filter_input(INPUT_POST,'carga_horaria');
-    $descricao =filter_input(INPUT_POST,'descricao');
-    $requisitos =filter_input(INPUT_POST,'requisitos');
+if (isset($_POST['cadastrar'])) {
+    $vaga = filter_input(INPUT_POST, 'vaga');
+    $area_atuacao = filter_input(INPUT_POST, 'area_atuacao');
+    $modalidade = filter_input(INPUT_POST, 'modalidade');
+    $modelo_de_trabalho = filter_input(INPUT_POST, 'modelo_de_trabalho');
+    $localizacao = filter_input(INPUT_POST, 'localizacao');
+    $salario = filter_input(INPUT_POST, 'salario');
+    $beneficio = filter_input(INPUT_POST, 'beneficio');
+    $carga_horaria = filter_input(INPUT_POST, 'carga_horaria');
+    $descricao = filter_input(INPUT_POST, 'descricao');
+    $requisitos = filter_input(INPUT_POST, 'requisitos');
 
-    $idVaga = cadastrarVaga($vaga,$area_atuacao,$modalidade,$modelo_de_trabalho,$localizacao,$salario,$beneficio,$carga_horaria,$descricao,$requisitos);
+    $idVaga = cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos);
 
     //executa a função de upload da imagem, enviando o id do produto e a imagem para upload
     $nomeImagemUpload = uploadImagem($_FILES['imagem']);
-
-    cadastrarImagemVaga($idVaga,$nomeImagemUpload);
+    
+    cadastrarImagemVaga($idVaga, $nomeImagemUpload);
 }
 
 ?>
@@ -86,7 +86,7 @@ if(isset($_POST['cadastrar'])){
 
                 <div class="col-md-4 mb-3">
                     <label for="localizacao" class="form-label">Cidade / Estado</label>
-                    <input type="text" class="form-control"  name="localizacao"  id="localizacao" required>
+                    <input type="text" class="form-control" name="localizacao" id="localizacao" required>
                 </div>
 
                 <div class="col-md-4 mb-3">
@@ -106,19 +106,19 @@ if(isset($_POST['cadastrar'])){
 
                 <div class="col-md-6 mb-3">
                     <label for="descricao" class="form-label">Descrição da Vaga</label>
-                    <textarea class="form-control"  name="descricao" id="descricao" rows="4" required></textarea>
+                    <textarea class="form-control" name="descricao" id="descricao" rows="4" required></textarea>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label for="requisitos" class="form-label">Requisitos</label>
-                    <textarea class="form-control" name="requisitos"  id="requisitos" rows="4" required></textarea>
+                    <textarea class="form-control" name="requisitos" id="requisitos" rows="4" required></textarea>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="imagem" class="form-label">Foto da Vaga</label>
-                    <input value="cadastrar" type="file" class="form-control"  name="imagem" id="imagem">
+                    <input value="cadastrar" type="file" class="form-control" name="imagem" id="imagem">
                 </div>
-                
+
             </div>
 
 
