@@ -210,7 +210,7 @@ function criarConta($email, $senha, $empresa)
         $comando->execute();
         return $conexao->lastInsertId();
 
-        return "E-mail cadastrado com sucesso!";
+      
         
     } catch (PDOException $err) {
         error_log($err->getMessage());

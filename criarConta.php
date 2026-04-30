@@ -24,9 +24,13 @@ if (is_numeric($retorno)) {
 
     if ($empresa == 1) {
 
-        $_SESSION['id_login'] = $id_login; //  GUARDA O ID CERTO
-
+        $_SESSION['id_login'] = $id_login;
         header("Location: cadastro-empresa.php");
+        exit;
+
+    } else {
+
+        header("Location: login.php?cadastro=sucesso");
         exit;
     }
 
@@ -105,7 +109,7 @@ if (is_numeric($retorno)) {
     <?php
     require_once 'assets/templates/js.php';
     ?>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
+                
 </html>
