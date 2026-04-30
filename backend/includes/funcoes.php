@@ -211,6 +211,7 @@ function criarConta($email, $senha, $empresa)
         return $conexao->lastInsertId();
 
         return "E-mail cadastrado com sucesso!";
+        
     } catch (PDOException $err) {
         error_log($err->getMessage());
         return "Erro ao cadastrar usuario!";
@@ -414,7 +415,7 @@ function deletarVaga($id)
     } catch (\Throwable $th) {
     }
 }
-
+// ============================================Lista Atuacao============================================
 function listaAtuacao()
 {
     try {
@@ -457,7 +458,7 @@ function cadastrarEmpresa($dados, $id_login)
     }
 
     $sql = "INSERT INTO tb_empresa 
-        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero_endereco) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero)";
+        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero)";
 
     $comando = $conexao->prepare($sql);
 

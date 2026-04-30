@@ -93,7 +93,7 @@ if (is_numeric($retorno)) {
             <?php endif; ?>
 
             <div class="text-end">
-                <button type="submit" class="btn btn-success w-100" name="cadastrar">
+                <button type="submit" class="btn btn-success w-100" name="cadastrar" abs>
                     Criar Conta
                 </button>
             </div>
