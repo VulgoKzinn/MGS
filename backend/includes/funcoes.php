@@ -499,3 +499,89 @@ function cadastrarEmpresa($dados, $id_login)
 }
 
     // =============================================Cadastro de Empresa======================================
+
+// =============================================Cadastro do Candidato======================================
+
+function atualizaPerfil($id_usuario, $dados, $files)
+{
+    try {
+        global $conexao;
+
+        // BUSCAR DADOS ATUAIS
+        $sql = "SELECT foto_perfil, foto_banner FROM tb_users WHERE id = :id";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(':id', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            return "Usuário não encontrado.";
+        }
+
+        $nome = $dados['nome'] ?? '';
+        $email = $dados['email'] ?? '';
+        $telefone = $dados['telefone'] ?? '';
+        $endereco = $dados['endereco'] ?? '';
+        $biografia = $dados['biografia'] ?? '';
+        $cargo = $dados['cargo'] ?? ''; // ✅ NOVO CAMPO
+
+        $foto_perfil = $user['foto_perfil'];
+        $foto_banner = $user['foto_banner'];
+
+        // ================= PERFIL =================
+        if (!empty($files['perfilInput']['name'])) {
+
+            $nomeArquivo = uniqid() . "_" . $files['perfilInput']['name'];
+            $caminho = "assets/img/perfil-candidato/uploads/" . $nomeArquivo;
+
+            move_uploaded_file($files['perfilInput']['tmp_name'], $caminho);
+
+            $foto_perfil = $caminho;
+        }
+
+        // ================= CAPA =================
+        if (!empty($files['capaInput']['name'])) {
+
+            $nomeArquivo = uniqid() . "_" . $files['capaInput']['name'];
+            $caminho = "assets/img/perfil-candidato/uploads/" . $nomeArquivo;
+
+            move_uploaded_file($files['capaInput']['tmp_name'], $caminho);
+
+            $foto_banner = $caminho;
+        }
+
+        // ================= UPDATE =================
+        $sql = "UPDATE tb_users SET 
+                    nome = :nome,
+                    email = :email,
+                    telefone = :telefone,
+                    endereco = :endereco,
+                    biografia = :biografia,
+                    cargo = :cargo, -- ✅ NOVO CAMPO
+                    foto_perfil = :foto_perfil,
+                    foto_banner = :foto_banner
+                WHERE id = :id";
+
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':telefone', $telefone);
+        $stmt->bindValue(':endereco', $endereco);
+        $stmt->bindValue(':biografia', $biografia);
+        $stmt->bindValue(':cargo', $cargo); // ✅ BIND NOVO CAMPO
+        $stmt->bindValue(':foto_perfil', $foto_perfil);
+        $stmt->bindValue(':foto_banner', $foto_banner);
+        $stmt->bindValue(':id', $id_usuario, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return true;
+
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao atualizar perfil.";
+    }
+}
+
+// =============================================Cadastro do Candidato======================================
