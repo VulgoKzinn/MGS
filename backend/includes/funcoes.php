@@ -332,22 +332,42 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
 // ===========================================Função upload imagem=======================================================
 function uploadImagem($imagem)
 {
+    $pasta = "assets/img/empresa/uploads/";
 
-    //define a pasta para upload
-    $pasta = "assets/img/uploads/";
+    // Verifica erro no upload
+    if ($imagem['error'] !== UPLOAD_ERR_OK) {
+        return false;
+    }
 
-    //captura a extensão da imagem
-    //strtolower passa a extensão para minusculo
+    // Limite de tamanho (ex: 2MB)
+    if ($imagem['size'] > 2 * 1024 * 1024) {
+        return false;
+    }
+
+    // Tipos permitidos
+    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
+
+    if (!in_array($imagem['type'], $tiposPermitidos)) {
+        return false;
+    }
+
+    // Garante que é imagem real
+    $check = getimagesize($imagem['tmp_name']);
+    if ($check === false) {
+        return false;
+    }
+
+    // Pega extensão
     $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
 
-    //gera um nome aleatorio para imagem e junta com a extensão
-    //ponto é soma
+    // Nome seguro
     $nomeUpload = md5(uniqid()) . '.' . $extensao;
 
-    //faz o upload da imagem
-    move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload);
+    // Move arquivo
+    if (!move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload)) {
+        return false;
+    }
 
-    //retorna o nome da imagem(hash)
     return $nomeUpload;
 }
 

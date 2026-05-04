@@ -47,10 +47,10 @@ $vagas = listaVaga();
          <div class="position-relative">
 
             <!-- Capa -->
-            <img src="assets/img/perfil-empresa/amazon-capa.jpg" class="img-fluid w-100 capa">
+            <img src="assets/img/empresa/perfil-empresa/amazon-capa.jpg" class="img-fluid w-100 capa">
 
             <!-- Foto de perfil -->
-            <img src="assets/img/perfil-empresa/amazon-perfil.jpeg" class="perfil rounded-circle">
+            <img src="assets/img/empresa/perfil-empresa/amazon-perfil.jpeg" class="perfil rounded-circle">
 
             <!-- Configurações -->
             <div class="config-btn">
@@ -82,7 +82,7 @@ $vagas = listaVaga();
                </div>
 
                <div class="col-md-6 text-center">
-                  <img src="assets/img/perfil-empresa/amazon-empresa01.webp" class="img-fluid imagem-descricao">
+                  <img src="assets/img/empresa/perfil-empresa/amazon-empresa01.webp" class="img-fluid imagem-descricao">
                </div>
             </div>
          </div>
@@ -100,7 +100,7 @@ $vagas = listaVaga();
                </div>
 
                <div class="col-md-6 text-center">
-                  <img src="assets/img/perfil-empresa/amazon-empresa.jpg" class="img-fluid imagem-descricao">
+                  <img src="assets/img/empresa/perfil-empresa/amazon-empresa.jpg" class="img-fluid imagem-descricao">
                </div>
             </div>
          </div>
@@ -131,7 +131,7 @@ $vagas = listaVaga();
                      <!-- IMAGEM -->
 
                      <div class="col-12 text-center">
-                        <img src="assets/img/perfil-empresa/amazon-empresa.jpg" class="img-fluid rounded">
+                        <img src="assets/img/empresa/perfil-empresa/amazon-empresa.jpg" class="img-fluid rounded">
                      </div>
 
                      <!-- CAMPOS PEQUENOS -->

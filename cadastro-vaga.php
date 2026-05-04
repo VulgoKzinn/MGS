@@ -20,8 +20,12 @@ if (isset($_POST['cadastrar'])) {
 
     //executa a função de upload da imagem, enviando o id do produto e a imagem para upload
     $nomeImagemUpload = uploadImagem($_FILES['imagem']);
-    
-    cadastrarImagemVaga($idVaga, $nomeImagemUpload);
+
+    if ($nomeImagemUpload) {
+        cadastrarImagemVaga($idVaga, $nomeImagemUpload);
+    } else {
+        echo "Erro no upload da imagem";
+    }
 }
 
 ?>
@@ -47,7 +51,7 @@ if (isset($_POST['cadastrar'])) {
 
     <!-- Formulário -->
     <main id="CadCand">
-        <form action="" method="post" class="p-4">
+        <form action="" method="post" class="p-4" enctype="multipart/form-data">
             <h2 class="text-center mb-4">Anunciar Nova Vaga</h2>
 
             <div class="row mb-3">
@@ -116,7 +120,11 @@ if (isset($_POST['cadastrar'])) {
 
                 <div class="col-md-4 mb-3">
                     <label for="imagem" class="form-label">Foto da Vaga</label>
-                    <input value="cadastrar" type="file" class="form-control" name="imagem" id="imagem">
+                    <input class="form-control" type="file" name="imagem" id="imagem" accept="image/*">
+
+                    <div class="mt-3">
+                        <img id="previewImagem" src="" alt="Preview" style="max-width: 200px; display: none; border-radius: 8px;">
+                    </div>
                 </div>
 
             </div>
@@ -137,7 +145,25 @@ if (isset($_POST['cadastrar'])) {
     <?php
     require_once 'assets/templates/js.php';
     ?>
+<script>
+    document.getElementById('imagem').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('previewImagem');
 
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        reader.readAsDataURL(file);
+    } else {
+        preview.style.display = 'none';
+    }
+});
+</script>
 
 </body>
 
