@@ -3,6 +3,9 @@ require_once "backend/includes/funcoes.php";
 validaAcesso();
 $id_nivel = $_SESSION['id_nivel'];
 validaEmpresa($id_nivel);
+// ============================================================Lista Vagas=================================================
+$vagas = listaVaga();
+// ============================================================Lista Vagas=================================================
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,81 +22,86 @@ validaEmpresa($id_nivel);
 </head>
 
 <body id="bodypgs">
+    <?php
+    require_once "assets/templates/headerMGS.php";
+    ?>
 
-    <?php require_once "assets/templates/headerMGS.php" ?>
-
-    <div class="container mt-4">
-
+    <?php foreach ($vagas as $vaga): ?>
         <div class="card-vaga">
 
             <div class="headerVaga">
-                <img src="./assets/img/sabesp-companhia-de-saneamento-basico-do-estado-de-sao-paulo 1.png" class="logo">
-                <h5 class="m-0">SABESP - SP</h5>
+                <img src="<?= $vaga['logo'] ?>" class="logo">
+                <h5 class="m-0"><?= $vaga['empresa'] ?></h5>
             </div>
 
             <div class="conteudo">
-                <h5>Vaga: Leiturista – SABESP</h5>
+                <h5>Vaga: <?= $vaga['vaga'] ?></h5>
 
                 <p>
-                    A SABESP está em busca de um profissional responsável e comprometido para atuar como Leiturista. A função consiste na leitura e registro do consumo de água nos hidrômetros, conferência de dados, identificação de irregularidades e orientação básica aos clientes quando necessário. É importante ter atenção aos detalhes, boa organização, disposição para trabalho externo e compromisso com prazos e qualidade das informações coletadas.
+                    <?= $vaga['descricao'] ?>
                 </p>
 
-                <div class="conteudo-extra" id="conteudoExtra">
-                    <h5>Requisitos:</h5>
-                    <p>
-                        Ensino médio completo<br>
-                        CNH categoria A ou B<br>
-                        Noções básicas de leitura e escrita<br>
-                        Conhecimento básico de celular ou coletor de dados
-                    </p>
+                <div class="conteudo-extra">
+                    
 
                     <h5>Área de Atuação:</h5>
-                    <p>Leiturista</p>
+                    <p><?= $vaga['area_atuacao'] ?></p>
 
                     <h5>Modalidade:</h5>
-                    <p>Presencial</p>
+                    <p><?= $vaga['modalidade'] ?></p>
 
                     <h5>Localização:</h5>
-                    <p>São João da Boa Vista</p>
+                    <p><?= $vaga['descricao'] ?></p>
+
+                    <h5>Descrição:</h5>
+                    <p><?= $vaga['beneficio'] ?></p>
+
+                    <h5>Requisitos:</h5>
+                    <p><?= $vaga['requisitos'] ?></p>
+
+                    <h5>Salário:</h5>
+                    <p><?= $vaga['salario'] ?></p>
 
                     <h5>Benefícios:</h5>
-                    <p>Não tem que pagar água</p>
+                    <p><?= $vaga['beneficio'] ?></p>
 
                     <h5>Carga Horária:</h5>
-                    <p>12 por 36</p>
+                    <p><?= $vaga['carga_horaria'] ?></p>
+
+                    <h5>Modelo de Trabalho:</h5>
+                    <p><?= $vaga['modelo_de_trabalho'] ?></p>
                 </div>
 
-                <button class="btn btn-light mt-2 btn-ler-mais" onclick="toggleTexto()" id="btnLerMais">
-                Ler mais
+                <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
+                    Ler mais
                 </button>
 
-                <img src="./assets/img/image 2.jpg" class="imagem">
+                <img src="./assets/img/" <?php echo $vaga['id_img_vaga'] ?>>
+                
+                <form class="acoes">
+                    <button type="submit" class="btn-circle like">❤</button>
+                    <button type="submit" class="btn-circle dislike">✖</button>
+                </form>
+
             </div>
-
-
-
-
-            <form class="acoes">
-                <button type="submit" class="btn-circle like">❤</button>
-                <button type="submit" class="btn-circle dislike">✖</button>
-            </form>
 
         </div>
 
-    </div>
+    <?php endforeach; ?>
 
     <script>
-        function toggleTexto() {
-            let conteudo = document.getElementById("conteudoExtra");
-            let botao = document.getElementById("btnLerMais");
-            if (conteudo.style.display === "none" || conteudo.style.display === "") {
-                conteudo.style.display = "block";
-                botao.innerText = "Ler menos";
-            } else {
-                conteudo.style.display = "none";
-                botao.innerText = "Ler mais";
-            }
-        }
+        function toggleTexto(btn) {
+    const card = btn.closest('.card-vaga');
+    const conteudo = card.querySelector('.conteudo-extra');
+
+    if (conteudo.style.display === "block") {
+        conteudo.style.display = "none";
+        btn.innerText = "Ler mais";
+    } else {
+        conteudo.style.display = "block";
+        btn.innerText = "Ler menos";
+    }
+}
     </script>
     <!-- Include JS -->
     <?php

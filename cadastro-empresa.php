@@ -67,12 +67,16 @@ if (isset($_POST['cadastrarEmp'])) {
             <?php endif; ?>
 
             <!-- Primeira linha -->
-            <div class="row mb-2">
-                <div class="col-md-6">
+            <div class="row mb-3">
+                <div class="col-md-4">
                     <label for="razao" class="form-label">Razão Social</label>
-                    <input type="text" class="form-control" name="razao" id="razao" placeholder="Nome da empresa">
+                    <input type="text" class="form-control" name="razao" id="razao" placeholder="Nome Jurídico">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <label for="razao" class="form-label">Nome Fantasia</label>
+                    <input type="text" class="form-control" name="nomeFantasia" id="nomeFantasia" placeholder="Nome Fantasia">
+                </div>
+                <div class="col-md-4">
                     <label for="cnpj" class="form-label">CNPJ</label>
                     <input type="text" class="form-control" name="cnpj" id="cnpj" maxlength="18" placeholder="00.000.000/0000-00">
                 </div>

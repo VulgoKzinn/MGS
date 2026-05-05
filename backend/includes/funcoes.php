@@ -404,7 +404,7 @@ function listaVaga()
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $err) {
         error_log($err->getMessage());
-        return "Erro ao conectar no banco de dados";
+        return "Não foi possível listar a vaga";
     }
     // ANULA A CONEXAO COM O BANCO
     $conexao = null;
@@ -478,7 +478,7 @@ function cadastrarEmpresa($dados, $id_login)
     }
 
     $sql = "INSERT INTO tb_empresa 
-        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero)";
+        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero, nome_fantasia) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero, :nome_fantasia)";
 
     $comando = $conexao->prepare($sql);
 
@@ -490,6 +490,7 @@ function cadastrarEmpresa($dados, $id_login)
     $comando->bindValue(':cep', $dados['cepEmp']);
     $comando->bindValue(':ramo', $dados['ramo']);
     $comando->bindValue(':numero', $dados['numeroEmp']);
+    $comando->bindValue(':nome_fantasia', $dados['nomeFantasia']);
 
     if ($comando->execute()) {
         return "sucesso";
@@ -499,3 +500,5 @@ function cadastrarEmpresa($dados, $id_login)
 }
 
     // =============================================Cadastro de Empresa======================================
+
+
