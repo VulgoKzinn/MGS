@@ -18,6 +18,13 @@ validaAcesso();
         <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main>
+       <!-- BOTÃO VOLTAR PADRÃO PERSONALIZADO -->
+        <div class="d-flex justify-content-end mb-4">
+            <a href="pag_inicial.php" class="btn-voltar-projeto">
+                <i class="fa-solid fa-chevron-left"></i> Voltar para Início
+            </a>
+        </div>
+        </div>
         <div id="grid-plano">
             <div class="flat">
                 <h3 class="card-title text-center">PLANO STARTER</h3>
