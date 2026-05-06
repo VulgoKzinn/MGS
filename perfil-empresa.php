@@ -1,13 +1,8 @@
 <?php
 require_once "backend/includes/funcoes.php";
-// validaAcesso();
-// $id_nivel = $_SESSION['id_nivel'];
-// validaUsuario($id_nivel);
-
-//captura o ID da vaga
-// $id = $_GET['id'];
-
-//guarda os dados da vaga
+session_start();
+validaAcesso();
+validaEmpresa();
 $vagas = listaVaga();
 
 

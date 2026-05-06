@@ -27,7 +27,7 @@ function login($email, $senha)
                     session_start();
 
                     // guarda o s_temp (senha temporario) 
-                    $_SESSION['id'] = $dados['id'];
+                    $_SESSION['id_login'] = $dados['id'];
                     // guarda o s_temp (senha temporario) 
                     $_SESSION['sistema'] = 'sis_login';
                     // guarda o email 
@@ -59,7 +59,9 @@ function login($email, $senha)
 
 function validaAcesso()
 {
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if ($_SESSION['sistema'] != 'sis_login') {
         header('Location: index.php');
@@ -70,17 +72,19 @@ function validaAcesso()
     }
 }
 
-function validaEmpresa($id_nivel)
+function validaEmpresa()
 {
-    if ($id_nivel == 1) {
-        header('Location: pag_inicial_empresa.php');
+    if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 1) {
+        header('Location: pag_inicial.php');
+        exit;
     }
 }
 
-function validaUsuario($id_nivel)
+function validaUsuario()
 {
-    if ($id_nivel == 2) {
-        header('Location: pag_inicial.php');
+    if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 2) {
+        header('Location: pag_inicial_empresa.php');
+        exit;
     }
 }
 
@@ -130,7 +134,7 @@ function novaSenha($senha)
     try {
         global $conexao;
 
-        $idUsuario = $_SESSION['id'];
+        $idUsuario = $_SESSION['id_login'];
         $sql = "UPDATE tb_login SET senha=:senha, s_temp=0 WHERE id=:id";
 
         $senha_hash = password_hash($senha, PASSWORD_ARGON2ID);
@@ -295,7 +299,6 @@ function listachamado()
 
 // ===========================================Cadastrar Vaga=======================================================
 function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos)
-
 {
     try {
         global $conexao;
@@ -332,12 +335,9 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
 // ===========================================Função upload imagem=======================================================
 function uploadImagem($imagem)
 {
-    $pasta = "assets/img/empresa/uploads/";
 
-    // Verifica erro no upload
-    if ($imagem['error'] !== UPLOAD_ERR_OK) {
-        return false;
-    }
+    //define a pasta para upload
+    $pasta = "assets/img/empresa/uploads/";
 
     // Limite de tamanho (ex: 2MB)
     if ($imagem['size'] > 2 * 1024 * 1024) {
@@ -363,10 +363,8 @@ function uploadImagem($imagem)
     // Nome seguro
     $nomeUpload = md5(uniqid()) . '.' . $extensao;
 
-    // Move arquivo
-    if (!move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload)) {
-        return false;
-    }
+    //faz o upload da imagem
+    move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload);
 
     return $nomeUpload;
 }
@@ -376,6 +374,7 @@ function cadastrarImagemVaga($idVaga, $nomeImagemUpload)
 {
     try {
         global $conexao;
+
         $sql = "INSERT INTO tb_img_vaga(imagem,id_vaga)VALUES(:nomeImagemUpload,:idVaga)";
 
         $comando = $conexao->prepare($sql);
@@ -397,14 +396,17 @@ function listaVaga()
 
     try {
         global $conexao;
-        $sql = "SELECT * FROM tb_vagas";
+        $sql = "SELECT tb_vagas.*,
+        tb_img_vaga.imagem
+        FROM tb_vagas
+        INNER JOIN tb_img_vaga ON tb_vagas.id = tb_img_vaga.id_vaga";
 
         $comando = $conexao->prepare($sql);
         $comando->execute();
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $err) {
         error_log($err->getMessage());
-        return "Erro ao conectar no banco de dados";
+        return "Não foi possível listar a vaga";
     }
     // ANULA A CONEXAO COM O BANCO
     $conexao = null;
@@ -429,12 +431,74 @@ function listaVagaId($idVaga)
 }
 
 // ===========================================Traz informações da Vaga=======================================================
-function deletarVaga($id)
+
+// =============================================Atualiza os dados da Vaga(EDITAR)======================================
+function atualizarVaga($vaga, $area_atuacao, $modalidade, $localizacao, $descricao, $requisitos, $salario, $beneficio, $carga_horaria, $modelo_de_trabalho, $id)
 {
     try {
-    } catch (\Throwable $th) {
+        global $conexao;
+
+        $sql = "UPDATE tb_vaga SET
+        vaga = :vaga,
+        area_atuacao = :area_atuacao,
+        modalidade = :modalidade,
+        localizacao = :localizacao,
+        descricao = :descricao,
+        requisitos = :requisitos,
+        salario = :salario,
+        beneficio = :beneficio,
+        carga_horaria = :carga_horaria,
+        modelo_de_trabalho = :modelo_de_trabalho
+        WHERE id = :id";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':vaga', $vaga);
+        $comando->bindValue(':area_atuacao', $area_atuacao);
+        $comando->bindValue(':modalidade', $modalidade);
+        $comando->bindValue(':localizacao', $localizacao);
+        $comando->bindValue(':descricao', $descricao);
+        $comando->bindValue(':requisitos', $requisitos);
+        $comando->bindValue(':salario', $salario);
+        $comando->bindValue(':beneficio', $beneficio);
+        $comando->bindValue(':carga_horaria', $carga_horaria);
+        $comando->bindValue(':modelo_de_trabalho', $modelo_de_trabalho);
+        $comando->bindValue(':id', $id);
+
+        $comando->execute();
+
+        return "Dados atualizados com sucesso!";
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao atualizar!";
+    }
+
+    $conexao = null;
+}
+// =============================================Atualiza os dados da Vaga(EDITAR)======================================
+
+// =============================================Atualiza a Imagem da Vaga(EDITAR)======================================
+function atualizarImagemVaga($idVaga, $nomeImagemUpload)
+{
+    try {
+        global $conexao;
+        $sql = "UPDATE tb_img_vaga SET imagem= :nomeImagemUpload WHERE
+        id_vaga = ;idVaga";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(':nomeImagemUpload', $nomeImagemUpload);
+        $comando->bindValue(':idVaga', $idVaga);
+        $comando->execute();
+
+        header('Location: perfil-empresa.php');
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao cadastrar";
     }
 }
+// =============================================Atualiza a Imagem da Vaga(EDITAR)======================================
+
+
 // ============================================Lista Atuacao============================================
 function listaAtuacao()
 {
@@ -478,7 +542,7 @@ function cadastrarEmpresa($dados, $id_login)
     }
 
     $sql = "INSERT INTO tb_empresa 
-        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero)";
+        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero, nome_fantasia) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero, :nome_fantasia)";
 
     $comando = $conexao->prepare($sql);
 
@@ -490,6 +554,7 @@ function cadastrarEmpresa($dados, $id_login)
     $comando->bindValue(':cep', $dados['cepEmp']);
     $comando->bindValue(':ramo', $dados['ramo']);
     $comando->bindValue(':numero', $dados['numeroEmp']);
+    $comando->bindValue(':nome_fantasia', $dados['nomeFantasia']);
 
     if ($comando->execute()) {
         return "sucesso";
@@ -498,90 +563,32 @@ function cadastrarEmpresa($dados, $id_login)
     }
 }
 
-    // =============================================Cadastro de Empresa======================================
-
-// =============================================Cadastro do Candidato======================================
-
-function atualizaPerfil($id_usuario, $dados, $files)
+// =============================================Cadastro de Empresa======================================
+// ============================================Lista Atuacao============================================
+function VagasDisponiveis()
 {
     try {
-        global $conexao;
+        global $conexao; 
 
-        // BUSCAR DADOS ATUAIS
-        $sql = "SELECT foto_perfil, foto_banner FROM tb_users WHERE id = :id";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindValue(':id', $id_usuario, PDO::PARAM_INT);
-        $stmt->execute();
+        $sql = "SELECT 
+                    tb_vagas.*, 
+                    tb_empresa.nome_fantasia
+                FROM tb_vagas
+                INNER JOIN tb_empresa 
+                ON tb_vagas.id_empresa = tb_empresa.id";
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
 
-        if (!$user) {
-            return "Usuário não encontrado.";
-        }
-
-        $nome = $dados['nome'] ?? '';
-        $email = $dados['email'] ?? '';
-        $telefone = $dados['telefone'] ?? '';
-        $endereco = $dados['endereco'] ?? '';
-        $biografia = $dados['biografia'] ?? '';
-        $cargo = $dados['cargo'] ?? ''; // ✅ NOVO CAMPO
-
-        $foto_perfil = $user['foto_perfil'];
-        $foto_banner = $user['foto_banner'];
-
-        // ================= PERFIL =================
-        if (!empty($files['perfilInput']['name'])) {
-
-            $nomeArquivo = uniqid() . "_" . $files['perfilInput']['name'];
-            $caminho = "assets/img/perfil-candidato/uploads/" . $nomeArquivo;
-
-            move_uploaded_file($files['perfilInput']['tmp_name'], $caminho);
-
-            $foto_perfil = $caminho;
-        }
-
-        // ================= CAPA =================
-        if (!empty($files['capaInput']['name'])) {
-
-            $nomeArquivo = uniqid() . "_" . $files['capaInput']['name'];
-            $caminho = "assets/img/perfil-candidato/uploads/" . $nomeArquivo;
-
-            move_uploaded_file($files['capaInput']['tmp_name'], $caminho);
-
-            $foto_banner = $caminho;
-        }
-
-        // ================= UPDATE =================
-        $sql = "UPDATE tb_users SET 
-                    nome = :nome,
-                    email = :email,
-                    telefone = :telefone,
-                    endereco = :endereco,
-                    biografia = :biografia,
-                    cargo = :cargo, -- ✅ NOVO CAMPO
-                    foto_perfil = :foto_perfil,
-                    foto_banner = :foto_banner
-                WHERE id = :id";
-
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindValue(':nome', $nome);
-        $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':telefone', $telefone);
-        $stmt->bindValue(':endereco', $endereco);
-        $stmt->bindValue(':biografia', $biografia);
-        $stmt->bindValue(':cargo', $cargo); // ✅ BIND NOVO CAMPO
-        $stmt->bindValue(':foto_perfil', $foto_perfil);
-        $stmt->bindValue(':foto_banner', $foto_banner);
-        $stmt->bindValue(':id', $id_usuario, PDO::PARAM_INT);
-
-        $stmt->execute();
-
-        return true;
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
 
     } catch (PDOException $err) {
         error_log($err->getMessage());
-        return "Erro ao atualizar perfil.";
+        echo $err->getMessage();
+
+        return "Erro ao Listar vagas";
     }
 }
+// ============================================Lista Atuacao============================================
 
-// =============================================Cadastro do Candidato======================================
+

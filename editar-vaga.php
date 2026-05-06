@@ -1,19 +1,46 @@
 <?php
 require_once "backend/includes/funcoes.php";
-// ===============================================DELETAR/ATIVO/INATIVO====================================================
-$acao = $_GET['acao'] ?? null;
-$id = $_GET['id'] ?? null;
 
-if ($acao == 'deletar' && $id) {
-    deletarVaga($id);
+//função que lista as vagas
+$vagas = listaVaga();
+
+//variavel de controle
+$operacao = '';
+
+if(isset($_GET['acao']) && $_GET['acao'] == 'editar'){
+    //captura o id para edição
+    $idVaga = $_GET['id'];
+
+    $dadosEditar = listaVagaId($idVaga);
+
+    //ativa o modo editar
+    $operacao = 'editar';
 }
 
-if ($acao == 'status' && $id) {
-    ativoEinativo($id);
-}
+if(isset($_POST['editar'])){
+    $vaga =filter_input(INPUT_POST,'vaga');
+    $area_atuacao =filter_input(INPUT_POST,'area_atuacao');
+    $modalidade =filter_input(INPUT_POST,'modalidade');
+    $localizacao =filter_input(INPUT_POST,'localizacao');
+    $descricao =filter_input(INPUT_POST,'descricao');
+    $requisitos =filter_input(INPUT_POST,'requisitos');
+    $salario =filter_input(INPUT_POST,'salario');
+    $beneficio =filter_input(INPUT_POST,'beneficio');
+    $carga_horaria =filter_input(INPUT_POST,'carga_horaria');
+    $data_cadastro =filter_input(INPUT_POST,'data_cadastro');
+    $modelo_de_trabalho =filter_input(INPUT_POST,'modelo_de_trabalho');
+    $id =filter_input(INPUT_POST, 'id');
 
-//executa a função que lista as vagas
-$vagas = ListaVaga();
+    $mensagem = atualizarVaga($vaga,$area_atuacao,$modalidade,$localizacao,$descricao,$requisitos,$salario,$beneficio,$carga_horaria,$data_cadastro,$modelo_de_trabalho,$id);
+
+    //só realiza o upload e update se existir uma nova imagem
+    if(!empty($_FILES['imagem']['name'])){
+        //realiza o upload da imagem
+        $nomeImagemUpload = uploadImagem($_FILES['imagem']);
+        //atualiza o nome da imagem no banco de dados
+        atualizarImagemVaga($id,$nomeImagemUpload);
+    }
+}
 
 
 ?>
@@ -33,7 +60,7 @@ $vagas = ListaVaga();
 
     <!-- LOGO -->
     <div id="ImgLogon" class="text-center my-4">
-        <a href="index.php">
+        <a href="perfil-empresa.php">
             <img src="assets/img/Logomaior.png" alt="Logo">
         </a>
     </div>
