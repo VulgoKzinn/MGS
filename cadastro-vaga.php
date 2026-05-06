@@ -47,7 +47,7 @@ if (isset($_POST['cadastrar'])) {
 
     <!-- Formulário -->
     <main id="CadCand">
-        <form action="" method="post" class="p-4">
+        <form action="" method="post" class="p-4" enctype="multipart/form-data">
             <h2 class="text-center mb-4">Anunciar Nova Vaga</h2>
 
             <div class="row mb-3">

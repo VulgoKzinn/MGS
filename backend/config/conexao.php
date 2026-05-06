@@ -1,8 +1,8 @@
 <?php
 try{
     define("SERVIDOR","10.97.46.111");
-    define("USUARIO","sa");
-    define("SENHA","sa");
+    define("USUARIO","admin");
+    define("SENHA","admin");
     define("BANCO","db_mgs");
 
     $conexao = new PDO("mysql:host=".SERVIDOR.";dbname=".BANCO.";charset=utf8mb4",USUARIO,SENHA);

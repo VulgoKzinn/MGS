@@ -131,7 +131,7 @@ $vagas = listaVaga();
                      <!-- IMAGEM -->
 
                      <div class="col-12 text-center">
-                        <img src="assets/img/perfil-empresa/amazon-empresa.jpg" class="img-fluid rounded">
+                        <img src="assets/img/empresa/uploads/<?php echo $vaga['imagem']?>" class="img-fluid rounded">
                      </div>
 
                      <!-- CAMPOS PEQUENOS -->
