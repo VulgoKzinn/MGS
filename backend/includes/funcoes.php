@@ -322,7 +322,6 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
         //retorna o id do insert do produto acima
         return $conexao->lastInsertId();
 
-        header('Location: cadastro-vaga.php');
     } catch (PDOException $err) {
         error_log($err->getMessage());
         //echo $err->getMessage();
@@ -339,33 +338,18 @@ function uploadImagem($imagem)
     //define a pasta para upload
     $pasta = "assets/img/empresa/uploads/";
 
-    // Limite de tamanho (ex: 2MB)
-    if ($imagem['size'] > 2 * 1024 * 1024) {
-        return false;
-    }
-
-    // Tipos permitidos
-    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
-
-    if (!in_array($imagem['type'], $tiposPermitidos)) {
-        return false;
-    }
-
-    // Garante que é imagem real
-    $check = getimagesize($imagem['tmp_name']);
-    if ($check === false) {
-        return false;
-    }
-
-    // Pega extensão
+      //captura a extensão da imagem
+    //strtolower passa a extensão para minusculo
     $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
 
-    // Nome seguro
+    //gera um nome aleatorio para imagem e junta com a extensão
+    //ponto é soma
     $nomeUpload = md5(uniqid()) . '.' . $extensao;
 
     //faz o upload da imagem
-    move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload);
+    move_uploaded_file($imagem['tmp_name'],$pasta . $nomeUpload);
 
+    //retorna o nome da imagem(hash)
     return $nomeUpload;
 }
 
