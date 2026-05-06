@@ -46,7 +46,26 @@ validaUsuario();
         <div class="row mt-4">
             <aside class="col-md-4 mb-4">
                 <div class="card p-3 shadow-sm border-0">
-                    <h5 class="fw-bold">Sobre</h5>
+
+                     <div class="mt-4 info-contato-expandida">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-envelope-at-fill fs-4 me-3"></i>
+                            <span>pedro.azevedo@hotmail.com</span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-whatsapp fs-4 me-3"></i>
+                            <span>(19) 99999-9999</span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="bi bi-geo-alt-fill fs-4 me-3"></i>
+                            <span>CEP: 13870-000 • São João da Boa Vista - SP</span>
+                        </div>
+                    </div>
+
+
+                    <h5 class="fw-bold">Biografia</h5>
                     <p class="text-secondary">
                         Profissional de Tecnologia da Informação com conhecimento em desenvolvimento web,
                         suporte técnico e design gráfico.
@@ -62,28 +81,7 @@ validaUsuario();
                         <span class="badge badge-custom fs-6">Photoshop</span>
                     </div>
 
-                    <div class="mt-4 info-contato-expandida">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-envelope-at-fill fs-4 me-3"></i>
-                            <span>pedro.c.azevedo@email.com</span>
-                        </div>
-
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-whatsapp fs-4 me-3"></i>
-                            <span>(19) 99999-9999</span>
-                        </div>
-
-                        <div class="d-flex align-items-center mb-4">
-                            <i class="bi bi-geo-alt-fill fs-4 me-3"></i>
-                            <span>CEP: 13870-000 • São João da Boa Vista - SP</span>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/5519999999999" target="_blank" class="btn btn-custom-lg w-100 py-3 shadow">
-                        <i class="bi bi-chat-left-dots-fill me-2"></i>
-                        CONVERSAR NO WHATSAPP
-                    </a>
-
+                   
                 </div>
             </aside>
 
