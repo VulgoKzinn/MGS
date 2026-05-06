@@ -60,13 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 10px;
         }
 
-        /* Estilo do botão voltar pequeno */
-        .btn-voltar-topo {
-            text-decoration: none !important;
-            color: #6f42c1 !important;
-            font-size: 0.9rem !important;
-            font-weight: 500 !important;
-        }
+
     </style>
 </head>
 
@@ -83,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <!-- Botão Voltar Pequeno no Topo -->
             <div class="text-end mb-2">
-                <a href="perfil-candidato.php" class="btn-voltar-topo">
+                <a href="perfil-candidato.php" class="btn-voltar-projeto">
                     <i class="fa-solid fa-arrow-left"></i> Voltar
                 </a>
             </div>

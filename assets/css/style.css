@@ -466,6 +466,7 @@ button, .btn{
 
 /* <!-- KAUÃ --> */
 
+ /* <!-- PERFIL CANDIDATO --> */
 /* --- CONFIGURAÇÕES GERAIS --- */
 :root {
     --roxo-padrao: #6f42c1;
@@ -694,43 +695,85 @@ body {
     justify-content: center;
     align-items: center;
 }
+ /* <!-- PERFIL CANDIDATO --> */
+
 /* Metch */
-    /* Estilização da Central de Matches */
-    .central-notificacoes {
-        background-color: #f8f9fa;
-        border-radius: 15px;
-    }
 
-    .candidato-card {
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: 1px solid transparent !important;
-        background: #ffffff;
-    }
+/* Estilização da Central de Matches */
+.central-notificacoes, .central-oportunidades {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+}
 
-    /* Efeito de flutuar e borda roxa ao passar o mouse */
-    .candidato-card:hover {
-        transform: translateY(-5px);
-        border-color: #6f42c1 !important; /* Roxo padrão do seu perfil */
-        box-shadow: 0 8px 15px rgba(111, 66, 193, 0.15) !important;
-    }
+/* Adicionei .empresa-card aqui embaixo */
+.candidato-card, .empresa-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent !important;
+    background: #ffffff;
+}
 
-    .foto-perfil-notificacao {
-        object-fit: cover;
-        border: 3px solid #eee;
-        transition: border-color 0.3s ease;
-    }
+/* Efeito de flutuar e borda roxa para ambos */
+.candidato-card:hover, .empresa-card:hover {
+    transform: translateY(-5px);
+    border-color: #6f42c1 !important; 
+    box-shadow: 0 8px 15px rgba(111, 66, 193, 0.15) !important;
+}
 
-    .candidato-card:hover .foto-perfil-notificacao {
-        border-color: #6f42c1;
-    }
+.foto-perfil-notificacao, .logo-empresa-notificacao {
+    object-fit: cover;
+    border: 3px solid #eee;
+    transition: border-color 0.3s ease;
+}
 
-    /* Ajuste para não quebrar texto em telas menores */
-    .text-truncate-custom {
-        display: block;
-        max-width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.candidato-card:hover .foto-perfil-notificacao, 
+.empresa-card:hover .logo-empresa-notificacao {
+    border-color: #6f42c1;
+}
 /* metch */
+
+/* botao voltar */
+.btn-voltar-projeto {
+    color: #6f42c1; /* Cor roxa padrão */
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar-projeto i {
+    transition: transform 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.btn-voltar-projeto:hover {
+    color: #5a32a3; /* Um roxo um pouco mais escuro */
+    text-decoration: none;
+}
+
+/* Faz a setinha se mover levemente para a esquerda no hover */
+.btn-voltar-projeto:hover i {
+    transform: translateX(-5px);
+}
+.btn-voltar-projeto {
+    background-color: #6f42c1;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 50px; /* Deixa arredondado */
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.btn-voltar-projeto:hover {
+    background-color: #5a32a3;
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(111, 66, 193, 0.3);
+}
+/* botao voltar */
+

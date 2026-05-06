@@ -18,6 +18,8 @@ $mensagem=suporte($nome, $email, $descricao);
     <title>MGS | Suporte</title>
 
     <?php require_once 'assets/templates/head.php'; ?>
+
+
 </head>
 
 <body id="cadastroCand">

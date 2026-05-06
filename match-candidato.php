@@ -37,7 +37,7 @@ validaEmpresa($id_nivel);
                 <div class="list-group-item border-0 shadow-sm rounded mb-3 p-3 empresa-card border-start border-4 border-primary">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <img src="assets/img/perfil-empresa/amazon-perfil.jpeg" 
+                            <img src="assets/img/empresa/perfil-empresa/amazon-perfil.jpeg" 
                                  class="rounded-circle logo-empresa-notificacao" width="85" height="85">
                         </div>
                         <div class="col">
@@ -142,6 +142,8 @@ validaEmpresa($id_nivel);
                         </div>
                     </div>
                 </div>
+
+                
 
             </div>
         </div>
