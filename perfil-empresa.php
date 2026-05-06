@@ -2,7 +2,7 @@
 require_once "backend/includes/funcoes.php";
 session_start();
 validaAcesso();
-validaEmpresa(1);
+validaEmpresa();
 $vagas = listaVaga();
 
 

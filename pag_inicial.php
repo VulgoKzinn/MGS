@@ -1,10 +1,12 @@
 <?php
 require_once "backend/includes/funcoes.php";
+// ================================================= Valida pagina que o usuario deve acessar =====================================
+session_start();
 validaAcesso();
-$id_nivel = $_SESSION['id_nivel'];
-validaEmpresa($id_nivel);
+validaUsuario();
+// ================================================= Valida pagina que o usuario deve acessar =====================================
 // ============================================================Lista Vagas=================================================
-$vagas = listaVaga();
+$Disponiveis = VagasDisponiveis();
 // ============================================================Lista Vagas=================================================
 ?>
 <!DOCTYPE html>
@@ -26,58 +28,58 @@ $vagas = listaVaga();
     require_once "assets/templates/headerMGS.php";
     ?>
 
-    <?php foreach ($vagas as $vaga): ?>
-        <div class="card-vaga">
+    <?php foreach ($Disponiveis as $Disponivel): ?>
+            <div class="card-vaga">
 
-            <div class="headerVaga">
-                <img src="<?= $vaga['logo'] ?>" class="logo">
-                <h5 class="m-0"><?= $vaga['empresa'] ?></h5>
-            </div>
+                <div class="headerVaga">
+                    <img src="<?= $Disponivel['logo'] ?>" class="logo">
+                    <h5 class="m-0"><?= $Disponivel['nome fantasia'] ?></h5>
+                </div>
 
             <div class="conteudo">
-                <h5>Vaga: <?= $vaga['vaga'] ?></h5>
+                <h5>Vaga: <?= $Disponivel['vaga'] ?></h5>
 
                 <p>
-                    <?= $vaga['descricao'] ?>
+                    <?= $Disponivel['descricao'] ?>
                 </p>
 
                 <div class="conteudo-extra">
-                    
+
 
                     <h5>Área de Atuação:</h5>
-                    <p><?= $vaga['area_atuacao'] ?></p>
+                    <p><?= $Disponivel['area_atuacao'] ?></p>
 
                     <h5>Modalidade:</h5>
-                    <p><?= $vaga['modalidade'] ?></p>
+                    <p><?= $Disponivel['modalidade'] ?></p>
 
                     <h5>Localização:</h5>
-                    <p><?= $vaga['descricao'] ?></p>
+                    <p><?= $Disponivel['descricao'] ?></p>
 
                     <h5>Descrição:</h5>
-                    <p><?= $vaga['beneficio'] ?></p>
+                    <p><?= $Disponivel['beneficio'] ?></p>
 
                     <h5>Requisitos:</h5>
-                    <p><?= $vaga['requisitos'] ?></p>
+                    <p><?= $Disponivel['requisitos'] ?></p>
 
                     <h5>Salário:</h5>
-                    <p><?= $vaga['salario'] ?></p>
+                    <p><?= $Disponivel['salario'] ?></p>
 
                     <h5>Benefícios:</h5>
-                    <p><?= $vaga['beneficio'] ?></p>
+                    <p><?= $Disponivel['beneficio'] ?></p>
 
                     <h5>Carga Horária:</h5>
-                    <p><?= $vaga['carga_horaria'] ?></p>
+                    <p><?= $Disponivel['carga_horaria'] ?></p>
 
                     <h5>Modelo de Trabalho:</h5>
-                    <p><?= $vaga['modelo_de_trabalho'] ?></p>
+                    <p><?= $Disponivel['modelo_de_trabalho'] ?></p>
                 </div>
 
                 <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
                     Ler mais
                 </button>
 
-                <img src="./assets/img/" <?php echo $vaga['id_img_vaga'] ?>>
-                
+                <img src="./assets/img/" <?php echo $Disponivel['id_img_vaga'] ?>>
+
                 <form class="acoes">
                     <button type="submit" class="btn-circle like">❤</button>
                     <button type="submit" class="btn-circle dislike">✖</button>
@@ -85,28 +87,28 @@ $vagas = listaVaga();
 
             </div>
 
-        </div>
+            </div>
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-    <script>
-        function toggleTexto(btn) {
-    const card = btn.closest('.card-vaga');
-    const conteudo = card.querySelector('.conteudo-extra');
+        <script>
+            function toggleTexto(btn) {
+                const card = btn.closest('.card-vaga');
+                const conteudo = card.querySelector('.conteudo-extra');
 
-    if (conteudo.style.display === "block") {
-        conteudo.style.display = "none";
-        btn.innerText = "Ler mais";
-    } else {
-        conteudo.style.display = "block";
-        btn.innerText = "Ler menos";
-    }
-}
-    </script>
-    <!-- Include JS -->
-    <?php
-    require_once 'assets/templates/js.php';
-    ?>
+                if (conteudo.style.display === "block") {
+                    conteudo.style.display = "none";
+                    btn.innerText = "Ler mais";
+                } else {
+                    conteudo.style.display = "block";
+                    btn.innerText = "Ler menos";
+                }
+            }
+        </script>
+        <!-- Include JS -->
+        <?php
+        require_once 'assets/templates/js.php';
+        ?>
 </body>
 
 </html>

@@ -72,17 +72,19 @@ function validaAcesso()
     }
 }
 
-function validaEmpresa($id_nivel)
+function validaEmpresa()
 {
-    if ($id_nivel == 1) {
-        header('Location: pag_inicial_empresa.php');
+    if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 1) {
+        header('Location: pag_inicial.php');
+        exit;
     }
 }
 
-function validaUsuario($id_nivel)
+function validaUsuario()
 {
-    if ($id_nivel == 2) {
-        header('Location: pag_inicial.php');
+    if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 2) {
+        header('Location: pag_inicial_empresa.php');
+        exit;
     }
 }
 
@@ -501,6 +503,32 @@ function cadastrarEmpresa($dados, $id_login)
     }
 }
 
-    // =============================================Cadastro de Empresa======================================
+// =============================================Cadastro de Empresa======================================
+// ============================================Lista Atuacao============================================
+function VagasDisponiveis()
+{
+    try {
+        global $conexao; 
+
+        $sql = "SELECT 
+                    tb_vagas.*, 
+                    tb_empresa.nome_fantasia
+                FROM tb_vagas
+                INNER JOIN tb_empresa 
+                ON tb_vagas.id_empresa = tb_empresa.id";
+
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        echo $err->getMessage();
+
+        return "Erro ao Listar vagas";
+    }
+}
+// ============================================Lista Atuacao============================================
 
 
