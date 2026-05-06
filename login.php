@@ -21,10 +21,10 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | Matchwork</title>
     <link rel="stylesheet" href="assets/css/style.css">
-   <!-- Include Links -->
-   <?php
-   require_once 'assets/templates/head.php';
-   ?>
+    <!-- Include Links -->
+    <?php
+    require_once 'assets/templates/head.php';
+    ?>
 </head>
 
 <body id="login">
@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
             <a href="esqueceu-senha.php">Esqueceu a senha?</a>
 
             <!-- Mensagem -->
-            <?php if(!empty($mensagem)): ?>
+            <?php if (!empty($mensagem)): ?>
                 <div class="text-sm text-red-400 bg-red-900/20 border border-red-800 p-2 rounded">
                     <?= $mensagem; ?>
                 </div>
@@ -70,10 +70,40 @@ if (isset($_POST['login'])) {
     </main>
 
 
-   <!-- Include JS -->
-   <?php
-   require_once 'assets/templates/js.php';
-   ?>
+    <!-- Include JS -->
+    <?php
+    require_once 'assets/templates/js.php';
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if (isset($_GET['cadastro'])): ?>
+
+        <script>
+
+            <?php if ($_GET['cadastro'] == 'sucesso'): ?>
+
+                Swal.fire({
+                    title: "Conta criada!",
+                    text: "Bem vindo a MGS!",
+                    icon: "success"
+                }).then(() => {
+                    window.history.replaceState({}, document.title, "login.php");
+                });
+
+            <?php elseif ($_GET['cadastro'] == 'empresa_sucesso'): ?>
+
+                Swal.fire({
+                    title: "Empresa cadastrada!",
+                    text: "Agora você pode fazer login.",
+                    icon: "success"
+                }).then(() => {
+                    window.history.replaceState({}, document.title, "login.php");
+                });
+
+            <?php endif; ?>
+            
+        </script>
+
+    <?php endif; ?>
 </body>
 
 </html>

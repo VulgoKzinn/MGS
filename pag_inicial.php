@@ -1,9 +1,13 @@
 <?php
 require_once "backend/includes/funcoes.php";
+// ================================================= Valida pagina que o usuario deve acessar =====================================
+session_start();
 validaAcesso();
-$id_nivel = $_SESSION['id_nivel'];
-validaEmpresa($id_nivel);
-
+validaUsuario();
+// ================================================= Valida pagina que o usuario deve acessar =====================================
+// ============================================================Lista Vagas=================================================
+$Disponiveis = VagasDisponiveis();
+// ============================================================Lista Vagas=================================================
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,86 +24,91 @@ validaEmpresa($id_nivel);
 </head>
 
 <body id="bodypgs">
+    <?php
+    require_once "assets/templates/headerMGS.php";
+    ?>
 
-    <?php require_once "assets/templates/headerMGS.php" ?>
+    <?php foreach ($Disponiveis as $Disponivel): ?>
+            <div class="card-vaga">
 
-    <div class="container mt-4">
-
-        <div class="card-vaga">
-
-            <div class="headerVaga">
-                <img src="./assets/img/sabesp-companhia-de-saneamento-basico-do-estado-de-sao-paulo 1.png" class="logo">
-                <h5 class="m-0">SABESP - SP</h5>
-            </div>
-
-            <div class="conteudo">
-                <h5>Vaga: Leiturista – SABESP</h5>
-
-                <p>
-                    A SABESP está em busca de um profissional responsável e comprometido para atuar como Leiturista. A função consiste na leitura e registro do consumo de água nos hidrômetros, conferência de dados, identificação de irregularidades e orientação básica aos clientes quando necessário. É importante ter atenção aos detalhes, boa organização, disposição para trabalho externo e compromisso com prazos e qualidade das informações coletadas.
-                </p>
-
-                <div class="conteudo-extra" id="conteudoExtra">
-                    <h5>Requisitos:</h5>
-                    <p>
-                        Ensino médio completo<br>
-                        CNH categoria A ou B<br>
-                        Noções básicas de leitura e escrita<br>
-                        Conhecimento básico de celular ou coletor de dados
-                    </p>
-
-                    <h5>Área de Atuação:</h5>
-                    <p>Leiturista</p>
-
-                    <h5>Modalidade:</h5>
-                    <p>Presencial</p>
-
-                    <h5>Localização:</h5>
-                    <p>São João da Boa Vista</p>
-
-                    <h5>Benefícios:</h5>
-                    <p>Não tem que pagar água</p>
-
-                    <h5>Carga Horária:</h5>
-                    <p>12 por 36</p>
+                <div class="headerVaga">
+                    <img src="<?= $Disponivel['logo'] ?>" class="logo">
+                    <h5 class="m-0"><?= $Disponivel['nome fantasia'] ?></h5>
                 </div>
 
-                <button class="btn btn-light mt-2 btn-ler-mais" onclick="toggleTexto()" id="btnLerMais">
-                Ler mais
+            <div class="conteudo">
+                <h5>Vaga: <?= $Disponivel['vaga'] ?></h5>
+
+                <p>
+                    <?= $Disponivel['descricao'] ?>
+                </p>
+
+                <div class="conteudo-extra">
+
+
+                    <h5>Área de Atuação:</h5>
+                    <p><?= $Disponivel['area_atuacao'] ?></p>
+
+                    <h5>Modalidade:</h5>
+                    <p><?= $Disponivel['modalidade'] ?></p>
+
+                    <h5>Localização:</h5>
+                    <p><?= $Disponivel['descricao'] ?></p>
+
+                    <h5>Descrição:</h5>
+                    <p><?= $Disponivel['beneficio'] ?></p>
+
+                    <h5>Requisitos:</h5>
+                    <p><?= $Disponivel['requisitos'] ?></p>
+
+                    <h5>Salário:</h5>
+                    <p><?= $Disponivel['salario'] ?></p>
+
+                    <h5>Benefícios:</h5>
+                    <p><?= $Disponivel['beneficio'] ?></p>
+
+                    <h5>Carga Horária:</h5>
+                    <p><?= $Disponivel['carga_horaria'] ?></p>
+
+                    <h5>Modelo de Trabalho:</h5>
+                    <p><?= $Disponivel['modelo_de_trabalho'] ?></p>
+                </div>
+
+                <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
+                    Ler mais
                 </button>
 
-                <img src="./assets/img/image 2.jpg" class="imagem">
+                <img src="./assets/img/" <?php echo $Disponivel['id_img_vaga'] ?>>
+
+                <form class="acoes">
+                    <button type="submit" class="btn-circle like">❤</button>
+                    <button type="submit" class="btn-circle dislike">✖</button>
+                </form>
+
             </div>
 
+            </div>
 
+        <?php endforeach; ?>
 
+        <script>
+            function toggleTexto(btn) {
+                const card = btn.closest('.card-vaga');
+                const conteudo = card.querySelector('.conteudo-extra');
 
-            <form class="acoes">
-                <button type="submit" class="btn-circle like">❤</button>
-                <button type="submit" class="btn-circle dislike">✖</button>
-            </form>
-
-        </div>
-
-    </div>
-
-    <script>
-        function toggleTexto() {
-            let conteudo = document.getElementById("conteudoExtra");
-            let botao = document.getElementById("btnLerMais");
-            if (conteudo.style.display === "none" || conteudo.style.display === "") {
-                conteudo.style.display = "block";
-                botao.innerText = "Ler menos";
-            } else {
-                conteudo.style.display = "none";
-                botao.innerText = "Ler mais";
+                if (conteudo.style.display === "block") {
+                    conteudo.style.display = "none";
+                    btn.innerText = "Ler mais";
+                } else {
+                    conteudo.style.display = "block";
+                    btn.innerText = "Ler menos";
+                }
             }
-        }
-    </script>
-    <!-- Include JS -->
-    <?php
-    require_once 'assets/templates/js.php';
-    ?>
+        </script>
+        <!-- Include JS -->
+        <?php
+        require_once 'assets/templates/js.php';
+        ?>
 </body>
 
 </html>

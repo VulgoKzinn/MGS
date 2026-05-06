@@ -35,3 +35,6 @@
 .dropdown-toggle::after {
     display: none !important;
 }
+.conteudo-extra {
+    display: none;
+}

@@ -27,7 +27,7 @@ function login($email, $senha)
                     session_start();
 
                     // guarda o s_temp (senha temporario) 
-                    $_SESSION['id'] = $dados['id'];
+                    $_SESSION['id_login'] = $dados['id'];
                     // guarda o s_temp (senha temporario) 
                     $_SESSION['sistema'] = 'sis_login';
                     // guarda o email 
@@ -59,7 +59,9 @@ function login($email, $senha)
 
 function validaAcesso()
 {
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if ($_SESSION['sistema'] != 'sis_login') {
         header('Location: index.php');
@@ -70,17 +72,19 @@ function validaAcesso()
     }
 }
 
-function validaEmpresa($id_nivel)
+function validaEmpresa()
 {
-    if ($id_nivel == 1) {
-        header('Location: pag_inicial_empresa.php');
+    if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 1) {
+        header('Location: pag_inicial.php');
+        exit;
     }
 }
 
-function validaUsuario($id_nivel)
+function validaUsuario()
 {
-    if ($id_nivel == 2) {
-        header('Location: pag_inicial.php');
+    if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 2) {
+        header('Location: pag_inicial_empresa.php');
+        exit;
     }
 }
 
@@ -130,7 +134,7 @@ function novaSenha($senha)
     try {
         global $conexao;
 
-        $idUsuario = $_SESSION['id'];
+        $idUsuario = $_SESSION['id_login'];
         $sql = "UPDATE tb_login SET senha=:senha, s_temp=0 WHERE id=:id";
 
         $senha_hash = password_hash($senha, PASSWORD_ARGON2ID);
@@ -166,18 +170,17 @@ function validaEmail($email, $senha, $empresa)
     try {
         global $conexao;
 
-        $sql = "SELECT email,ativo FROM tb_login WHERE email=:email";
-
+        $sql = "SELECT email FROM tb_login WHERE email = :email";
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':email', $email);
-
         $comando->execute();
+
         $dados = $comando->fetch(PDO::FETCH_ASSOC);
 
         if ($dados != null) {
             return "E-mail já existe!";
         } else {
-            criarConta($email, $senha, $empresa);
+            return criarConta($email, $senha, $empresa);
         }
     } catch (PDOException $err) {
         error_log($err->getMessage());
@@ -210,6 +213,9 @@ function criarConta($email, $senha, $empresa)
         $comando->bindValue(':id_nivel', $empresa);
         $comando->execute();
         return $conexao->lastInsertId();
+
+      
+        
     } catch (PDOException $err) {
         error_log($err->getMessage());
         return "Erro ao cadastrar usuario!";
@@ -316,7 +322,7 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
         //retorna o id do insert do produto acima
         return $conexao->lastInsertId();
 
-        
+        header('Location: cadastro-vaga.php');
     } catch (PDOException $err) {
         error_log($err->getMessage());
         //echo $err->getMessage();
@@ -333,18 +339,33 @@ function uploadImagem($imagem)
     //define a pasta para upload
     $pasta = "assets/img/empresa/uploads/";
 
-    //captura a extensão da imagem
-    //strtolower passa a extensão para minusculo
+    // Limite de tamanho (ex: 2MB)
+    if ($imagem['size'] > 2 * 1024 * 1024) {
+        return false;
+    }
+
+    // Tipos permitidos
+    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
+
+    if (!in_array($imagem['type'], $tiposPermitidos)) {
+        return false;
+    }
+
+    // Garante que é imagem real
+    $check = getimagesize($imagem['tmp_name']);
+    if ($check === false) {
+        return false;
+    }
+
+    // Pega extensão
     $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
 
-    //gera um nome aleatorio para imagem e junta com a extensão
-    //ponto é soma
+    // Nome seguro
     $nomeUpload = md5(uniqid()) . '.' . $extensao;
 
     //faz o upload da imagem
     move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload);
 
-    //retorna o nome da imagem(hash)
     return $nomeUpload;
 }
 
@@ -385,7 +406,7 @@ function listaVaga()
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $err) {
         error_log($err->getMessage());
-        return "Erro ao conectar no banco de dados";
+        return "Não foi possível listar a vaga";
     }
     // ANULA A CONEXAO COM O BANCO
     $conexao = null;
@@ -497,31 +518,77 @@ function listaAtuacao()
     }
 }
 // ============================================Lista Atuacao============================================
-
-
 // =============================================Cadastro de Empresa======================================
 function cadastrarEmpresa($dados, $id_login)
 
 {
+    global $conexao;
+    $sql = "SELECT id FROM tb_empresa WHERE id_login = :id_login";
+    $checkLogin = $conexao->prepare($sql);
+    $checkLogin->bindValue(':id_login', $id_login);
+    $checkLogin->execute();
+
+    if ($checkLogin->fetch()) {
+        return "Este login já possui uma empresa cadastrada!";
+    }
+
+    $sql = "SELECT id FROM tb_empresa WHERE cnpj = :cnpj";
+    $checkCnpj = $conexao->prepare($sql);
+    $checkCnpj->bindValue(':cnpj', $dados['cnpj']);
+    $checkCnpj->execute();
+
+    if ($checkCnpj->fetch()) {
+        return "CNPJ já cadastrado!";
+    }
+
+    $sql = "INSERT INTO tb_empresa 
+        (id_login, rzsocial, telefone, complemento, cnpj, cep, atuacao, numero, nome_fantasia) VALUES (:id_login, :razao, :telefone, :complemento, :cnpj, :cep, :ramo, :numero, :nome_fantasia)";
+
+    $comando = $conexao->prepare($sql);
+
+    $comando->bindValue(':id_login', $id_login);
+    $comando->bindValue(':razao', $dados['razao']);
+    $comando->bindValue(':telefone', $dados['telefoneEmp']);
+    $comando->bindValue(':complemento', $dados['complementoEmp']);
+    $comando->bindValue(':cnpj', $dados['cnpj']);
+    $comando->bindValue(':cep', $dados['cepEmp']);
+    $comando->bindValue(':ramo', $dados['ramo']);
+    $comando->bindValue(':numero', $dados['numeroEmp']);
+    $comando->bindValue(':nome_fantasia', $dados['nomeFantasia']);
+
+    if ($comando->execute()) {
+        return "sucesso";
+    } else {
+        return "Erro ao cadastrar empresa!";
+    }
+}
+
+// =============================================Cadastro de Empresa======================================
+// ============================================Lista Atuacao============================================
+function VagasDisponiveis()
+{
     try {
-        global $conexao;
-        $sql = "SELECT * FROM tb_vagas";
+        global $conexao; 
+
+        $sql = "SELECT 
+                    tb_vagas.*, 
+                    tb_empresa.nome_fantasia
+                FROM tb_vagas
+                INNER JOIN tb_empresa 
+                ON tb_vagas.id_empresa = tb_empresa.id";
 
         $comando = $conexao->prepare($sql);
         $comando->execute();
+
         return $comando->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $err) {
         error_log($err->getMessage());
-        return "Erro ao conectar no banco de dados";
-    }
-    // ANULA A CONEXAO COM O BANCO
-    $conexao = null;
-}
+        echo $err->getMessage();
 
-// ===========================================Traz informações da Vaga=======================================================
-function deletarVaga($id)
-{
-    try {
-    } catch (\Throwable $th) {
+        return "Erro ao Listar vagas";
     }
 }
+// ============================================Lista Atuacao============================================
+
+
