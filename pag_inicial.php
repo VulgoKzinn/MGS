@@ -33,7 +33,7 @@ $Disponiveis = VagasDisponiveis();
 
                 <div class="headerVaga">
                     <img src="<?= $Disponivel['logo'] ?>" class="logo">
-                    <h5 class="m-0"><?= $Disponivel['nome fantasia'] ?></h5>
+                    <h5 class="m-0"><?= $Disponivel['nome_fantasia'] ?></h5>
                 </div>
 
             <div class="conteudo">
@@ -78,7 +78,7 @@ $Disponiveis = VagasDisponiveis();
                     Ler mais
                 </button>
 
-                <img src="./assets/img/" <?php echo $Disponivel['id_img_vaga'] ?>>
+                <img src="./assets/img/<?= $Disponivel['id_img_vaga'] ?>">
 
                 <form class="acoes">
                     <button type="submit" class="btn-circle like">❤</button>
