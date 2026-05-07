@@ -592,3 +592,122 @@ function VagasDisponiveis()
 // ============================================Lista Atuacao============================================
 
 
+// ===========================================Cadastrar Candidato=======================================================
+function cadastrarCandidato($nome, $email, $telefone, $endereco, $sobre, $cargo, $experiencia, $projeto, $certificado)
+{
+    try {
+        global $conexao;
+        $sql = "INSERT INTO tb_perfil_candidato (nome, email, telefone, endereco, sobre, cargo, experiencia, projeto, certificado) 
+                VALUES (:nome, :email, :telefone, :endereco, :sobre, :cargo, :experiencia, :projeto, :certificado)";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':nome', $nome);
+        $comando->bindValue(':email', $email);
+        $comando->bindValue(':telefone', $telefone);
+        $comando->bindValue(':endereco', $endereco);
+        $comando->bindValue(':sobre', $sobre);
+        $comando->bindValue(':cargo', $cargo);
+        $comando->bindValue(':experiencia', $experiencia);
+        $comando->bindValue(':projeto', $projeto);
+        $comando->bindValue(':certificado', $certificado);
+
+        $comando->execute();
+        return $conexao->lastInsertId();
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao cadastrar";
+    }
+}
+
+// ===========================================Cadastrar Foto Perfil=======================================================
+function cadastrarFotoPerfil($idCandidato, $nomeFotoPerfil)
+{
+    try {
+        global $conexao;
+
+        // Atualiza a coluna id_foto_perfil na tabela tb_perfil_candidato
+        $sql = "UPDATE tb_perfil_candidato SET id_foto_perfil = :foto WHERE id = :id";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':foto', $nomeFotoPerfil);
+        $comando->bindValue(':id', $idCandidato);
+        $comando->execute();
+
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+    }
+}
+
+// ===========================================Cadastrar Foto Banner (Capa)=======================================================
+function cadastrarFotoBanner($idCandidato, $nomeBanner)
+{
+    try {
+        global $conexao;
+
+        // Atualiza a coluna id_foto_banner na tabela tb_perfil_candidato
+        $sql = "UPDATE tb_perfil_candidato SET id_foto_banner = :banner WHERE id = :id";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':banner', $nomeBanner);
+        $comando->bindValue(':id', $idCandidato);
+        $comando->execute();
+
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+    }
+}
+
+function listarPerfilCandidato() {
+    try {
+        global $conexao;
+        // Puxa todos os candidatos (ou você pode filtrar por ID se preferir)
+        $sql = "SELECT * FROM tb_perfil_candidato";
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return [];
+    }
+}
+// Função para buscar UM candidato pelo ID (para preencher o formulário de edição)
+function listaCandidatoId($id) {
+    try {
+        global $conexao;
+        $sql = "SELECT * FROM tb_perfil_candidato WHERE id = :id";
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':id', $id);
+        $comando->execute();
+        return $comando->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        return [];
+    }
+}
+
+// Função para dar o UPDATE nos dados
+function atualizarCandidato($id, $nome, $email, $telefone, $endereco, $sobre, $cargo, $experiencia, $projeto, $certificado) {
+    try {
+        global $conexao;
+        $sql = "UPDATE tb_perfil_candidato SET 
+                nome = :nome, email = :email, telefone = :telefone, endereco = :endereco, 
+                sobre = :sobre, cargo = :cargo, experiencia = :experiencia, 
+                projeto = :projeto, certificado = :certificado 
+                WHERE id = :id";
+        
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':nome', $nome);
+        $comando->bindValue(':email', $email);
+        $comando->bindValue(':telefone', $telefone);
+        $comando->bindValue(':endereco', $endereco);
+        $comando->bindValue(':sobre', $sobre);
+        $comando->bindValue(':cargo', $cargo);
+        $comando->bindValue(':experiencia', $experiencia);
+        $comando->bindValue(':projeto', $projeto);
+        $comando->bindValue(':certificado', $certificado);
+        $comando->bindValue(':id', $id);
+        
+        return $comando->execute();
+    } catch (PDOException $err) {
+        return false;
+    }
+}
