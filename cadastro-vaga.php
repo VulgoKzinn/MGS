@@ -2,7 +2,7 @@
 <?php
 require_once "backend/includes/funcoes.php";
 
-
+session_start();
 //caso seja clicado no botão cadastrar a função é executada
 if (isset($_POST['cadastrar'])) {
     $vaga = filter_input(INPUT_POST, 'vaga');
@@ -15,8 +15,11 @@ if (isset($_POST['cadastrar'])) {
     $carga_horaria = filter_input(INPUT_POST, 'carga_horaria');
     $descricao = filter_input(INPUT_POST, 'descricao');
     $requisitos = filter_input(INPUT_POST, 'requisitos');
+    $id_empresa = $_SESSION['id_empresa'];
+    
+    
 
-    $idVaga = cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos);
+    $idVaga = cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos, $id_empresa);
 
     //executa a função de upload da imagem, enviando o id do produto e a imagem para upload
     $nomeImagemUpload = uploadImagem($_FILES['imagem']);
