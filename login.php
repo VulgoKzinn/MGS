@@ -68,7 +68,6 @@ if (isset($_POST['login'])) {
             <div class="extra-links"> <a href="criarConta.php">Cadastrar Conta</a>
         </form>
     </main>
-    <h1>TESTE LANZITECH OPÇÔES DE TECNOLOGIA</h1>
 
 
     <!-- Include JS -->

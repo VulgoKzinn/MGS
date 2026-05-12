@@ -1,8 +1,8 @@
 <?php
 require_once "backend/includes/funcoes.php";
-// session_start();
-// validaAcesso();
-// validaUsuario();
+session_start();
+validaAcesso();
+validaUsuario();
 
 ?>
 <!DOCTYPE html>
