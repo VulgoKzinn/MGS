@@ -72,14 +72,16 @@ $Disponiveis = VagasDisponiveis();
 
                     <h5>Modelo de Trabalho:</h5>
                     <p><?= $Disponivel['modelo_de_trabalho'] ?></p>
+
+                    <?php if (!empty($Disponivel['imagem_vaga'])): ?>
+                    <img src="assets/img/empresa/uploads/<?= $Disponivel['imagem_vaga'] ?>">
+                <?php endif; ?>
+                
                 </div>
 
                 <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
                     Ler mais
                 </button>
-                <?php if (!empty($Disponivel['imagem_vaga'])): ?>
-                    <img src="assets/img/empresa/uploads/<?= $Disponivel['imagem_vaga'] ?>">
-                <?php endif; ?>
 
                 <form class="acoes">
                     <button type="submit" class="btn-circle like">❤</button>
