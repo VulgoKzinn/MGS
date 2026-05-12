@@ -1,9 +1,13 @@
 <?php
 require_once "backend/includes/funcoes.php";
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $perfilLink = './perfil-candidato.php';
 
-if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
+if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1)  {
     $perfilLink = './perfil-empresa.php';
 }
 
