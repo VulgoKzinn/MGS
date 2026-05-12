@@ -1,0 +1,157 @@
+<?php
+require_once "backend/includes/funcoes.php";
+// session_start();
+// validaAcesso();
+// validaEmpresa();
+$vagas = listaVaga();
+
+?>
+<!-- SABRINA -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edição Perfil Empresarial</title>
+
+    <!-- Include Links -->
+    <?php
+    require_once 'assets/templates/head.php';
+    ?>
+
+    <!-- Para garantir responsividade em mobile bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css da pagina -->
+    <link rel="stylesheet" href="assets/css/perfil-empresa.css">
+    <!--OBS talvez tirar depois de padronizar a fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <?php include "assets/templates/headerMGS.php"; ?>
+
+    <body id="bodypgs">
+        <?php require_once "assets/templates/headerMGS.php" ?>
+
+        <main class="container mt-4">
+            <!-- PERFIL -->
+            <div class="position-relative" style="margin-bottom: 140px;">
+
+                <!-- CAPA -->
+                <img src="assets/img/empresa/perfil-empresa/uploads/<?php echo $perfil['imagem'];?>"
+                    class="img-fluid w-100 capa rounded">
+
+                <!-- CONFIGURAÇÕES -->
+                <div class="config-btn">
+                    <?php include "assets/templates/subedit.php"; ?>
+                </div>
+
+                <!-- FOTO + TEXTO -->
+                <div class="position-absolute start-0 bottom-0 ms-5 d-flex align-items-end"
+                    style="transform: translateY(35%);">
+
+                    <!-- FOTO PERFIL -->
+                    <img src="assets/img/empresa/perfil-empresa/amazon-perfil.jpeg"
+                        class="rounded-circle shadow border border-4 border-white object-fit-cover bg-white"
+                        width="170"
+                        height="170">
+
+                    <!-- INFORMAÇÕES -->
+                    <div class="ms-4" style="margin-bottom: -25px;">
+
+                        <h1 class="fw-bold text-black mb-1">
+                            Amazon
+                        </h1>
+                        <p class="fs-5 text-muted mb-0">
+                            De A a Z
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--QUEM SOMOS -->
+            <div class="certificados text-center mt-5 pt-5 mb-5">
+
+                <h1 class="text-center mt-5 quem-somos">
+                    QUEM SOMOS?
+                </h1>
+
+            </div>
+
+            <!-- Primeira descrição da empresa -->
+            <div class="container-fluid mt-7 px-5 mb-5">
+                <div class="row align-items-center">
+
+                    <div class="col-md-5">
+                        <p class="descricao-texto">A Amazon é uma empresa global de tecnologia focada em facilitar a vida de
+                            pessoas e negócios por meio da
+                            inovação. Atuamos em áreas como e-commerce, computação em nuvem, logística e entretenimento digital,
+                            sempre
+                            com o cliente no centro de tudo o que fazemos.
+                            Nossa cultura é guiada por princípios como obsessão pelo cliente, pensamento de longo prazo e busca
+                            constante por excelência. Acreditamos em ambientes diversos, colaborativos e que incentivam o
+                            aprendizado
+                            contínuo, oferecendo oportunidades reais de crescimento profissional.
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <img src="assets/img/empresa/perfil-empresa/amazon-empresa01.webp" class="img-fluid imagem-descricao">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segunda descrição da empresa -->
+            <div class="container-fluid mt-7 px-5 mb-5">
+                <div class="row align-items-center flex-md-row-reverse">
+
+                    <div class="col-md-5">
+                        <p class="descricao-texto">Aqui, valorizamos pessoas que gostam de desafios, têm espírito inovador e
+                            desejam fazer parte de soluções
+                            que impactam milhões de pessoas todos os dias, atuando em um ambiente dinâmico, diverso e orientado a
+                            resultados, onde novas ideias são incentivadas e o desenvolvimento profissional é levado a sério.
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <img src="assets/img/empresa/perfil-empresa/amazon-empresa.jpg" class="img-fluid imagem-descricao">
+                    </div>
+                </div>
+            </div>
+
+           
+
+            </div>
+
+            <!--CANAIS OFICIAIS-->
+            <div class="rodape mt-5 py-4 text-center">
+
+                <div class="container">
+
+                    <h5 class="mb-3 titulo-rodape">CANAIS OFICIAIS</h5>
+
+                    <div class="d-flex justify-content-center gap-4">
+                        <i class="fa-brands fa-facebook icone"></i>
+                        <i class="fa-brands fa-instagram icone"></i>
+                        <i class="fa-solid fa-earth-americas icone"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+        <!-- Include JS -->
+        <?php
+        require_once 'assets/templates/js.php';
+        ?>
+    </body>
+
+</html>
