@@ -26,6 +26,21 @@ function login($email, $senha)
                     // Usuario correto e sem bloqueio algum, continua no login
                     session_start();
 
+                    $sqlEmpresa = "SELECT id FROM tb_empresa WHERE id_login = :id_login";
+
+                    $comandoEmpresa = $conexao->prepare($sqlEmpresa);
+
+                    $comandoEmpresa->bindValue(':id_login', $dados['id']);
+
+                    $comandoEmpresa->execute();
+
+                    $empresa = $comandoEmpresa->fetch(PDO::FETCH_ASSOC);
+
+                    $_SESSION['id_empresa'] = $empresa['id'];
+
+                    if ($empresa) {
+                        $_SESSION['id_empresa'] = $empresa['id'];
+                    }
                     // guarda o s_temp (senha temporario) 
                     $_SESSION['id_login'] = $dados['id'];
                     // guarda o s_temp (senha temporario) 
@@ -213,9 +228,6 @@ function criarConta($email, $senha, $empresa)
         $comando->bindValue(':id_nivel', $empresa);
         $comando->execute();
         return $conexao->lastInsertId();
-
-      
-        
     } catch (PDOException $err) {
         error_log($err->getMessage());
         return "Erro ao cadastrar usuario!";
@@ -298,12 +310,12 @@ function listachamado()
 // ============================================Lista Chamado============================================
 
 // ===========================================Cadastrar Vaga=======================================================
-function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos,$id_empresa)
+function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos, $id_empresa)
 {
     try {
         global $conexao;
 
-        $sql = "INSERT INTO tb_vagas(vaga,area_atuacao,modalidade,modelo_de_trabalho,localizacao,salario,beneficio,carga_horaria,descricao,requisitos)VALUES(:vaga,:area_atuacao,:modalidade,:modelo_de_trabalho,:localizacao,:salario,:beneficio,:carga_horaria,:descricao,:requisitos,:id_empresa)";
+        $sql = "INSERT INTO tb_vagas(vaga,area_atuacao,modalidade,modelo_de_trabalho,localizacao,salario,beneficio,carga_horaria,descricao,requisitos, id_empresa)VALUES(:vaga,:area_atuacao,:modalidade,:modelo_de_trabalho,:localizacao,:salario,:beneficio,:carga_horaria,:descricao,:requisitos, :id_empresa)";
 
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':vaga', $vaga);
@@ -322,13 +334,9 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
 
         //retorna o id do insert do produto acima
         return $conexao->lastInsertId();
-
-        header('Location: cadastro-vaga.php');
     } catch (PDOException $err) {
-        error_log($err->getMessage());
-        //echo $err->getMessage();
-        return "Erro ao cadastrar";
-    }
+    die($err->getMessage());
+}
 
     $conexao = null;
 }
@@ -340,33 +348,18 @@ function uploadImagem($imagem)
     //define a pasta para upload
     $pasta = "assets/img/empresa/uploads/";
 
-    // Limite de tamanho (ex: 2MB)
-    if ($imagem['size'] > 2 * 1024 * 1024) {
-        return false;
-    }
-
-    // Tipos permitidos
-    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
-
-    if (!in_array($imagem['type'], $tiposPermitidos)) {
-        return false;
-    }
-
-    // Garante que é imagem real
-    $check = getimagesize($imagem['tmp_name']);
-    if ($check === false) {
-        return false;
-    }
-
-    // Pega extensão
+    //captura a extensão da imagem
+    //strtolower passa a extensão para minusculo
     $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
 
-    // Nome seguro
+    //gera um nome aleatorio para imagem e junta com a extensão
+    //ponto é soma
     $nomeUpload = md5(uniqid()) . '.' . $extensao;
 
     //faz o upload da imagem
     move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload);
 
+    //retorna o nome da imagem(hash)
     return $nomeUpload;
 }
 
@@ -570,20 +563,22 @@ function cadastrarEmpresa($dados, $id_login)
 function VagasDisponiveis()
 {
     try {
-        global $conexao; 
+        global $conexao;
 
         $sql = "SELECT 
                     tb_vagas.*, 
-                    tb_empresa.nome_fantasia
+                    tb_empresa.nome_fantasia,
+                    tb_img_vaga.imagem AS imagem_vaga
                 FROM tb_vagas
                 INNER JOIN tb_empresa 
-                ON tb_vagas.id_empresa = tb_empresa.id";
+                ON tb_vagas.id_empresa = tb_empresa.id
+                LEFT JOIN tb_img_vaga
+                ON tb_vagas.id = tb_img_vaga.id_vaga";
 
         $comando = $conexao->prepare($sql);
         $comando->execute();
 
         return $comando->fetchAll(PDO::FETCH_ASSOC);
-
     } catch (PDOException $err) {
         error_log($err->getMessage());
         echo $err->getMessage();
@@ -592,5 +587,3 @@ function VagasDisponiveis()
     }
 }
 // ============================================Lista Atuacao============================================
-
-

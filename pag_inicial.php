@@ -29,12 +29,12 @@ $Disponiveis = VagasDisponiveis();
     ?>
 
     <?php foreach ($Disponiveis as $Disponivel): ?>
-            <div class="card-vaga">
+        <div class="card-vaga">
 
-                <div class="headerVaga">
-                    <img src="<?= $Disponivel['logo'] ?>" class="logo">
-                    <h5 class="m-0"><?= $Disponivel['nome fantasia'] ?></h5>
-                </div>
+            <div class="headerVaga">
+                <img src="<?= $Disponivel['logo'] ?>" class="logo">
+                <h5 class="m-0"><?= $Disponivel['nome_fantasia'] ?></h5>
+            </div>
 
             <div class="conteudo">
                 <h5>Vaga: <?= $Disponivel['vaga'] ?></h5>
@@ -77,8 +77,9 @@ $Disponiveis = VagasDisponiveis();
                 <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
                     Ler mais
                 </button>
-
-                <img src="./assets/img/" <?php echo $Disponivel['id_img_vaga'] ?>>
+                <?php if (!empty($Disponivel['imagem_vaga'])): ?>
+                    <img src="assets/img/empresa/uploads/<?= $Disponivel['imagem_vaga'] ?>">
+                <?php endif; ?>
 
                 <form class="acoes">
                     <button type="submit" class="btn-circle like">❤</button>
@@ -87,28 +88,28 @@ $Disponiveis = VagasDisponiveis();
 
             </div>
 
-            </div>
+        </div>
 
-        <?php endforeach; ?>
+    <?php endforeach; ?>
 
-        <script>
-            function toggleTexto(btn) {
-                const card = btn.closest('.card-vaga');
-                const conteudo = card.querySelector('.conteudo-extra');
+    <script>
+        function toggleTexto(btn) {
+            const card = btn.closest('.card-vaga');
+            const conteudo = card.querySelector('.conteudo-extra');
 
-                if (conteudo.style.display === "block") {
-                    conteudo.style.display = "none";
-                    btn.innerText = "Ler mais";
-                } else {
-                    conteudo.style.display = "block";
-                    btn.innerText = "Ler menos";
-                }
+            if (conteudo.style.display === "block") {
+                conteudo.style.display = "none";
+                btn.innerText = "Ler mais";
+            } else {
+                conteudo.style.display = "block";
+                btn.innerText = "Ler menos";
             }
-        </script>
-        <!-- Include JS -->
-        <?php
-        require_once 'assets/templates/js.php';
-        ?>
+        }
+    </script>
+    <!-- Include JS -->
+    <?php
+    require_once 'assets/templates/js.php';
+    ?>
 </body>
 
 </html>
