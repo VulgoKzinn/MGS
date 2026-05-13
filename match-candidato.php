@@ -1,8 +1,8 @@
 <?php
 require_once "backend/includes/funcoes.php";
+session_start();
 validaAcesso();
-$id_nivel = $_SESSION['id_nivel'];
-validaEmpresa($id_nivel);
+validaUsuario();
 
 ?>
 <!DOCTYPE html>
