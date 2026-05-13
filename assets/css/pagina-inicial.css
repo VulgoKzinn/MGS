@@ -82,6 +82,7 @@ body {
     margin: 0 auto;     /* centraliza */
     border-radius: 20px;
     overflow: hidden;
+    
 }
 .conteudo-extra {
     display: none;
@@ -101,4 +102,8 @@ body {
 }
 p{
     font-size: 1.5rem;
+}
+.headerVaga h5{ 
+    font-weight: bold;
+    font-size: 2.0rem;
 }
