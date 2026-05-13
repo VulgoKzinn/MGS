@@ -586,3 +586,77 @@ function VagasDisponiveis()
     }
 }
 // ============================================Lista Atuacao============================================
+
+// ============================================Cadastro das informações do Perfil da Empresa============================================
+function adicionarPersonalizacao($nome,$slogan,$quem_somos)
+{
+try {
+        global $conexao;
+
+        $sql = "INSERT INTO tb_perfil_empresa(nome,slogan,quem_somos)VALUES(:nome,:slogan,:quem_somos)";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':nome', $nome);
+        $comando->bindValue(':slogan', $slogan);
+        $comando->bindValue(':quem_somos', $quem_somos);
+
+        $comando->execute();
+
+        //retorna o id do insert do produto acima
+        return $conexao->lastInsertId();
+    } catch (PDOException $err) {
+    die($err->getMessage());
+}
+
+    $conexao = null;
+}
+// ============================================Cadastro das informações do Perfil da Empresa============================================
+
+// ============================================Cadastra a imagem do perfil da empresa============================================
+
+function adicionarImagemPerfilEmpresa($idEmpresa, $nomeImagemUpload)
+{
+try {
+        global $conexao;
+
+        $sql = "INSERT INTO tb_img_perfil_empresa(imagem,id_empresa)VALUES(:nomeImagemUpload,:idEmpresa)";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(':nomeImagemUpload', $nomeImagemUpload);
+        $comando->bindValue(':idEmpresa', $idEmpresa);
+        $comando->execute();
+
+        header('Location: perfil-empresa.php');
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao cadastrar";
+    }
+}
+// ============================================Cadastra a imagem do perfil da empresa============================================
+// ============================================Lista os Dados do Perfil============================================
+
+function listaDadosPerfil()
+{
+    try {
+        global $conexao;
+        $sql = "SELECT tb_perfil_empresa.*,
+        tb_img_perfil_empresa.imagem,
+        tb_img_capa_empresa.imagem,
+        tb_img_foto_empresa.imagem,
+        tb_empresa.nome_fantasia,
+        tb_empresa.rzsocial
+        FROM tb_perfil_empresa
+        INNER JOIN tb_img_perfil ON tb_perfil_empresa.id = tb_img_perfil.id_perfil_empresa";
+
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Não foi possível listar os dados!";
+    }
+    // ANULA A CONEXAO COM O BANCO
+    $conexao = null;
+}
+// ============================================Lista os Dados do Perfil============================================

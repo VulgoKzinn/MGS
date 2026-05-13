@@ -4,6 +4,7 @@ require_once "backend/includes/funcoes.php";
 // validaAcesso();
 // validaEmpresa();
 $vagas = listaVaga();
+$dadosPerfil= listaDadosPerfil();
 
 ?>
 <!-- SABRINA -->
@@ -40,7 +41,7 @@ $vagas = listaVaga();
             <div class="position-relative" style="margin-bottom: 140px;">
 
                 <!-- CAPA -->
-                <img src="assets/img/empresa/perfil-empresa/amazon-capa.jpg"
+                <img src="assets/img/empresa/capa-empresa/uploads/<?php echo $dadosPerfil['imagem'];?>"
                     class="img-fluid w-100 capa rounded">
 
                 <!-- CONFIGURAÇÕES -->
@@ -48,24 +49,27 @@ $vagas = listaVaga();
                     <?php include "assets/templates/subedit.php"; ?>
                 </div>
 
-                <!-- FOTO + TEXTO -->
+                <!-- FOTO + NOME + RAZAO SOCIAL + SLOGAN -->
                 <div class="position-absolute start-0 bottom-0 ms-5 d-flex align-items-end"
                     style="transform: translateY(35%);">
 
                     <!-- FOTO PERFIL -->
-                    <img src="assets/img/empresa/perfil-empresa/amazon-perfil.jpeg"
+                    <img src="assets/img/empresa/perfil-empresa/uploads/<?php echo $dadosPerfil['imagem'];?>"
                         class="rounded-circle shadow border border-4 border-white object-fit-cover bg-white"
                         width="170"
                         height="170">
 
-                    <!-- INFORMAÇÕES -->
+                    <!-- NOME + RAZAO SOCIAL +SLOGAN -->
                     <div class="ms-4" style="margin-bottom: -25px;">
 
                         <h1 class="fw-bold text-black mb-1">
-                            Amazon
+                            <?php echo $dadosPerfil['nome'];?>
                         </h1>
+                        <h3 class="fw-bold text-black mb-1">
+                            <?php echo $dadosPerfil['razao_social'];?>
+                        </h3>
                         <p class="fs-5 text-muted mb-0">
-                            De A a Z
+                            <?php echo $dadosPerfil['slogan'];?>
                         </p>
 
                     </div>
@@ -88,38 +92,14 @@ $vagas = listaVaga();
                 <div class="row align-items-center">
 
                     <div class="col-md-5">
-                        <p class="descricao-texto">A Amazon é uma empresa global de tecnologia focada em facilitar a vida de
-                            pessoas e negócios por meio da
-                            inovação. Atuamos em áreas como e-commerce, computação em nuvem, logística e entretenimento digital,
-                            sempre
-                            com o cliente no centro de tudo o que fazemos.
-                            Nossa cultura é guiada por princípios como obsessão pelo cliente, pensamento de longo prazo e busca
-                            constante por excelência. Acreditamos em ambientes diversos, colaborativos e que incentivam o
-                            aprendizado
-                            contínuo, oferecendo oportunidades reais de crescimento profissional.
+                        <p class="descricao-texto">
+                            <?php echo $dadosPerfil['quem_somos'];?>
                         </p>
                     </div>
 
                     <div class="col-md-6 text-center">
-                        <img src="assets/img/empresa/perfil-empresa/amazon-empresa01.webp" class="img-fluid imagem-descricao">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Segunda descrição da empresa -->
-            <div class="container-fluid mt-7 px-5 mb-5">
-                <div class="row align-items-center flex-md-row-reverse">
-
-                    <div class="col-md-5">
-                        <p class="descricao-texto">Aqui, valorizamos pessoas que gostam de desafios, têm espírito inovador e
-                            desejam fazer parte de soluções
-                            que impactam milhões de pessoas todos os dias, atuando em um ambiente dinâmico, diverso e orientado a
-                            resultados, onde novas ideias são incentivadas e o desenvolvimento profissional é levado a sério.
-                        </p>
-                    </div>
-
-                    <div class="col-md-6 text-center">
-                        <img src="assets/img/empresa/perfil-empresa/amazon-empresa.jpg" class="img-fluid imagem-descricao">
+                        <img src="assets/img/empresa/descricao-empresa/uploads/<?php echo $dadosPerfil['imagem'];?>"
+                         class="img-fluid imagem-descricao">
                     </div>
                 </div>
             </div>
@@ -158,7 +138,7 @@ $vagas = listaVaga();
 
                                     <!-- IMAGEM -->
                                     <div class="col-12 text-center">
-                                        <img src="assets/img/empresa/uploads/<?php echo $vaga['imagem']; ?>"
+                                        <img src="assets/img/empresa/vaga-empresa/uploads<?php echo $vaga['imagem'];?>"
                                             class="img-fluid rounded">
                                     </div>
 
