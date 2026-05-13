@@ -67,51 +67,6 @@ CREATE TABLE IF NOT EXISTS `tb_formacoes` (
 
 -- Copiando dados para a tabela db_mgs.tb_formacoes: ~0 rows (aproximadamente)
 
--- Copiando estrutura para tabela db_mgs.tb_img_capa_empresa
-CREATE TABLE IF NOT EXISTS `tb_img_capa_empresa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `imagem` varchar(100) NOT NULL,
-  `id_perfil_empresa` int(11) NOT NULL,
-  `data_cadastro` datetime NOT NULL DEFAULT current_timestamp(),
-  `ativo` tinyint(1) NOT NULL DEFAULT 1,
-  `padrao` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  KEY `id_perfil_empresa` (`id_perfil_empresa`),
-  CONSTRAINT `FK_tb_img_capa_empresa_tb_perfil_empresa` FOREIGN KEY (`id_perfil_empresa`) REFERENCES `tb_perfil_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
--- Copiando dados para a tabela db_mgs.tb_img_capa_empresa: ~0 rows (aproximadamente)
-
--- Copiando estrutura para tabela db_mgs.tb_img_foto_empresa
-CREATE TABLE IF NOT EXISTS `tb_img_foto_empresa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `imagem` varchar(100) NOT NULL,
-  `id_perfil_empresa` int(11) NOT NULL,
-  `data_cadastro` datetime NOT NULL DEFAULT current_timestamp(),
-  `ativo` tinyint(1) NOT NULL DEFAULT 1,
-  `padrao` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  KEY `id_perfil_empresa` (`id_perfil_empresa`),
-  CONSTRAINT `FK_tb_img_foto_empresa_tb_perfil_empresa` FOREIGN KEY (`id_perfil_empresa`) REFERENCES `tb_perfil_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
--- Copiando dados para a tabela db_mgs.tb_img_foto_empresa: ~0 rows (aproximadamente)
-
--- Copiando estrutura para tabela db_mgs.tb_img_perfil_empresa
-CREATE TABLE IF NOT EXISTS `tb_img_perfil_empresa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `imagem` varchar(100) NOT NULL,
-  `id_perfil_empresa` int(11) NOT NULL,
-  `data_cadastro` datetime NOT NULL DEFAULT current_timestamp(),
-  `ativo` tinyint(1) NOT NULL DEFAULT 1,
-  `padrao` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  KEY `id_perfil_empresa` (`id_perfil_empresa`),
-  CONSTRAINT `FK_tb_img_perfil_empresa_tb_perfil_empresa` FOREIGN KEY (`id_perfil_empresa`) REFERENCES `tb_perfil_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Copiando dados para a tabela db_mgs.tb_img_perfil_empresa: ~0 rows (aproximadamente)
-
 -- Copiando estrutura para tabela db_mgs.tb_img_vaga
 CREATE TABLE IF NOT EXISTS `tb_img_vaga` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -123,9 +78,9 @@ CREATE TABLE IF NOT EXISTS `tb_img_vaga` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK_tb_img_vaga_tb_vagas` (`id_vaga`) USING BTREE,
   CONSTRAINT `FK_tb_img_vaga_tb_vagas` FOREIGN KEY (`id_vaga`) REFERENCES `tb_vagas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_mgs.tb_img_vaga: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela db_mgs.tb_img_vaga: ~9 rows (aproximadamente)
 INSERT INTO `tb_img_vaga` (`id`, `imagem`, `data_cadastro`, `ativo`, `padrao`, `id_vaga`) VALUES
 	(42, '563c66e772e826b4fc1ceb1bddef5616.png', '2026-05-11 21:46:52', 1, 0, 47),
 	(43, 'c80e1cb9f90318d8c2f648c749cdab88.jpg', '2026-05-11 22:00:09', 1, 0, 48),
@@ -134,7 +89,9 @@ INSERT INTO `tb_img_vaga` (`id`, `imagem`, `data_cadastro`, `ativo`, `padrao`, `
 	(46, 'ba23a898e7037e41ae41c031c0b05dc9.png', '2026-05-12 19:35:40', 1, 0, 54),
 	(47, 'b198e1c10670270aadebbf4f12843937.png', '2026-05-12 19:37:42', 1, 0, 55),
 	(48, '8a1ab8c6f377ec7b2ae08b9a7de5aa65.png', '2026-05-12 19:49:20', 1, 0, 56),
-	(49, '2e7219383ddd7493c2857ff975a163b2.png', '2026-05-12 19:50:38', 1, 0, 57);
+	(49, '2e7219383ddd7493c2857ff975a163b2.png', '2026-05-12 19:50:38', 1, 0, 57),
+	(50, '0e2bd481c9ff770c373ec62b06d63740.png', '2026-05-13 19:48:55', 1, 0, 58),
+	(51, '5188f80f89db63cfdc3f3473194740ee.jpg', '2026-05-13 19:58:37', 1, 0, 59);
 
 -- Copiando estrutura para tabela db_mgs.tb_login
 CREATE TABLE IF NOT EXISTS `tb_login` (
@@ -204,12 +161,31 @@ CREATE TABLE IF NOT EXISTS `tb_perfil_empresa` (
   `quem_somos` varchar(255) NOT NULL,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `ativo` tinyint(1) DEFAULT 1,
+  `id_perfil_img` varchar(255) DEFAULT NULL,
+  `id_capa_img` varchar(255) DEFAULT NULL,
+  `id_descricao_img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_empresa` (`id_empresa`),
   CONSTRAINT `FK_tb_perfil_empresa_tb_empresa` FOREIGN KEY (`id_empresa`) REFERENCES `tb_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela db_mgs.tb_perfil_empresa: ~0 rows (aproximadamente)
+
+-- Copiando estrutura para tabela db_mgs.tb_perfil_empresa_img
+CREATE TABLE IF NOT EXISTS `tb_perfil_empresa_img` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `perfil` varchar(255) DEFAULT NULL,
+  `capa` varchar(255) DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `ativo` tinyint(1) DEFAULT 1,
+  `id_empresa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_tb_perfil_empresa_img_tb_empresa` (`id_empresa`),
+  CONSTRAINT `FK_tb_perfil_empresa_img_tb_empresa` FOREIGN KEY (`id_empresa`) REFERENCES `tb_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Copiando dados para a tabela db_mgs.tb_perfil_empresa_img: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela db_mgs.tb_ramoatuacao
 CREATE TABLE IF NOT EXISTS `tb_ramoatuacao` (
@@ -293,9 +269,9 @@ CREATE TABLE IF NOT EXISTS `tb_vagas` (
   PRIMARY KEY (`id`),
   KEY `FK_tb_vagas_tb_empresa` (`id_empresa`),
   CONSTRAINT `FK_tb_vagas_tb_empresa` FOREIGN KEY (`id_empresa`) REFERENCES `tb_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_mgs.tb_vagas: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela db_mgs.tb_vagas: ~9 rows (aproximadamente)
 INSERT INTO `tb_vagas` (`id`, `id_empresa`, `vaga`, `area_atuacao`, `modalidade`, `localizacao`, `descricao`, `requisitos`, `salario`, `beneficio`, `carga_horaria`, `data_cadastro`, `ativo`, `modelo_de_trabalho`) VALUES
 	(47, 17, 'Tecnico TI', 'TI', 'Presencial', 'São paulo', 'tete', 'tete', 1200.00, 'Vale alimentação', '80', '2026-05-11 21:46:52', 1, 'Presencial'),
 	(48, 17, 'Teste', 'Teste', 'Presencial', 'Sj', '/', '/', 1200.00, 'tudo', '1200 semanal', '2026-05-11 22:00:09', 1, 'Presencial'),
@@ -304,7 +280,9 @@ INSERT INTO `tb_vagas` (`id`, `id_empresa`, `vaga`, `area_atuacao`, `modalidade`
 	(54, 17, 'teste05', 'teste05', 'Home Office', 'teste05', 'teste05', 'teste05', 0.00, 'teste05', 'teste05', '2026-05-12 19:35:40', 1, 'Home Office'),
 	(55, 17, 'Teste', 'Teste', 'Presencial', 'Sj', 'tudo', 'tudo', 1200.00, 'tudo', '1200 semanal', '2026-05-12 19:37:42', 1, 'Presencial'),
 	(56, 17, 'sabrina', 'sabrina', 'Home Office', 'sabrina', 'sabrina', 'sabrina', 0.00, 'sabrina', 'sabrina', '2026-05-12 19:49:20', 1, 'Presencial'),
-	(57, 17, 'donato', 'donato', 'Híbrido', 'donato', 'donato', 'donato', 0.00, 'donato', 'donato', '2026-05-12 19:50:38', 1, 'Presencial');
+	(57, 17, 'donato', 'donato', 'Híbrido', 'donato', 'donato', 'donato', 0.00, 'donato', 'donato', '2026-05-12 19:50:38', 1, 'Presencial'),
+	(58, 17, 'testesa', 'testesa', 'Home Office', 'testesa', 'testesa', 'testesa', 0.00, 'testesa', 'testesa', '2026-05-13 19:48:55', 1, 'Presencial'),
+	(59, 17, 'Teste', 'Teste', 'Home Office', 'Sj', 'sdfghjkl.', 'wertyuiklç', 1200.00, '34567', '1200 semanal', '2026-05-13 19:58:37', 1, 'Presencial');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
