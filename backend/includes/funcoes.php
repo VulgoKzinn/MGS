@@ -341,12 +341,12 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
     $conexao = null;
 }
 
-// ===========================================Função upload imagem=======================================================
+// ===========================================Função upload imagem Vaga=======================================================
 function uploadImagem($imagem)
 {
 
     //define a pasta para upload
-    $pasta = "assets/img/empresa/uploads/";
+    $pasta = "assets/img/empresa/vaga-empresa/uploads/";
 
     //captura a extensão da imagem
     //strtolower passa a extensão para minusculo
@@ -362,6 +362,8 @@ function uploadImagem($imagem)
     //retorna o nome da imagem(hash)
     return $nomeUpload;
 }
+// ===========================================Função upload imagem Vaga=======================================================
+
 
 // ===========================================Cadastrar Imagem Vaga=======================================================
 function cadastrarImagemVaga($idVaga, $nomeImagemUpload)
@@ -598,8 +600,7 @@ try {
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':nome', $nome);
         $comando->bindValue(':slogan', $slogan);
-        $comando->bindValue(':quem_somos', $quem_somos);
-
+        
         $comando->execute();
 
         //retorna o id do insert do produto acima
@@ -614,16 +615,42 @@ try {
 
 // ============================================Cadastra a imagem do perfil da empresa============================================
 
-function adicionarImagemPerfilEmpresa($idEmpresa, $nomeImagemUpload)
+
+
+// ===========================================Função upload imagem Empresa=======================================================
+function uploadImagem($imagem)
+{
+
+    //define a pasta para upload
+    $pasta = "assets/img/empresa/empresa/uploads/";
+
+    //captura a extensão da imagem
+    //strtolower passa a extensão para minusculo
+    $extensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
+
+    //gera um nome aleatorio para imagem e junta com a extensão
+    //ponto é soma
+    $nomeUpload = md5(uniqid()) . '.' . $extensao;
+
+    //faz o upload da imagem
+    move_uploaded_file($imagem['tmp_name'], $pasta . $nomeUpload);
+
+    //retorna o nome da imagem(hash)
+    return $nomeUpload;
+}
+// ===========================================Função upload imagem Empresa=======================================================
+
+
+function adicionarImagemPerfilEmpresa($idEmpresa, $empresaImagemUpload)
 {
 try {
         global $conexao;
 
-        $sql = "INSERT INTO tb_img_perfil_empresa(imagem,id_empresa)VALUES(:nomeImagemUpload,:idEmpresa)";
+        $sql = "INSERT INTO tb_perfil_empresa_img(perfil,capa,descricao,id_empresa)VALUES(:nomeImagemUpload,:idEmpresa)";
 
         $comando = $conexao->prepare($sql);
 
-        $comando->bindValue(':nomeImagemUpload', $nomeImagemUpload);
+        $comando->bindValue(':nomeImagemUpload', $empresaImagemUpload);
         $comando->bindValue(':idEmpresa', $idEmpresa);
         $comando->execute();
 
@@ -634,6 +661,7 @@ try {
     }
 }
 // ============================================Cadastra a imagem do perfil da empresa============================================
+
 // ============================================Lista os Dados do Perfil============================================
 
 function listaDadosPerfil()
@@ -641,13 +669,14 @@ function listaDadosPerfil()
     try {
         global $conexao;
         $sql = "SELECT tb_perfil_empresa.*,
-        tb_img_perfil_empresa.imagem,
-        tb_img_capa_empresa.imagem,
-        tb_img_foto_empresa.imagem,
         tb_empresa.nome_fantasia,
-        tb_empresa.rzsocial
+        tb_empresa.rzsocial,
+        tb_perfil_empresa_img.perfil,
+        tb_perfil_empresa_img.capa,
+        tb_perfil_empresa_img.descricao,
         FROM tb_perfil_empresa
-        INNER JOIN tb_img_perfil ON tb_perfil_empresa.id = tb_img_perfil.id_perfil_empresa";
+        INNER JOIN tb_empresa ON tb_empresa.id = tb_perfil_empresa.id
+        INNER JOIN tb_perfil_empresa_img ON tb_perfil_empresa_img.id_empresa = tb_perfil_empresa.id";
 
         $comando = $conexao->prepare($sql);
         $comando->execute();

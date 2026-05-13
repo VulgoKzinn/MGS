@@ -46,7 +46,7 @@ $dadosPerfil= listaDadosPerfil();
 
                 <!-- CONFIGURAÇÕES -->
                 <div class="config-btn">
-                    <?php include "assets/templates/subedit.php"; ?>
+                    <?php include "assets/templates/subedit.php";?>
                 </div>
 
                 <!-- FOTO + NOME + RAZAO SOCIAL + SLOGAN -->

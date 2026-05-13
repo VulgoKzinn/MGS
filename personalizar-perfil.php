@@ -9,14 +9,15 @@ if (isset($_POST['adicionar'])) {
     $slogan = filter_input(INPUT_POST, 'slogan');
     $quem_somos = filter_input(INPUT_POST, 'quem_somos');
     
+    
 
-    $idVaga = adicionarPersonalizacao($nome, $slogan, $quem_somos);
+    $idEmpresa = adicionarPersonalizacao($nome, $slogan, $quem_somos,);
 
     //executa a função de upload da imagem, enviando o id do produto e a imagem para upload
-    $nomeImagemUpload = uploadImagem($_FILES['imagem']);
+    $empresaImagemUpload = uploadImagem($_FILES['imagem']);
 
-    if ($nomeImagemUpload) {
-        adicionarImagemPerfilEmpresa($idEmpresa, $nomeImagemUpload);
+    if ($empresaImagemUpload) {
+        adicionarImagemPerfilEmpresa($idEmpresa, $empresaImagemUpload);
     } else {
         echo "Erro no upload da imagem";
     }
