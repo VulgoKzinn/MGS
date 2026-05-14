@@ -119,7 +119,7 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
     <style>
         /* Layout exclusivo da dashboard */
         .dash-wrapper        { display: flex; min-height: 100vh; }
-        .dash-sidebar        { width: 230px; min-width: 230px; background-color: #6750A4; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh; z-index: 100; }
+        .dash-sidebar        { width: 230px; min-width: 230px; background-color: #2d1b69; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh; z-index: 100; }
         .dash-main           { margin-left: 230px; flex: 1; display: flex; flex-direction: column; background-color: #f8f9fa; }
         .dash-topbar         { background: #fff; padding: 0 24px; height: 58px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #EDE7F6; position: sticky; top: 0; z-index: 99; }
         .dash-content        { padding: 28px 24px; flex: 1; }
@@ -140,11 +140,11 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
         .sidebar-user-role   { color: rgba(255,255,255,.5); font-size: 11px; }
         .topbar-title        { font-size: 16px; font-weight: 700; color: #2D1B69; flex: 1; }
         .topbar-btn          { width: 36px; height: 36px; border-radius: 8px; border: 1px solid #EDE7F6; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #9E86C8; position: relative; text-decoration: none; }
-        .topbar-btn:hover    { background: #F5F3FF; color: #6750A4; }
+        .topbar-btn:hover    { background: #F5F3FF; color: #2d1b69; }
         .notif-dot           { position: absolute; top: 7px; right: 7px; width: 7px; height: 7px; border-radius: 50%; background: #038C33; border: 1.5px solid #fff; }
         .stat-card           { background: #fff; border-radius: 12px; padding: 18px; border: 1px solid #EDE7F6; }
         .stat-icon           { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; }
-        .stat-icon.purple    { background: #EDE7F6; color: #6750A4; }
+        .stat-icon.purple    { background: #EDE7F6; color: #2d1b69; }
         .stat-icon.green     { background: #E8F5E9; color: #038C33; }
         .stat-icon.amber     { background: #FFF8E1; color: #F57F17; }
         .stat-icon.red       { background: #FDECEA; color: #C62828; }
@@ -155,8 +155,8 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
         .dash-card           { background: #fff; border-radius: 12px; border: 1px solid #EDE7F6; padding: 18px; }
         .dash-card-title     { font-size: 14px; font-weight: 700; color: #2D1B69; }
         .dash-card-sub       { font-size: 12px; color: #9E86C8; }
-        .dash-card-btn       { font-size: 12px; color: #6750A4; border: 1px solid #D1C4E9; border-radius: 6px; background: #fff; padding: 4px 12px; cursor: pointer; text-decoration: none; }
-        .dash-card-btn:hover { background: #F5F3FF; color: #6750A4; }
+        .dash-card-btn       { font-size: 12px; color: #2d1b69; border: 1px solid #D1C4E9; border-radius: 6px; background: #fff; padding: 4px 12px; cursor: pointer; text-decoration: none; }
+        .dash-card-btn:hover { background: #F5F3FF; color: #2d1b69; }
         .dash-table          { border-collapse: collapse; }
         .dash-table thead th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #9E86C8; padding: 0 6px 10px; border-bottom: 1px solid #F0EBF8; font-weight: 500; }
         .dash-table tbody tr { border-bottom: 1px solid #FAF8FF; }
@@ -169,14 +169,14 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
         .pill-pending        { background: #FFF8E1; color: #F57F17; }
         .pill-blocked        { background: #FDECEA; color: #C62828; }
         .pill-open           { background: #E8EAF6; color: #3949AB; }
-        .tag-home            { background: #EDE7F6; color: #6750A4; border-radius: 6px; font-size: 11px; font-weight: 600; padding: 2px 8px; }
+        .tag-home            { background: #EDE7F6; color: #2d1b69; border-radius: 6px; font-size: 11px; font-weight: 600; padding: 2px 8px; }
         .tag-hybrid          { background: #E8F5E9; color: #038C33; border-radius: 6px; font-size: 11px; font-weight: 600; padding: 2px 8px; }
         .tag-presential      { background: #FFF8E1; color: #E65100; border-radius: 6px; font-size: 11px; font-weight: 600; padding: 2px 8px; }
         .av                  { width: 28px; height: 28px; border-radius: 50%; background: #EDE7F6; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #6750A4; flex-shrink: 0; }
         .av.green            { background: #E8F5E9; color: #038C33; }
         .btn-tbl-danger      { padding: 3px 10px; border-radius: 6px; font-size: 12px; border: 1px solid #FFCDD2; color: #C62828; background: #fff; cursor: pointer; font-weight: 600; }
         .btn-tbl-danger:hover{ background: #FDECEA; }
-        .btn-tbl-purple      { padding: 3px 10px; border-radius: 6px; font-size: 12px; border: 1px solid #D1C4E9; color: #6750A4; background: #fff; cursor: pointer; font-weight: 600; }
+        .btn-tbl-purple      { padding: 3px 10px; border-radius: 6px; font-size: 12px; border: 1px solid #D1C4E9; color: #2d1b69; background: #fff; cursor: pointer; font-weight: 600; }
         .btn-tbl-purple:hover{ background: #EDE7F6; }
         .bar-chart-wrap      { display: flex; align-items: flex-end; gap: 8px; height: 100px; }
         .bar-col             { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
@@ -200,7 +200,7 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
             <div class="sidebar-section">Principal</div>
             <a href="dashboard.php"      class="sidebar-item active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
             <a href="index.php"          class="sidebar-item"><i class="fa-solid fa-house"></i> Início</a>
-            <a href="lista-vagas.php"    class="sidebar-item"><i class="fa-solid fa-briefcase"></i> Vagas <span class="sidebar-badge"><?php echo $totalVagas; ?></span></a>
+            <a href="lista_vagas.php"    class="sidebar-item"><i class="fa-solid fa-briefcase"></i> Vagas <span class="sidebar-badge"><?php echo $totalVagas; ?></span></a>
             <a href="lista-usuarios.php" class="sidebar-item"><i class="fa-solid fa-users"></i> Usuários</a>
             <a href="lista-empresas.php" class="sidebar-item"><i class="fa-solid fa-building"></i> Empresas</a>
             
@@ -312,7 +312,7 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
                         </div>
                         <div class="bar-chart-wrap">
                             <?php
-                            $cores = ['#6750A4','#038C33','#6750A4','#038C33','#6750A4','#038C33'];
+                            $cores = [' #2d1b69','#038C33','#2d1b69','#038C33','#2d1b69','#038C33'];
                             $i = 0;
                             foreach ($dadosMeses as $m):
                                 $altura = $maxMes > 0 ? round(($m['total'] / $maxMes) * 90) : 10;
@@ -347,7 +347,7 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
                         <div class="d-flex align-items-center gap-4">
                             <svg width="90" height="90" viewBox="0 0 90 90">
                                 <circle cx="45" cy="45" r="33" fill="none" stroke="#EDE7F6" stroke-width="14"/>
-                                <circle cx="45" cy="45" r="33" fill="none" stroke="#6750A4" stroke-width="14"
+                                <circle cx="45" cy="45" r="33" fill="none" stroke="#2d1b69" stroke-width="14"
                                     stroke-dasharray="<?php echo $arcCand; ?> <?php echo $circ - $arcCand; ?>"
                                     stroke-dashoffset="0" transform="rotate(-90 45 45)"/>
                                 <circle cx="45" cy="45" r="33" fill="none" stroke="#038C33" stroke-width="14"
@@ -359,7 +359,7 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
                             </svg>
                             <div class="d-flex flex-column gap-2">
                                 <div class="d-flex align-items-center gap-2">
-                                    <div class="legend-dot" style="background:#6750A4;"></div>
+                                    <div class="legend-dot" style="background:#2d1b69;"></div>
                                     <span style="font-size:12px;color:#555;flex:1;">Candidatos</span>
                                     <strong style="font-size:12px;color:#2D1B69;"><?php echo $pctCand; ?>%</strong>
                                 </div>
