@@ -1,5 +1,5 @@
 <?php
-require_once('backend/config/conexao.php');
+require_once __DIR__ . "/../config/conexao.php";
 require_once('envia-email.php');
 
 function login($email, $senha)
@@ -54,9 +54,9 @@ function login($email, $senha)
 
                     if ($dados['s_temp'] == 0) {
                         // redirecionar para painel admin
-                        header('location: pag_inicial.php');
+                        header('location: __DIR__./../../candidato/pag_inicial.php');
                     } else {
-                        header('Location: reset.php');
+                        header('Location: __DIR__./../../auth/reset.php');
                     }
                 }
             } else {
@@ -79,18 +79,18 @@ function validaAcesso()
     }
 
     if ($_SESSION['sistema'] != 'sis_login') {
-        header('Location: index.php');
+        header('Location: __DIR__./../..');
     }
 
     if ($_SESSION['s_temp'] == 1) {
-        header('Location: reset.php');
+        header('Location: __DIR__./../../auth/reset.php');
     }
 }
 
 function validaEmpresa()
 {
     if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 1) {
-        header('Location: pag_inicial.php');
+        header('Location: __DIR__./../../candidato/pag_inicial.php');
         exit;
     }
 }
@@ -98,7 +98,7 @@ function validaEmpresa()
 function validaUsuario()
 {
     if (!isset($_SESSION['id_nivel']) || $_SESSION['id_nivel'] != 2) {
-        header('Location: pag_inicial_empresa.php');
+        header('Location: __DIR__./../../empresa/pag_inicial_empresa.php');
         exit;
     }
 }
@@ -176,7 +176,7 @@ function logout()
 
     session_destroy();
 
-    header('Location: login.php');
+    header('Location: __DIR__./../../auth/login.php');
     exit;
 }
 
@@ -265,7 +265,7 @@ function ativoEinativo($id)
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':id', $id);
         $comando->execute();
-        header("Location:lista_suporte.php");
+        header("Location: __DIR__./../../global/lista_suporte.php");
     } catch (PDOException $err) {
         error_log($err->getMessage());
     }
@@ -281,7 +281,7 @@ function deletarChamado($id)
         $comando->bindValue(':id', $id);
         $comando->execute();
 
-        header("Location: lista_suporte.php");
+        header("Location: __DIR__./../../global/lista_suporte.php");
     } catch (PDOException $err) {
 
         echo $err->getMessage(); // mostre o erro real
@@ -346,7 +346,7 @@ function uploadImagem($imagem)
 {
 
     //define a pasta para upload
-    $pasta = "assets/img/empresa/uploads/";
+    $pasta = "__DIR__./../../assets/img/empresa/uploads/";
 
     //captura a extensão da imagem
     //strtolower passa a extensão para minusculo
@@ -377,7 +377,7 @@ function cadastrarImagemVaga($idVaga, $nomeImagemUpload)
         $comando->bindValue(':idVaga', $idVaga);
         $comando->execute();
 
-        header('Location: perfil-empresa.php');
+        header('Location: __DIR__./../../Empresa/perfil-empresa.php');
     } catch (PDOException $err) {
         error_log($err->getMessage());
         return "Erro ao cadastrar";
@@ -484,7 +484,7 @@ function atualizarImagemVaga($idVaga, $nomeImagemUpload)
         $comando->bindValue(':idVaga', $idVaga);
         $comando->execute();
 
-        header('Location: perfil-empresa.php');
+        header('Location: __DIR__./../../Empresa/perfil-empresa.php');
     } catch (PDOException $err) {
         error_log($err->getMessage());
         return "Erro ao cadastrar";

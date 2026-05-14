@@ -1,6 +1,6 @@
 <!-- KAUÃ -->
 <?php
-require_once "../backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 session_start();
 
 $mensagem = '';
@@ -34,13 +34,14 @@ if (isset($_POST['nova'])) {
     <title>Login | Matchwork</title>
    <!-- Include Links -->
    <?php
-   require_once 'assets/templates/head.php';
+   require_once '../assets/templates/head.php';
    ?>
+   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="../"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main id="Logon">
         <form action="" method="post">
@@ -78,7 +79,7 @@ if (isset($_POST['nova'])) {
 
             <!-- Voltar -->
             <div class="text-center">
-                <a href="../index.php"
+                <a href="../"
                     class="text-sm text-gray-400 hover:text-gray-200 transition">
                     ← Voltar para login
                 </a>
@@ -90,7 +91,7 @@ if (isset($_POST['nova'])) {
 
    <!-- Include JS -->
    <?php
-   require_once 'assets/templates/js.php';
+   require_once '../assets/templates/js.php';
    ?>
 </body>
 

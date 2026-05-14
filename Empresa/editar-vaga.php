@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 //função que lista as vagas
 $vagas = listaVaga();
@@ -53,7 +53,7 @@ if(isset($_POST['editar'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Vaga</title>
 
-    <?php require_once 'assets/templates/head.php'; ?>
+    <?php require_once '../assets/templates/head.php'; ?>
 </head>
 
 <body id="cadastroCand">
@@ -61,7 +61,7 @@ if(isset($_POST['editar'])){
     <!-- LOGO -->
     <div id="ImgLogon" class="text-center my-4">
         <a href="perfil-empresa.php">
-            <img src="assets/img/Logomaior.png" alt="Logo">
+            <img src="../assets/img/Logomaior.png" alt="Logo">
         </a>
     </div>
 
@@ -129,7 +129,7 @@ if(isset($_POST['editar'])){
     </main>
 
     <!-- JS -->
-    <?php require_once 'assets/templates/js.php'; ?>
+    <?php require_once '../assets/templates/js.php'; ?>
 
 </body>
 

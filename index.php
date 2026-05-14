@@ -10,6 +10,7 @@
    <?php
    require_once 'assets/templates/head.php';
    ?>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -55,7 +56,7 @@
                         jornada complexa.
                         Somos uma plataforma inovadora dedicada a revolucionar o processo de recrutamento e seleção,
                         tornando-o mais eficiente, intuitivo e, acima de tudo, humano.</p>
-                    <button><a href="criarConta.php">Cadastre-se</a></button>
+                    <button><a href="Auth/criarConta.php">Cadastre-se</a></button>
                 </div>
             </section>
         </id>

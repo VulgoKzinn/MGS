@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 ?>
 
 <!DOCTYPE html>

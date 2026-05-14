@@ -1,5 +1,8 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../../backend/includes/funcoes.php";
+if(session_status() === PHP_SESSION_NONE){
+session_start();
+}
 
 $perfilLink = './perfil-candidato.php';
 
@@ -43,8 +46,8 @@ if ($acao === 'logout') {
 
     <ul class="dropdown-menu dropdown-menu-end">
         <li><a href="<?= $perfilLink ?>" class="dropdown-item">Perfil</a></li>
-        <li><a href="assinatura.php" class="dropdown-item">Assinatura</a></li>
-        <li><a href="suporte.php" class="dropdown-item">Suporte</a></li>
+        <li><a href="../global/assinatura.php" class="dropdown-item">Assinatura</a></li>
+        <li><a href="../global/suporte.php" class="dropdown-item">Suporte</a></li>
         <?php if($_SESSION['id_nivel'] == 1): ?>
         <li><a href="" class="dropdown-item">Inpulsionar</a></li>
         <?php endif; ?>

@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 session_start();
 validaAcesso();
 validaEmpresa();
@@ -12,23 +12,23 @@ validaEmpresa();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="assets/css/pagina-inicial.css">
+    <link rel="stylesheet" href="../assets/css/pagina-inicial.css">
     <!-- Include Links -->
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 
 <body id="bodypgs">
 
-    <?php require_once "assets/templates/headerMGS.php" ?>
+    <?php require_once "../assets/templates/headerMGS.php" ?>
 
     <div class="container mt-4">
 
         <div class="card-vaga">
 
             <div class="headerVaga">
-                <img src="./assets/img/sabesp-companhia-de-saneamento-basico-do-estado-de-sao-paulo 1.png" class="logo">
+                <img src="../assets/img/sabesp-companhia-de-saneamento-basico-do-estado-de-sao-paulo 1.png" class="logo">
                 <h5 class="m-0">SABESP - SP</h5>
             </div>
 
@@ -66,7 +66,7 @@ validaEmpresa();
     </script>
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
 
 

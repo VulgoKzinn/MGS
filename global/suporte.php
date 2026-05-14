@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 if(isset($_POST['enviar'])){
     $nome = $_POST['nome'];
@@ -17,15 +17,15 @@ $mensagem=suporte($nome, $email, $descricao);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MGS | Suporte</title>
 
-    <?php require_once 'assets/templates/head.php'; ?>
+    <?php require_once '../assets/templates/head.php'; ?>
 </head>
 
 <body id="cadastroCand">
 
     <!-- LOGO -->
     <div id="ImgLogon" class="text-center my-4">
-        <a href="index.php">
-            <img src="assets/img/Logomaior.png" alt="Logo">
+        <a href="../">
+            <img src="../assets/img/Logomaior.png" alt="Logo">
         </a>
     </div>
 
@@ -69,7 +69,7 @@ $mensagem=suporte($nome, $email, $descricao);
                 <div class="text-sm text-indigo-300 bg-indigo-900/20 border border-indigo-800 p-2 rounded">
                     <?= $mensagem;?>
                      <?php if (str_contains($mensagem, 'sucesso')): ?>
-        <a href="pag_inicial.php" class="btn btn-success w-100">Voltar</a>
+        <a href="../candidato/pag_inicial.php" class="btn btn-success w-100">Voltar</a>
                     <?php endif; ?>
                 </div>
                   <?php endif; ?>
@@ -82,7 +82,7 @@ $mensagem=suporte($nome, $email, $descricao);
     </main>
 
     <!-- JS -->
-    <?php require_once 'assets/templates/js.php'; ?>
+    <?php require_once '../assets/templates/js.php'; ?>
 
 </body>
 

@@ -1,9 +1,9 @@
 <?php
-require_once "backend/includes/funcoes.php";
-$matchLink = './match-candidato.php';
+require_once "../backend/includes/funcoes.php";
+$matchLink = '../candidato/match-candidato.php';
 
 if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
-    $matchLink = './match-empresa.php';
+    $matchLink = '../empresa/match-empresa.php';
 }
 ?>
 <style>
@@ -24,8 +24,8 @@ if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
         <nav class="navbar navbar-expand-lg bg-light px-4 py-2 shadow-sm rounded-pill mt-2">
 
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="pag_inicial.php">
-                <img src="assets/img/logo.svg" alt="logo" height="32">
+            <a class="navbar-brand d-flex align-items-center" href="../candidato/pag_inicial.php">
+                <img src="../assets/img/logo.svg" alt="logo" height="32">
             </a>
 
             <!-- Botão mobile -->

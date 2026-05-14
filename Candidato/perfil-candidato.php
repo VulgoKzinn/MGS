@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 session_start();
 validaAcesso();
 validaUsuario();
@@ -14,26 +14,26 @@ validaUsuario();
     <title>Perfil - Pedro</title>
     <!-- Include Links -->
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 
 </head>
 
 <body id="bodypgs">
-    <?php include "assets/templates/headerMGS.php"; ?>
+    <?php include "../assets/templates/headerMGS.php"; ?>
 
     <main class="container mt-4">
 
         <div class="card border-0 shadow-sm overflow-hidden">
             <div class="banner position-relative">
 
-                <a href="editar-perfil-candidato.php" class="btn-config" title="Configurações">
+                <a href="../editar-perfil-candidato.php" class="btn-config" title="Configurações">
                     <i class="bi bi-gear-fill"></i>
                 </a>
 
 
                 <div class="container-foto">
-                    <img class="foto-perfil" src="assets/img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" alt="Foto de perfil">
+                    <img class="foto-perfil" src="../assets/img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" alt="Foto de perfil">
                 </div>
             </div>
 
@@ -248,27 +248,27 @@ validaUsuario();
             <div class="carousel-inner text-center">
 
                 <div class="carousel-item active">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="d-block mx-auto img-fluid">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="d-block mx-auto img-fluid">
                     <h5 class="mt-3">Certificado de HTML</h5>
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="d-block mx-auto img-fluid">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="d-block mx-auto img-fluid">
                     <h5 class="mt-3">Certificado de CSS</h5>
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="d-block mx-auto img-fluid">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="d-block mx-auto img-fluid">
                     <h5 class="mt-3">Certificado de Photoshop</h5>
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="d-block mx-auto img-fluid">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="d-block mx-auto img-fluid">
                     <h5 class="mt-3">Certificado de JavaScript</h5>
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="d-block mx-auto img-fluid">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="d-block mx-auto img-fluid">
                     <h5 class="mt-3">Certificado de PHP</h5>
                 </div>
 
@@ -294,13 +294,13 @@ validaUsuario();
                     <p class="texto-descricao">"Especializei-me na fundação da web moderna com HTML5 Semântico. Durante minha formação, aprendi a construir estruturas robustas e otimizadas para SEO, garantindo que o conteúdo seja acessível tanto para usuários quanto para motores de busca. Dominei o uso de tags estruturais, formulários inteligentes e a integração de mídias nativas."</p>
                 </div>
                 <div class="col-md-5 text-center">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="img-fluid certificado-img" alt="Certificado HTML5">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_xrk13gxrk13gxrk1.png" class="img-fluid certificado-img" alt="Certificado HTML5">
                 </div>
             </section>
 
             <section class="row align-items-center mb-5 section-item">
                 <div class="col-md-5 text-center order-last order-md-first">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="img-fluid certificado-img" alt="Certificado CSS3">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_ha8bw0ha8bw0ha8b.png" class="img-fluid certificado-img" alt="Certificado CSS3">
                 </div>
                 <div class="col-md-7">
                     <h2 class="titulo-roxo">CSS3</h2>
@@ -314,13 +314,13 @@ validaUsuario();
                     <p class="texto-descricao">"Finalizei o curso de JavaScript focado em lógica de programação e interatividade. Durante o aprendizado, desenvolvi habilidades em manipulação do DOM, eventos, consumo de APIs e lógica assíncrona (AJAX/Promises). Crio sistemas web dinâmicos e fluidos."</p>
                 </div>
                 <div class="col-md-5 text-center">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="img-fluid certificado-img" alt="Certificado JavaScript">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_u5p4h5u5p4h5u5p4.png" class="img-fluid certificado-img" alt="Certificado JavaScript">
                 </div>
             </section>
 
             <section class="row align-items-center mb-5 section-item">
                 <div class="col-md-5 text-center order-last order-md-first">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="img-fluid certificado-img" alt="Certificado PHP">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_exmupeexmupeexmu.png" class="img-fluid certificado-img" alt="Certificado PHP">
                 </div>
                 <div class="col-md-7">
                     <h2 class="titulo-roxo">PHP</h2>
@@ -334,7 +334,7 @@ validaUsuario();
                     <p class="texto-descricao">"Especializei-me em edição e manipulação de imagens. O foco foi em criação de layouts para web, tratamento de fotos profissionais e design de marcas. Entrego a identidade visual completa de um projeto com acabamento profissional."</p>
                 </div>
                 <div class="col-md-5 text-center">
-                    <img src="assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="img-fluid certificado-img" alt="Certificado Photoshop">
+                    <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_tchmttchmttchmtt.png" class="img-fluid certificado-img" alt="Certificado Photoshop">
                 </div>
             </section>
 
@@ -342,7 +342,7 @@ validaUsuario();
     </main>
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
 </body>
 

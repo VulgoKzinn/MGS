@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 // ===============================================DELETAR/ATIVO/INATIVO====================================================
 $acao = $_GET['acao'] ?? null;
 $id = $_GET['id'] ?? null;
@@ -25,15 +25,15 @@ $listachamados = listachamado();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MGS |Lista-Suporte</title>
 
-    <?php require_once 'assets/templates/head.php'; ?>
+    <?php require_once '../assets/templates/head.php'; ?>
 </head>
 
 <body id="cadastroCand">
 
     <!-- LOGO -->
     <div id="ImgLogon" class="text-center my-4">
-        <a href="index.php">
-            <img src="assets/img/Logomaior.png" alt="Logo">
+        <a href="../">
+            <img src="../assets/img/Logomaior.png" alt="Logo">
         </a>
     </div>
 
@@ -128,7 +128,7 @@ $listachamados = listachamado();
     </main>
 
     <!-- JS -->
-    <?php require_once 'assets/templates/js.php'; ?>
+    <?php require_once '../assets/templates/js.php'; ?>
 
 </body>
 
