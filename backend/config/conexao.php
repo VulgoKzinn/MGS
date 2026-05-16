@@ -1,9 +1,11 @@
 <?php
 try{
-    define("SERVIDOR","26.179.55.6");
+    define("SERVIDOR","localhost");
     define("USUARIO","admin");
     define("SENHA","admin");
     define("BANCO","db_mgs");
+    // define("PORTA","");
+    // ;port=".PORTA."
 
     $conexao = new PDO("mysql:host=".SERVIDOR.";dbname=".BANCO.";charset=utf8mb4",USUARIO,SENHA);
 

@@ -1,6 +1,6 @@
 <!-- SABRINA -->
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 session_start();
 //caso seja clicado no botão cadastrar a função é executada
@@ -43,13 +43,13 @@ if (isset($_POST['cadastrar'])) {
 
     <!-- Include Links -->
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 
 <body id="cadastroCand">
     <div id="ImgLogon">
-        <a href="perfil-empresa.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="perfil-empresa.php"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
 
     <!-- Formulário -->
@@ -146,7 +146,7 @@ if (isset($_POST['cadastrar'])) {
 
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
 <script>
     document.getElementById('imagem').addEventListener('change', function(event) {

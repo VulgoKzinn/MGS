@@ -1,6 +1,6 @@
 <?php
-require_once "backend/includes/funcoes.php";
-
+require_once __DIR__ . "/../backend/includes/funcoes.php";
+session_start();
 validaAcesso();
 
 global $conexao;
@@ -52,14 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Editar Perfil | Matchwork</title>
 
-    <?php require_once 'assets/templates/head.php'; ?>
+    <?php require_once '../assets/templates/head.php'; ?>
 </head>
 
 <body id="login">
 
 <div id="ImgLogon" class="text-center mb-3">
-    <a href="index.php">
-        <img src="assets/img/logomaior.png" alt="Logo">
+    <a href="../">
+        <img src="../assets/img/logomaior.png" alt="Logo">
     </a>
 </div>
 
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Foto de Capa</label><br>
 
         <img id="previewCapa"
-             src="<?= $user['foto_banner'] ?? 'assets/img/perfil-candidato/padrao-capa.png' ?>"
+             src="<?= $user['foto_banner'] ?? '../assets/img/perfil-candidato/padrao-capa.png' ?>"
              class="img-fluid rounded mb-2"
              style="max-height:150px;">
 
@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Foto de Perfil</label><br>
 
         <img id="previewPerfil"
-             src="<?= $user['foto_perfil'] ?? 'assets/img/perfil-candidato/padrao.png' ?>"
+             src="<?= $user['foto_perfil'] ?? '../assets/img/perfil-candidato/padrao.png' ?>"
              class="rounded-circle mb-2"
              style="width:120px;height:120px;object-fit:cover;">
 
@@ -178,7 +178,7 @@ document.getElementById('perfilInput').onchange = e => {
 };
 </script>
 
-<?php require_once 'assets/templates/js.php'; ?>
+<?php require_once '../assets/templates/js.php'; ?>
 
 </body>
 </html>

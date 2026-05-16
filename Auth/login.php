@@ -1,6 +1,6 @@
 <!-- KAUÃ -->
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 $mensagem = '';
 $email = '';
@@ -20,16 +20,16 @@ if (isset($_POST['login'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | Matchwork</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <!-- Include Links -->
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="../index.php"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main id="Logon">
         <form action="" method="post">
@@ -72,7 +72,7 @@ if (isset($_POST['login'])) {
 
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if (isset($_GET['cadastro'])): ?>

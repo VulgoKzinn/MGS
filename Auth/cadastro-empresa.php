@@ -1,6 +1,6 @@
 <!-- KAUÃ -->
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 // ============================================Lista Atuacao============================================
 $listaAtuacaos = listaAtuacao();
 // ============================================Lista Atuacao============================================
@@ -8,7 +8,7 @@ $listaAtuacaos = listaAtuacao();
 session_start();
 
  if (!isset($_SESSION['id_login'])) {
-    header("Location: login.php");
+    header("Location: auth/login.php");
     exit;
 }
 
@@ -25,7 +25,7 @@ if (isset($_POST['cadastrarEmp'])) {
         $retorno = cadastrarEmpresa($_POST, $id_login);
 
         if ($retorno === "sucesso") {
-            header("Location: login.php?cadastro=empresa_sucesso");
+            header("Location: auth/login.php?cadastro=empresa_sucesso");
             exit;
         } else {
             $mensagem = $retorno;
@@ -45,14 +45,15 @@ if (isset($_POST['cadastrarEmp'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro | Matchwork</title>
     <!-- Include Links -->
+    <link rel="stylesheet" href="../assets/css/style.css">
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 
 <body id="cadastroCand">
     <div id="ImgLogon">
-        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="../"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <!-- Formulário -->
     <main id="CadCand">
@@ -137,7 +138,7 @@ if (isset($_POST['cadastrarEmp'])) {
 
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
     <script>
         $(document).ready(function() {

@@ -1,21 +1,20 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
 $id_nivel = $_SESSION['id_nivel'];
-validaUsuario($id_nivel);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mech</title>
       <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 <body id="bodypgs">
-    <?php include "assets/templates/headerMGS.php"; ?>
+    <?php include "../assets/templates/headerMGS.php"; ?>
     
 
 
@@ -38,7 +37,7 @@ validaUsuario($id_nivel);
                 <div class="list-group-item border-0 shadow-sm rounded mb-3 p-3 candidato-card">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <img src="assets/img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" 
+                            <img src="../assets/img/perfil-candidato/Gemini_Generated_Image_19lini19lini19li.png" 
                                  class="rounded-circle foto-perfil-notificacao" width="85" height="85">
                         </div>
                         <div class="col">
@@ -153,7 +152,7 @@ validaUsuario($id_nivel);
 
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
 
 </body>

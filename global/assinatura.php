@@ -1,8 +1,18 @@
 
 <!-- KAUÃ -->
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
+
+if(session_status() === PHP_SESSION_NONE){
+session_start();
+}
+
+$voltarLink = '../candidato/pag_inicial.php';
+
+if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
+    $perfilLink = '../empresa/pag_inicial_empresa.php';
+}
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -10,12 +20,12 @@ validaAcesso();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assinaturas | Matchwork</title>
-    <?php require_once 'assets/templates/head.php'; ?>
+    <?php require_once '../assets/templates/head.php'; ?>
 </head>
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="../"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main>
         <div id="grid-plano">
@@ -66,9 +76,18 @@ validaAcesso();
                     <a href="processa_assinatura.php?id=3" class="btn btn-success w-100">Escolher</a> 
                 </div>
             </div>
+            
+            <!-- Voltar -->
+            <div class="text-center">
+                <a href="<?= $voltarLink ?>"
+                    class="text-sm text-gray-400 hover:text-gray-200 transition">
+                    ← Voltar para login
+                </a>
+            </div>
+
         </div>
     </main>
 
-    <?php require_once 'assets/templates/js.php'; ?>
+    <?php require_once '../assets/templates/js.php'; ?>
 </body>
 </html>

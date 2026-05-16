@@ -1,5 +1,5 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 // ================================================= Valida pagina que o usuario deve acessar =====================================
 session_start();
 validaAcesso();
@@ -16,16 +16,16 @@ $Disponiveis = VagasDisponiveis();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="assets/css/pagina-inicial.css">
+    <link rel="stylesheet" href="../assets/css/pagina-inicial.css">
     <!-- Include Links -->
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 
 <body id="bodypgs">
     <?php
-    require_once "assets/templates/headerMGS.php";
+    require_once "../assets/templates/headerMGS.php";
     ?>
 
     <?php foreach ($Disponiveis as $Disponivel): ?>
@@ -83,7 +83,9 @@ $Disponiveis = VagasDisponiveis();
                 <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
                     Ler mais
                 </button>
-
+                <?php if (!empty($Disponivel['imagem_vaga'])): ?>
+                    <img src="../assets/img/empresa/uploads/<?= $Disponivel['imagem_vaga'] ?>">
+                <?php endif; ?>
 
                 <form class="acoes">
                     <button type="submit" class="btn-circle like">❤</button>
@@ -112,7 +114,7 @@ $Disponiveis = VagasDisponiveis();
     </script>
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
 </body>
 

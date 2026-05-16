@@ -1,8 +1,8 @@
 <?php
-require_once "backend/includes/funcoes.php";
-session_start();
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
-validaUsuario();
+$id_nivel = $_SESSION['id_nivel'];
+// validaEmpresa($id_nivel);
 
 ?>
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ validaUsuario();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mech2</title>
       <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 </head>
 <body id="bodypgs">
-    <?php include "assets/templates/headerMGS.php"; ?>
+    <?php include "../assets/templates/headerMGS.php"; ?>
 
   <section class="container mt-4 mb-5">
     <div class="card shadow-sm border-0 central-oportunidades">
@@ -37,7 +37,7 @@ validaUsuario();
                 <div class="list-group-item border-0 shadow-sm rounded mb-3 p-3 empresa-card border-start border-4 border-primary">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <img src="assets/img/perfil-empresa/amazon-perfil.jpeg" 
+                            <img src="../assets/img/perfil-empresa/amazon-perfil.jpeg" 
                                  class="rounded-circle logo-empresa-notificacao" width="85" height="85">
                         </div>
                         <div class="col">
@@ -49,7 +49,7 @@ validaUsuario();
                         </div>
                         <div class="col-auto d-flex gap-2">
                             <button class="btn btn-outline-danger btn-sm rounded-circle shadow-sm" title="Recusar"><i class="bi bi-trash3"></i></button>
-                            <a href="perfil-empresa.php" class="btn btn-primary btn-sm rounded-circle shadow-sm text-white" title="Ver Vaga"><i class="bi bi-eye"></i></a>
+                            <a href="../perfil-empresa.php" class="btn btn-primary btn-sm rounded-circle shadow-sm text-white" title="Ver Vaga"><i class="bi bi-eye"></i></a>
                             <a href="https://wa.me/5519999999999" class="btn btn-success btn-sm rounded-circle shadow-sm text-white" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
                         </div>
                     </div>
@@ -155,7 +155,7 @@ validaUsuario();
 
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
 
 </body>

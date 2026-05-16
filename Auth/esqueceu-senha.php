@@ -1,6 +1,6 @@
 <!-- KAUÃ -->
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 $mensagem = '';
 
@@ -21,13 +21,13 @@ if (isset($_POST['recuperar'])) {
     <title>Login | Matchwork</title>
    <!-- Include Links -->
    <?php
-   require_once 'assets/templates/head.php';
+   require_once '../assets/templates/head.php';
    ?>
 </head>
 
 <body id="login">
     <div id="ImgLogon">
-        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="../index.php"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <main id="Logon">
         <form action="" method="post">
@@ -64,7 +64,7 @@ if (isset($_POST['recuperar'])) {
 
    <!-- Include JS -->
    <?php
-   require_once 'assets/templates/js.php';
+   require_once '../assets/templates/js.php';
    ?>
 </body>
 

@@ -1,7 +1,7 @@
 <!-- KAUÃ -->
 <?php
 session_start(); // inicia a sessão
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 $mensagem = '';
 if (isset($_POST['cadastrar'])) {
@@ -25,12 +25,12 @@ if (is_numeric($retorno)) {
     if ($empresa == 1) {
 
         $_SESSION['id_login'] = $id_login;
-        header("Location: cadastro-empresa.php");
+        header("Location: auth/cadastro-empresa.php");
         exit;
 
     } else {
 
-        header("Location: login.php?cadastro=sucesso");
+        header("Location: auth/login.php?cadastro=sucesso");
         exit;
     }
 
@@ -50,14 +50,15 @@ if (is_numeric($retorno)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro | Matchwork</title>
     <!-- Include Links -->
+    <link rel="stylesheet" href="../assets/css/style.css">
     <?php
-    require_once 'assets/templates/head.php';
+    require_once __DIR__ . "/../assets/templates/head.php";
     ?>
 </head>
 
 <body id="cadastroCand">
     <div id="ImgLogon">
-        <a href="index.php"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+        <a href="../"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
     </div>
     <!-- Formulário -->
     <main id="CadCand">
@@ -107,7 +108,7 @@ if (is_numeric($retorno)) {
 
     <!-- Include JS -->
     <?php
-    require_once 'assets/templates/js.php';
+    require_once '../assets/templates/js.php';
     ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

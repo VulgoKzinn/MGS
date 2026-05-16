@@ -1,5 +1,8 @@
 <?php
-require_once "backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
+session_start();
+validaAcesso();
+validaUsuario();
 ?>
 
 <!DOCTYPE html>
@@ -12,32 +15,32 @@ require_once "backend/includes/funcoes.php";
 
     <!-- Include Links -->
     <?php
-    require_once 'assets/templates/head.php';
+    require_once '../assets/templates/head.php';
     ?>
 
     <!-- Para garantir responsividade em mobile bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- css da pagina -->
-    <link rel="stylesheet" href="assets/css/perfil-empresa.css">
+    <link rel="stylesheet" href="../assets/css/perfil-empresa.css">
     <!--OBS talvez tirar depois de padronizar a fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body id="bodypgs">
 
-    <?php include "assets/templates/headerMGS.php"; ?>
+    <?php include "../assets/templates/headerMGS.php"; ?>
 
     <main class="container mt-4">
         <!-- PERFIL -->
         <div class="position-relative" style="margin-bottom: 140px;">
 
             <!-- CAPA -->
-            <img src="assets/img/empresa/perfil-empresa/amazon-capa.jpg"
+            <img src="../assets/img/empresa/perfil-empresa/amazon-capa.jpg"
                 class="img-fluid w-100 capa rounded">
 
             <!-- CONFIGURAÇÕES -->
             <div class="config-btn">
-                <?php include "assets/templates/subedit.php"; ?>
+                <?php include "../assets/templates/subedit.php"; ?>
             </div>
 
             <!-- FOTO + TEXTO -->
@@ -45,7 +48,7 @@ require_once "backend/includes/funcoes.php";
                 style="transform: translateY(35%);">
 
                 <!-- FOTO PERFIL -->
-                <img src="assets/img/empresa/perfil-empresa/amazon-perfil.jpeg"
+                <img src="../assets/img/empresa/perfil-empresa/amazon-perfil.jpeg"
                     class="rounded-circle shadow border border-4 border-white object-fit-cover bg-white"
                     width="170"
                     height="170">
@@ -270,7 +273,7 @@ require_once "backend/includes/funcoes.php";
                         <!-- FOTO -->
                         <div class="text-center mb-4">
 
-                            <img src="assets/img/certificados/certificado01.jpg"
+                            <img src="../assets/img/certificados/certificado01.jpg"
                                 class="img-fluid rounded shadow">
 
                         </div>
@@ -317,7 +320,7 @@ require_once "backend/includes/funcoes.php";
 
     </main>
 
-    <?php require_once 'assets/templates/js.php'; ?>
+    <?php require_once '../assets/templates/js.php'; ?>
 
 </body>
 
