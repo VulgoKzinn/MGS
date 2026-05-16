@@ -558,7 +558,7 @@ function cadastrarEmpresa($dados, $id_login)
 }
 
 // =============================================Cadastro de Empresa======================================
-// ============================================Lista Atuacao============================================
+// =============================================lISTA VAGAS======================================
 function VagasDisponiveis()
 {
     try {
@@ -570,19 +570,21 @@ function VagasDisponiveis()
                     tb_img_vaga.imagem AS imagem_vaga
                 FROM tb_vagas
                 INNER JOIN tb_empresa 
-                ON tb_vagas.id_empresa = tb_empresa.id
+                    ON tb_vagas.id_empresa = tb_empresa.id
                 LEFT JOIN tb_img_vaga
-                ON tb_vagas.id = tb_img_vaga.id_vaga";
+                    ON tb_vagas.id = tb_img_vaga.id_vaga
+                ORDER BY tb_vagas.id DESC";
 
         $comando = $conexao->prepare($sql);
         $comando->execute();
 
         return $comando->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $err) {
         error_log($err->getMessage());
         echo $err->getMessage();
 
-        return "Erro ao Listar vagas";
+        return "Erro ao listar vagas";
     }
 }
-// ============================================Lista Atuacao============================================
+// =============================================lISTA VAGAS======================================
