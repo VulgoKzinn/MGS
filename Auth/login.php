@@ -74,36 +74,37 @@ if (isset($_POST['login'])) {
     <?php
     require_once '../assets/templates/js.php';
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if (isset($_GET['cadastro'])): ?>
-
+<!-- ======================================Cadastro da Empresa=============================================== -->
         <script>
-
-            <?php if ($_GET['cadastro'] == 'sucesso'): ?>
+            <?php if ($_GET['cadastro'] == 'empresa_sucesso'): ?>
 
                 Swal.fire({
-                    title: "Conta criada!",
+                    title: "Empresa cadastrada!",
                     text: "Bem vindo a MGS!",
                     icon: "success"
                 }).then(() => {
                     window.history.replaceState({}, document.title, "login.php");
                 });
 
-            <?php elseif ($_GET['cadastro'] == 'empresa_sucesso'): ?>
-
-                Swal.fire({
-                    title: "Empresa cadastrada!",
-                    text: "Agora você pode fazer login.",
-                    icon: "success"
-                }).then(() => {
-                    window.history.replaceState({}, document.title, "login.php");
-                });
-
             <?php endif; ?>
-            
+            <?php endif; ?>
         </script>
+<!-- ======================================Cadastro da Empresa=============================================== -->
 
-    <?php endif; ?>
+<!-- ======================================Cadastro do usuario=============================================== -->
+        <?php if (isset($_GET['finalizarCadastro']) && $_GET['finalizarCadastro'] == 'sucesso'): ?>
+
+            <script>
+                Swal.fire({
+                    title: "Conta criada!",
+                    text: "Bem vindo a MGS!",
+                    icon: "success"
+                });
+            </script>
+
+        <?php endif; ?>
+<!-- ======================================Cadastro do usuario=============================================== -->
 </body>
 
 </html>

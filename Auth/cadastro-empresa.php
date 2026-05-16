@@ -8,7 +8,7 @@ $listaAtuacaos = listaAtuacao();
 session_start();
 
  if (!isset($_SESSION['id_login'])) {
-    header("Location: auth/login.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -25,7 +25,7 @@ if (isset($_POST['cadastrarEmp'])) {
         $retorno = cadastrarEmpresa($_POST, $id_login);
 
         if ($retorno === "sucesso") {
-            header("Location: auth/login.php?cadastro=empresa_sucesso");
+            header("Location: login.php?cadastro=empresa_sucesso");
             exit;
         } else {
             $mensagem = $retorno;
@@ -150,7 +150,6 @@ if (isset($_POST['cadastrarEmp'])) {
 
         $('.selectpicker').selectpicker('refresh');
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

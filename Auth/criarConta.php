@@ -25,11 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($senha == '' || $confirma == '') {
 
         $mensagem = 'Preencha a senha!';
-
     } elseif ($senha !== $confirma) {
 
         $mensagem = 'Senhas não conferem!';
-
     } else {
 
         $retorno = validaEmail($email, $senha, $empresa);
@@ -44,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 header("Location: cadastro-empresa.php");
                 exit;
-
             } else {
 
                 cadastrarPerfilCandidato(
@@ -54,10 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $endereco
                 );
 
-                header("Location: login.php");
+                header("Location: login.php?finalizarCadastro=sucesso");    
                 exit;
             }
-
         } else {
 
             $mensagem = $retorno;
@@ -128,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="hidden" name="endereco" id="endereco">
 
             <div class="text-end">
-                <button type="submit" class="btn btn-success w-100" name="cadastrar" abs>
+                <button type="submit" class="btn btn-success w-100" name="cadastrar">
                     Criar Conta
                 </button>
             </div>
@@ -148,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="modal-body">
 
                     <div class="mb-3">
-                        <label>Nome</label>
+                        <label>Nome Completo</label>
                         <input type="text" class="form-control" id="modalNome">
                     </div>
 
@@ -182,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php
     require_once '../assets/templates/js.php';
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         const form = document.getElementById("formCadastro");
 
@@ -236,6 +232,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $(document).ready(function() {
             $('#modalTelefone').mask('(00) 00000-0000');
         });
+
+        // alert de cadastro de empresa
+        // alert de cadastro de empresa
+        <?php if (isset($_GET['finalizarCadastro'])): ?>
+
+            <?php if ($_GET['finalizarCadastro'] == 'sucesso'): ?>
+
+                Swal.fire({
+                    title: "Conta criada!",
+                    text: "Bem vindo a MGS!",
+                    icon: "success"
+                }).then(() => {
+                    window.history.replaceState({}, document.title, "login.php");
+                });
+
+            <?php endif; ?>
+
+        <?php endif; ?>
     </script>
 
 
