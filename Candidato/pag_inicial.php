@@ -73,20 +73,25 @@ $Disponiveis = VagasDisponiveis();
                     <h5>Modelo de Trabalho:</h5>
                     <p><?= $Disponivel['modelo_de_trabalho'] ?></p>
 
-                     <?php if (!empty($Disponivel['imagem_vaga'])): ?>
-                    <img src="../assets/img/empresa/uploads/<?= $Disponivel['imagem_vaga'] ?>">
-                <?php endif; ?>
+                    <?php if (!empty($Disponivel['imagem_vaga'])): ?>
+                        <img src="../assets/img/empresa/uploads/<?= $Disponivel['imagem_vaga'] ?>">
+                    <?php endif; ?>
 
                 </div>
 
                 <button onclick="toggleTexto(this)" class="btn btn-light mt-2 btn-ler-mais">
                     Ler mais
                 </button>
-               
-                <form class="acoes">
-                    <button type="submit" class="btn-circle like">❤</button>
+
+                <div class="acoes">
+                    <button
+                        type="button"
+                        class="btn-circle like btn-match"
+                        data-vaga="<?= $Disponivel['id'] ?>">
+                        ❤
+                    </button>
                     <button type="submit" class="btn-circle dislike">✖</button>
-                </form>
+                    </div>
 
             </div>
 
@@ -112,6 +117,30 @@ $Disponiveis = VagasDisponiveis();
     <?php
     require_once '../assets/templates/js.php';
     ?>
+
+    <script>
+        document.querySelectorAll('.btn-match').forEach(botao => {
+            botao.addEventListener('click', function() {
+                let idVaga = this.dataset.vaga;
+                fetch('../assets/api/match-candidato-back.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'id_vaga=' + idVaga
+})
+.then(response => response.text())
+.then(data => {
+
+    console.log(data);
+
+})
+.catch(error => {
+    console.log(error);
+});
+            });
+        });
+    </script>
 </body>
 
 </html>
