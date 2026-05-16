@@ -1,16 +1,17 @@
 <?php
 require_once __DIR__ . "/../backend/includes/funcoes.php";
-// ======================================Trazer o nome e email da pag login====================================
-
-// ======================================Trazer o nome e email da pag login====================================
+session_start();
+validaAcesso();
+validaUsuario();
 ?>
-<!-- SABRINA -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <title>Perfil Empresarial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
 
     <!-- Include Links -->
     <?php
@@ -25,242 +26,302 @@ require_once __DIR__ . "/../backend/includes/funcoes.php";
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
-
-<body>
+<body id="bodypgs">
 
     <?php include "../assets/templates/headerMGS.php"; ?>
 
-    <body id="bodypgs">
-        <?php require_once "../assets/templates/headerMGS.php" ?>
+    <main class="container mt-4">
+        <!-- PERFIL -->
+        <div class="position-relative" style="margin-bottom: 140px;">
 
-        <main class="container mt-4">
-            <!-- PERFIL -->
-            <div class="position-relative" style="margin-bottom: 140px;">
+            <!-- CAPA -->
+            <img src="../assets/img/empresa/perfil-empresa/amazon-capa.jpg"
+                class="img-fluid w-100 capa rounded">
 
-                <!-- CAPA -->
-                <img src="../assets/img/empresa/perfil-empresa/amazon-capa.jpg"
-                    class="img-fluid w-100 capa rounded">
+            <!-- CONFIGURAÇÕES -->
+            <div class="config-btn">
+                <?php include "../assets/templates/subedit.php"; ?>
+            </div>
 
-                <!-- CONFIGURAÇÕES -->
-                <div class="config-btn">
-                    <?php include "../assets/templates/subedit.php"; ?>
-                </div>
+            <!-- FOTO + TEXTO -->
+            <div class="position-absolute start-0 bottom-0 ms-5 d-flex align-items-end"
+                style="transform: translateY(35%);">
 
-                <!-- FOTO + TEXTO -->
-                <div class="position-absolute start-0 bottom-0 ms-5 d-flex align-items-end"
-                    style="transform: translateY(35%);">
+                <!-- FOTO PERFIL -->
+                <img src="../assets/img/empresa/perfil-empresa/amazon-perfil.jpeg"
+                    class="rounded-circle shadow border border-4 border-white object-fit-cover bg-white"
+                    width="170"
+                    height="170">
 
-                    <!-- FOTO PERFIL -->
-                    <img src="../assets/img/empresa/perfil-empresa/amazon-perfil.jpeg"
-                        class="rounded-circle shadow border border-4 border-white object-fit-cover bg-white"
-                        width="170"
-                        height="170">
+                <!-- INFORMAÇÕES -->
+                <div class="ms-4" style="margin-bottom: -25px;">
 
-                    <!-- INFORMAÇÕES -->
-                    <div class="ms-4" style="margin-bottom: -25px;">
+                    <h1 class="fw-bold text-black mb-1">
+                        Pedro Azevedo
+                    </h1>
 
-                        <h1 class="fw-bold text-black mb-1">
-                            Amazon
-                        </h1>
-                        <p class="fs-5 text-muted mb-0">
-                            De A a Z
-                        </p>
-
-                    </div>
+                    <p class="fs-5 text-muted mb-0">
+                        Desenvolvedor Full Stack
+                    </p>
 
                 </div>
 
             </div>
 
-            <!--QUEM SOMOS -->
-            <div class="certificados text-center mt-5 pt-5 mb-5">
+        </div>
 
-                <h1 class="text-center mt-5 quem-somos">
-                    QUEM SOMOS?
-                </h1>
+        <!-- CONTEÚDO -->
+        <div class="row mt-4 g-4">
 
-            </div>
+            <!-- LADO ESQUERDO -->
+            <div class="col-lg-4">
 
-            <!-- Primeira descrição da empresa -->
-            <div class="container-fluid mt-7 px-5 mb-5">
-                <div class="row align-items-center">
+                <!-- CONTATO -->
+                <div class="card border-0 shadow-sm p-4 mb-4">
 
-                    <div class="col-md-5">
-                        <p class="descricao-texto">A Amazon é uma empresa global de tecnologia focada em facilitar a vida de
-                            pessoas e negócios por meio da
-                            inovação. Atuamos em áreas como e-commerce, computação em nuvem, logística e entretenimento digital,
-                            sempre
-                            com o cliente no centro de tudo o que fazemos.
-                            Nossa cultura é guiada por princípios como obsessão pelo cliente, pensamento de longo prazo e busca
-                            constante por excelência. Acreditamos em ambientes diversos, colaborativos e que incentivam o
-                            aprendizado
-                            contínuo, oferecendo oportunidades reais de crescimento profissional.
-                        </p>
+                    <h4 class="fw-bold mb-4 titulo-roxo-curto">
+                        Contato
+                    </h4>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-envelope-fill fs-4 me-3"></i>
+                        <span>pedro@email.com</span>
                     </div>
 
-                    <div class="col-md-6 text-center">
-                        <img src="../assets/img/empresa/perfil-empresa/amazon-empresa01.webp" class="img-fluid imagem-descricao">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-whatsapp fs-4 me-3"></i>
+                        <span>(19) 99999-9999</span>
                     </div>
+
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-geo-alt-fill fs-4 me-3"></i>
+                        <span>São João da Boa Vista - SP</span>
+                    </div>
+
                 </div>
-            </div>
 
-            <!-- Segunda descrição da empresa -->
-            <div class="container-fluid mt-7 px-5 mb-5">
-                <div class="row align-items-center flex-md-row-reverse">
+                <!-- BIO -->
+                <div class="card border-0 shadow-sm p-4 mb-4">
 
-                    <div class="col-md-5">
-                        <p class="descricao-texto">Aqui, valorizamos pessoas que gostam de desafios, têm espírito inovador e
-                            desejam fazer parte de soluções
-                            que impactam milhões de pessoas todos os dias, atuando em um ambiente dinâmico, diverso e orientado a
-                            resultados, onde novas ideias são incentivadas e o desenvolvimento profissional é levado a sério.
-                        </p>
-                    </div>
+                    <h4 class="fw-bold mb-3 titulo-roxo-curto">
+                        Biografia
+                    </h4>
 
-                    <div class="col-md-6 text-center">
-                        <img src="../assets/img/empresa/perfil-empresa/amazon-empresa.jpg" class="img-fluid imagem-descricao">
-                    </div>
+                    <p class="text-secondary">
+                        Desenvolvedor apaixonado por tecnologia,
+                        interfaces modernas e sistemas web.
+                        Possuo experiência em PHP, Bootstrap,
+                        MySQL e desenvolvimento responsivo.
+                    </p>
+
                 </div>
-            </div>
 
-            <!--FAÇA PARTE DO NOSSO TIME-->
+                <!-- FORMAÇÃO ACADÊMICA -->
+                <div class="card border-0 shadow-sm p-4">
 
-            <!-- Título Topo -->
-             <div class="certificados text-center mt-5 pt-5 mb-5">
+                    <h4 class="fw-bold mb-4 titulo-roxo-curto">
+                        Formação Acadêmica
+                    </h4>
 
-                <h1 class="text-center mt-5 faca-parte">
-                    FAÇA PARTE DO NOSSO TIME!
-                </h1>
+                    <!-- FORMAÇÃO -->
+                    <div class="mb-4">
 
-            </div>
+                        <div class="d-flex align-items-center mb-2">
 
-            <div class="container mt-5">
+                            <i class="bi bi-mortarboard-fill fs-3 me-3 text-primary"></i>
 
-                <!-- ROW -->
-                <div class="row g-4 justify-content-center">
+                            <div>
 
-                    <?php foreach ($vagas as $vaga): ?>
+                                <h5 class="fw-bold mb-0">
+                                    Técnico em Informática
+                                </h5>
 
-                        <!-- CARD DA VAGA -->
-                        <div class="col-12 col-md-6 col-lg-5">
-
-                            <div class="info-vaga p-4 h-100">
-
-                                <!-- Título -->
-                                <div class="text-center mb-4">
-                                    <h2 class="fw-bold text-white">
-                                        <?php echo $vaga['vaga']; ?>
-                                    </h2>
-                                </div>
-
-                                <div class="row g-3">
-
-                                    <!-- IMAGEM -->
-                                    <div class="col-12 text-center">
-                                        <img src="../assets/img/empresa/uploads/<?php echo $vaga['imagem']; ?>"
-                                            class="img-fluid rounded">
-                                    </div>
-
-                                    <!-- CAMPOS PEQUENOS -->
-                                    <div class="col-md-6">
-                                        <label class="form-label text-light">Área de Atuação</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['area_atuacao']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label text-light">Modalidade da Vaga</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['modalidade']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label text-light">Modelo de Trabalho</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['modelo_de_trabalho']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label text-light">Localização</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['localizacao']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label text-light">Salário</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['salario']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label text-light">Benefícios</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['beneficio']; ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- CAMPOS GRANDES -->
-                                    <div class="col-12">
-                                        <label class="form-label text-light">Carga Horária</label>
-                                        <div class="form-control custom-box">
-                                            <?php echo $vaga['carga_horaria']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label class="form-label text-light">Descrição da Vaga</label>
-                                        <div class="form-control custom-box area-grande">
-                                            <?php echo $vaga['descricao']; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label class="form-label text-light">Requisitos</label>
-                                        <div class="form-control custom-box area-grande">
-                                            <?php echo $vaga['requisitos']; ?>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                <small class="text-muted">
+                                    SENAC • 2022 - 2024
+                                </small>
 
                             </div>
 
                         </div>
 
-                    <?php endforeach; ?>
+                        <p class="text-secondary mb-0">
+                            Formação voltada para desenvolvimento de sistemas,
+                            manutenção de computadores, redes e banco de dados.
+                        </p>
 
-                </div>
-
-            </div>
-
-            <!--CANAIS OFICIAIS-->
-            <div class="rodape mt-5 py-4 text-center">
-
-                <div class="container">
-
-                    <h5 class="mb-3 titulo-rodape">CANAIS OFICIAIS</h5>
-
-                    <div class="d-flex justify-content-center gap-4">
-                        <i class="fa-brands fa-facebook icone"></i>
-                        <i class="fa-brands fa-instagram icone"></i>
-                        <i class="fa-solid fa-earth-americas icone"></i>
                     </div>
 
                 </div>
 
+
             </div>
 
+            <!-- LADO DIREITO -->
+            <section class="col-lg-8">
 
-        </main>
+                <!-- EXPERIÊNCIA -->
+                <div class="card border-0 shadow-sm p-4 mb-4">
 
-        <!-- Include JS -->
-        <?php
-        require_once '../assets/templates/js.php';
-        ?>
-    </body>
+                    <h4 class="fw-bold mb-4 titulo-roxo-curto">
+                        Experiência
+                    </h4>
+
+                    <div class="mb-4">
+
+                        <div class="d-flex align-items-center mb-2">
+
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    Desenvolvimento Web
+                                </h5>
+
+                                <small class="text-muted">
+                                    2022 - Atualmente
+                                </small>
+                            </div>
+
+                        </div>
+
+                        <p class="text-secondary">
+                            Criação de sistemas web responsivos,
+                            aplicações CRUD e integração com banco
+                            de dados MySQL.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- PROJETOS -->
+                <div class="card border-0 shadow-sm p-4">
+
+                    <h4 class="fw-bold mb-4 titulo-roxo-curto">
+                        Projetos
+                    </h4>
+
+                    <!-- PROJETO -->
+                    <div class="projeto-card p-3 shadow-sm mb-4">
+
+                        <div class="d-flex align-items-center mb-2">
+
+                            <span class="fs-2 me-2">🍔</span>
+
+                            <h5 class="fw-bold mb-0">
+                                Sistema Hamburgueria
+                            </h5>
+
+                        </div>
+
+                        <p class="text-secondary">
+                            Plataforma completa de pedidos online
+                            com gerenciamento de produtos e painel
+                            administrativo.
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-2">
+
+                            <span class="badge bg-light text-primary border">
+                                PHP
+                            </span>
+
+                            <span class="badge bg-light text-primary border">
+                                MySQL
+                            </span>
+
+                            <span class="badge bg-light text-primary border">
+                                Bootstrap
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- CERTIFICADOS -->
+        <div class="certificados text-center mt-5 pt-5 mb-5">
+
+           <h1 class="text-center mt-5 certificados">
+                CERTIFICADOS
+            </h1>
+
+        </div>
+
+        <div class="container mt-5">
+
+            <!-- GRID -->
+            <div class="row g-4 justify-content-center">
+
+                <!-- CARD -->
+                <div class="col-12 col-md-6 col-lg-5">
+
+                    <div class="info-vaga p-4 h-100 shadow-sm">
+
+                        <!-- NOME -->
+                        <div class="text-center mb-4">
+
+                            <h2 class="fw-bold text-white">
+                                Desenvolvimento Web Full Stack
+                            </h2>
+
+                        </div>
+
+                        <!-- FOTO -->
+                        <div class="text-center mb-4">
+
+                            <img src="../assets/img/certificados/certificado01.jpg"
+                                class="img-fluid rounded shadow">
+
+                        </div>
+
+                        <!-- DATA -->
+                        <div class="mb-3">
+
+                            <label class="form-label text-light fw-semibold">
+                                Data de Conclusão
+                            </label>
+
+                            <div class="form-control custom-box">
+                                Março • 2024
+                            </div>
+
+                        </div>
+
+                        <!-- DESCRIÇÃO -->
+                        <div>
+
+                            <label class="form-label text-light fw-semibold">
+                                Descrição
+                            </label>
+
+                            <div class="form-control custom-box area-grande">
+
+                                Certificação focada em desenvolvimento
+                                de aplicações web modernas utilizando
+                                PHP, MySQL, Bootstrap e JavaScript.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <?php require_once '../assets/templates/js.php'; ?>
+
+</body>
 
 </html>
