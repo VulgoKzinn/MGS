@@ -3,6 +3,16 @@
 <?php
 require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
+
+if(session_status() === PHP_SESSION_NONE){
+session_start();
+}
+
+$voltarLink = '../candidato/pag_inicial.php';
+
+if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
+    $perfilLink = '../empresa/pag_inicial_empresa.php';
+}
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -66,6 +76,15 @@ validaAcesso();
                     <a href="processa_assinatura.php?id=3" class="btn btn-success w-100">Escolher</a> 
                 </div>
             </div>
+            
+            <!-- Voltar -->
+            <div class="text-center">
+                <a href="<?= $voltarLink ?>"
+                    class="text-sm text-gray-400 hover:text-gray-200 transition">
+                    ← Voltar para login
+                </a>
+            </div>
+
         </div>
     </main>
 

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/../backend/includes/funcoes.php";
 
+
 if(isset($_POST['enviar'])){
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];

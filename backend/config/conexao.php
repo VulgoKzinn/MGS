@@ -1,11 +1,12 @@
 <?php
 try{
-    define("SERVIDOR","10.97.46.104");
-    define("USUARIO","admin");
-    define("SENHA","admin");
+    define("SERVIDOR","localhost");
+    define("USUARIO","root");
+    define("SENHA","");
     define("BANCO","db_mgs");
+    define("PORTA","3309");
 
-    $conexao = new PDO("mysql:host=".SERVIDOR.";dbname=".BANCO.";charset=utf8mb4",USUARIO,SENHA);
+    $conexao = new PDO("mysql:host=".SERVIDOR.";port=".PORTA.";dbname=".BANCO.";charset=utf8mb4",USUARIO,SENHA);
 
     $conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     // echo "deu bom";
