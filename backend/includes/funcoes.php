@@ -1,5 +1,10 @@
 <?php
-require_once __DIR__ . "/../config/conexao.php";
+// Banco de Homologação
+require_once __DIR__ . "/../config/conexaoTST.php";
+
+// Banco de Produção
+// require_once __DIR__ . "/../config/conexaoPRD.php";
+
 require_once('envia-email.php');
 
 function login($email, $senha)

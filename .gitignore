@@ -1,0 +1,8 @@
+# Ignorar arquivos .env
+.env
+
+# Ignorar arquivos de conexao na base de teste
+*.conexaoTST.php
+
+# Ignorar arquivos de conexao na base de producao
+*.conexaoPRD.php

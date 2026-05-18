@@ -1,6 +1,6 @@
 <?php
 try{
-    define("SERVIDOR","26.179.55.6");
+    define("SERVIDOR","localhost");
     define("USUARIO","admin");
     define("SENHA","admin");
     define("BANCO","db_mgs");
