@@ -1,6 +1,6 @@
 <?php
-require_once('backend/includes/funcoes.php');
-require_once('backend/config/conexao.php');
+require_once __DIR__ . '/backend/includes/funcoes.php';
+require_once __DIR__ . '/backend/config/conexaoTST.php';
 validaAcesso();
 
 
@@ -259,16 +259,16 @@ $vagas = VagasDisponiveis();
     <div class="sidebar-section">Principal</div>
     <nav>
         <a href="dashboard.php"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
-        <a href="pag_inicial.php"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="index.php"><i class="fa-solid fa-house"></i> Início</a>
         <a href="lista_vagas.php" class="active"><i class="fa-solid fa-briefcase"></i> Vagas <span class="badge"><?= is_array($vagas) ? count($vagas) : 0 ?></span></a>
-        <a href="lista_usuarios.php"><i class="fa-solid fa-users"></i> Usuários</a>
+        <a href="lista-usuarios.php"><i class="fa-solid fa-users"></i> Usuários</a>
         <a href="lista_empresas.php"><i class="fa-solid fa-building"></i> Empresas</a>
     </nav>
 
     <div class="sidebar-section">Suporte</div>
     <nav>
-        <a href="lista_suporte.php"><i class="fa-solid fa-headset"></i> Chamados</a>
-        <a href="planos.php"><i class="fa-solid fa-crown"></i> Planos</a>
+        <a href="global/lista_suporte.php"><i class="fa-solid fa-headset"></i> Chamados</a>
+        <a href="global/assinatura.php"><i class="fa-solid fa-crown"></i> Planos</a>
     </nav>
 
     <div class="sidebar-section">Sistema</div>

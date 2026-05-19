@@ -1,6 +1,6 @@
 <?php
-require_once('backend/includes/funcoes.php');
-require_once('backend/config/conexao.php');
+require_once __DIR__ . '/backend/includes/funcoes.php';
+require_once __DIR__ . '/backend/config/conexaoTST.php';
 validaAcesso();
 
 // ===== TOTAL USUÁRIOS (tb_login) =====
@@ -206,8 +206,8 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
             
 
             <div class="sidebar-section">Suporte</div>
-            <a href="lista_suporte.php"  class="sidebar-item"><i class="fa-solid fa-comment-dots"></i> Chamados <span class="sidebar-badge"><?php echo $totalAbertos; ?></span></a>
-            <a href="assinatura.php"         class="sidebar-item"><i class="fa-solid fa-star"></i> Planos</a>
+            <a href="global/lista_suporte.php"  class="sidebar-item"><i class="fa-solid fa-comment-dots"></i> Chamados <span class="sidebar-badge"><?php echo $totalAbertos; ?></span></a>
+            <a href="global/assinatura.php"         class="sidebar-item"><i class="fa-solid fa-star"></i> Planos</a>
 
             <div class="sidebar-section">Sistema</div>
             <a href="configuracoes.php"  class="sidebar-item"><i class="fa-solid fa-gear"></i> Configurações</a>
@@ -235,13 +235,13 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
                     <input type="text" class="search-input" placeholder="Buscar...">
                 </div>
             </div>
-            <a href="#" class="topbar-btn">
+            <a href="candidato/match-candidato.php" class="topbar-btn">
                 <i class="fa-solid fa-bell"></i>
                 <?php if ($totalAbertos > 0): ?>
                     <div class="notif-dot"></div>
                 <?php endif; ?>
             </a>
-            <a href="perfil-candidato.php" class="topbar-btn">
+            <a href="candidato/perfil-candidato.php" class="topbar-btn">
                 <i class="fa-solid fa-circle-user"></i>
             </a>
         </div>
