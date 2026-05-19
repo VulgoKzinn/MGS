@@ -3,11 +3,6 @@ require_once __DIR__ . "/../../backend/includes/funcoes.php";
 if(session_status() === PHP_SESSION_NONE){
 session_start();
 }
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $perfilLink = './perfil-candidato.php';
 
 if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1)  {
@@ -53,7 +48,7 @@ if ($acao === 'logout') {
         <li><a href="../global/assinatura.php" class="dropdown-item">Assinatura</a></li>
         <li><a href="../global/suporte.php" class="dropdown-item">Suporte</a></li>
         <?php if($_SESSION['id_nivel'] == 1): ?>
-        <li><a href="" class="dropdown-item">Inpulsionar</a></li>
+        <li><a href="" class="dropdown-item">Impulsionar</a></li>
         <?php endif; ?>
         <li>
             <hr class="dropdown-divider">

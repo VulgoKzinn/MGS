@@ -621,5 +621,27 @@ function cadastrarPerfilCandidato($id_login, $nome, $telefone, $endereco)
         return false;
     }
 }
-// =============================================Faz salvar o nome, telefone e endereço do usuario======================================
+// =========================Faz salvar o nome, telefone e endereço do usuario=========================
+// =============================== PEGA O USUARIO LOGADO E EXIBE NO PERFIL =========================
+function buscarPerfilCandidato($id_login)
+{
+    try {
+        global $conexao;
+
+        $sql = "SELECT * FROM tb_perfil_candidato WHERE id_login = :id_login";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindParam(':id_login', $id_login);
+
+        $comando->execute();
+
+        return $comando->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $erro) {
+
+        die("Erro ao buscar perfil: " . $erro->getMessage());
+    }
+}
+// =============================== PEGA O USUARIO LOGADO E EXIBE NO PERFIL =========================
 

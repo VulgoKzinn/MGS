@@ -3,6 +3,10 @@ require_once __DIR__ . "/../backend/includes/funcoes.php";
 session_start();
 validaAcesso();
 validaUsuario();
+
+// =============================== PEGA O USUARIO LOGADO E EXIBE NO PERFIL =========================
+$perfil = buscarPerfilCandidato($_SESSION['id_login']);
+// =============================== PEGA O USUARIO LOGADO E EXIBE NO PERFIL =========================
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +61,7 @@ validaUsuario();
                 <div class="ms-4" style="margin-bottom: -25px;">
 
                     <h1 class="fw-bold text-black mb-1">
-                        Pedro Azevedo
+                         <?= $perfil['nome'] ?>
                     </h1>
 
                     <p class="fs-5 text-muted mb-0">
@@ -85,7 +89,7 @@ validaUsuario();
 
                     <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-envelope-fill fs-4 me-3"></i>
-                        <span>pedro@email.com</span>
+                        <span><?= $perfil['email'] ?></span>
                     </div>
 
                     <div class="d-flex align-items-center mb-3">
