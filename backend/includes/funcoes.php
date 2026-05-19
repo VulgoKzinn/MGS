@@ -387,7 +387,7 @@ function cadastrarImagemVaga($idVaga, $nomeImagemUpload)
 }
 
 // ===========================================Lista as Vagas=======================================================
-function listaVaga()
+function listaVaga($id_empresa)
 {
 
     try {
@@ -395,10 +395,16 @@ function listaVaga()
         $sql = "SELECT tb_vagas.*,
         tb_img_vaga.imagem
         FROM tb_vagas
-        INNER JOIN tb_img_vaga ON tb_vagas.id = tb_img_vaga.id_vaga";
+        INNER JOIN tb_img_vaga ON tb_vagas.id = tb_img_vaga.id_vaga WHERE tb_vagas.id_empresa = :id_empresa";
+        // o :id_empresa recebe temporariamente o valor para que seja executado depois na query
 
         $comando = $conexao->prepare($sql);
+
+        // subistitui o valor que esta em :id_empresa pelo valor da variavel $id_empresa, ou seja o id da empresa logada
+        $comando ->bindValue(':id_empresa',$id_empresa);
+        
         $comando->execute();
+
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $err) {
         error_log($err->getMessage());
@@ -590,16 +596,17 @@ function VagasDisponiveis()
 // ============================================Lista Atuacao============================================
 
 // ============================================Cadastro das informações do Perfil da Empresa============================================
-function adicionarPersonalizacao($slogan,$quem_somos)
+function adicionarPersonalizacao($slogan,$quem_somos,$id_empresa)
 {
 try {
         global $conexao;
 
-        $sql = "INSERT INTO tb_perfil_empresa(slogan,quem_somos)VALUES(:slogan,:quem_somos)";
+        $sql = "INSERT INTO tb_perfil_empresa(slogan,quem_somos,id_empresa)VALUES(:slogan,:quem_somos,:id_empresa)";
 
         $comando = $conexao->prepare($sql);
         $comando->bindValue(':slogan', $slogan);
         $comando->bindValue(':quem_somos', $quem_somos);
+        $comando->bindValue(':id_empresa', $id_empresa);
         
         $comando->execute();
 
@@ -615,7 +622,7 @@ try {
 
 // ============================================Lista os Dados do Perfil============================================
 
-function listaDadosPerfil()
+function listaDadosPerfil($id_empresa)
 {
     try {
         global $conexao;
@@ -627,9 +634,12 @@ function listaDadosPerfil()
         tb_perfil_empresa_img.descricao
         FROM tb_perfil_empresa
         LEFT JOIN tb_empresa ON tb_empresa.id = tb_perfil_empresa.id_empresa
-        LEFT JOIN tb_perfil_empresa_img ON tb_perfil_empresa_img.id_empresa = tb_perfil_empresa.id_empresa";
+        LEFT JOIN tb_perfil_empresa_img ON tb_perfil_empresa_img.id_empresa = tb_perfil_empresa.id_empresa WHERE tb_perfil_empresa.id_empresa = :id_empresa";
 
         $comando = $conexao->prepare($sql);
+
+        $comando ->bindValue(':id_empresa',$id_empresa);
+
         $comando->execute();
         return $comando->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $err) {
@@ -642,7 +652,7 @@ function listaDadosPerfil()
 // ============================================Lista os Dados do Perfil============================================
 
 // ===========================================Função upload imagem perfil empresa=========================================
-function empresaImagemUpload($imagem, $pasta)
+function empresaImagemUpload($imagem,$pasta)
 {
     // verifica se enviou imagem
     if (empty($imagem['name'])) {

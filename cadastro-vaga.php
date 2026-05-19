@@ -3,6 +3,7 @@
 require_once "backend/includes/funcoes.php";
 
 session_start();
+$id_empresa = $_SESSION['id_empresa'];
 //caso seja clicado no botão cadastrar a função é executada
 if (isset($_POST['cadastrar'])) {
     $vaga = filter_input(INPUT_POST, 'vaga');
@@ -15,9 +16,6 @@ if (isset($_POST['cadastrar'])) {
     $carga_horaria = filter_input(INPUT_POST, 'carga_horaria');
     $descricao = filter_input(INPUT_POST, 'descricao');
     $requisitos = filter_input(INPUT_POST, 'requisitos');
-    $id_empresa = $_SESSION['id_empresa'];
-    
-    
 
     $idVaga = cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $localizacao, $salario, $beneficio, $carga_horaria, $descricao, $requisitos, $id_empresa);
 
@@ -72,7 +70,7 @@ if (isset($_POST['cadastrar'])) {
 
                 <div class="col-md-4 mb-3">
                     <label for="modalidade" class="form-label">Modalidade da Vaga</label>
-                    <select class="form-select" name="modalidade" name="modalidade" id="modalidade" required>
+                    <select class="form-select" name="modalidade" id="modalidade" required>
                         <option value="" selected disabled>Selecione...</option>
                         <option value="Presencial">CLT</option>
                         <option value="Home Office">PJ</option>

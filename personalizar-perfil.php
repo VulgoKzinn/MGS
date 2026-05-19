@@ -3,6 +3,8 @@
 require_once "backend/includes/funcoes.php";
 
 session_start();
+$id_empresa = $_SESSION['id_empresa'];
+
 //caso seja clicado no botão adicionar a função é executada
 if (isset($_POST['adicionar'])) {
     // pega o ID da empresa logada
@@ -10,7 +12,7 @@ if (isset($_POST['adicionar'])) {
     $quem_somos = filter_input(INPUT_POST, 'quem_somos');
     
 
-    adicionarPersonalizacao($slogan, $quem_somos);
+    adicionarPersonalizacao($slogan, $quem_somos, $id_empresa);
 
     // UPLOADS IMAGENS
     $imgPerfil = empresaImagemUpload($_FILES['imagem_perfil'],"assets/img/empresa/perfil_empresa/uploads");

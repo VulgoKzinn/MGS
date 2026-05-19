@@ -4,8 +4,9 @@ session_start();
 // validaAcesso();
 // validaEmpresa();
 $idEmpresa = $_SESSION['id_login'];
-$vagas = listaVaga();
-$dadosPerfil = listaDadosPerfil();
+$id_empresa = $_SESSION['id_empresa'];
+$vagas = listaVaga($id_empresa);
+$dadosPerfil = listaDadosPerfil($id_empresa);
 
 ?>
 <!-- SABRINA -->
@@ -142,7 +143,7 @@ $dadosPerfil = listaDadosPerfil();
 
                                 <!-- IMAGEM -->
                                 <div class="col-12 text-center">
-                                    <img src="assets/img/empresa/vaga-empresa/uploads<?php echo $vaga['imagem']; ?>"
+                                    <img src="assets/img/empresa/vaga_empresa/uploads/<?php echo $vaga['imagem']; ?>"
                                         class="img-fluid rounded">
                                 </div>
 
