@@ -1,20 +1,15 @@
 <?php
-require_once __DIR__ . '/backend/includes/funcoes.php';
-require_once __DIR__ . '/backend/config/conexaoTST.php';
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
 
 // ===== TOTAL USUÁRIOS (tb_login) =====
 $totalUsuarios = $conexao->query("SELECT COUNT(*) FROM tb_login")->fetchColumn();
-
-// ===== TOTAL VAGAS (tb_vagas) =====
-$totalVagas = $conexao->query("SELECT COUNT(*) FROM tb_vagas")->fetchColumn();
 
 // ===== TOTAL EMPRESAS ATIVAS (tb_empresa) =====
 $totalEmpresas = $conexao->query("SELECT COUNT(*) FROM tb_empresa")->fetchColumn();
 
 // ===== TOTAL CHAMADOS (tb_suporte) =====
 $totalChamados = $conexao->query("SELECT COUNT(*) FROM tb_suporte")->fetchColumn();
-$totalAbertos  = $conexao->query("SELECT COUNT(*) FROM tb_suporte WHERE ativo = 1")->fetchColumn();
 
 // ===== ÚLTIMOS 5 USUÁRIOS (tb_login) =====
 $stmtUsuarios = $conexao->query("
@@ -189,39 +184,7 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
 
 <div class="dash-wrapper">
 
-    <!-- ========== SIDEBAR ========== -->
-    <aside class="dash-sidebar">
-        <div class="sidebar-logo">
-            <img src="assets/img/logomaior.png" alt="MGS">
-            <div class="sidebar-logo-text">MGS <small>Matchwork Admin</small></div>
-        </div>
-
-        <nav class="sidebar-nav">
-            <div class="sidebar-section">Principal</div>
-            <a href="dashboard.php"      class="sidebar-item active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-            <a href="index.php"          class="sidebar-item"><i class="fa-solid fa-house"></i> Início</a>
-            <a href="lista_vagas.php"    class="sidebar-item"><i class="fa-solid fa-briefcase"></i> Vagas <span class="sidebar-badge"><?php echo $totalVagas; ?></span></a>
-            <a href="lista-usuarios.php" class="sidebar-item"><i class="fa-solid fa-users"></i> Usuários</a>
-            <a href="lista-empresas.php" class="sidebar-item"><i class="fa-solid fa-building"></i> Empresas</a>
-            
-
-            <div class="sidebar-section">Suporte</div>
-            <a href="global/lista_suporte.php"  class="sidebar-item"><i class="fa-solid fa-comment-dots"></i> Chamados <span class="sidebar-badge"><?php echo $totalAbertos; ?></span></a>
-            <a href="global/assinatura.php"         class="sidebar-item"><i class="fa-solid fa-star"></i> Planos</a>
-
-            <div class="sidebar-section">Sistema</div>
-            <a href="configuracoes.php"  class="sidebar-item"><i class="fa-solid fa-gear"></i> Configurações</a>
-        </nav>
-
-        <div class="sidebar-footer">
-            <div class="sidebar-avatar">AD</div>
-            <div>
-                <div class="sidebar-user-name"><?php echo $_SESSION['email']; ?></div>
-                <div class="sidebar-user-role">Administrador</div>
-            </div>
-            <a href="logout.php" class="ms-auto text-white opacity-50"><i class="fa-solid fa-right-from-bracket"></i></a>
-        </div>
-    </aside>
+<?php include_once "templates/header.php";?>
 
     <!-- ========== MAIN ========== -->
     <div class="dash-main">
@@ -238,7 +201,9 @@ foreach ($dadosMeses as $m) { if ($m['total'] > $maxMes) $maxMes = $m['total']; 
             <a href="candidato/match-candidato.php" class="topbar-btn">
                 <i class="fa-solid fa-bell"></i>
                 <?php if ($totalAbertos > 0): ?>
-                    <div class="notif-dot"></div>
+                    <div class="notif-dot">
+                        <?php echo $totalAbertos; ?>
+                    </div>
                 <?php endif; ?>
             </a>
             <a href="candidato/perfil-candidato.php" class="topbar-btn">

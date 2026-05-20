@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/backend/includes/funcoes.php';
-require_once __DIR__ . '/backend/config/conexaoTST.php';
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
 
 $totalVagas = $conexao->query("SELECT COUNT(*) FROM tb_vagas")->fetchColumn();
@@ -39,49 +38,6 @@ body{
     background:#f4f6fb;
 }
 
-/* SIDEBAR */
-.dash-sidebar{
-    width:230px;
-    min-width:230px;
-    background:#2d1b69;
-    position:fixed;
-    top:0;
-    left:0;
-    height:100vh;
-}
-
-.sidebar-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 18px;
-    color:rgba(255,255,255,.82);
-    text-decoration:none;
-    font-size:13.5px;
-    transition:.2s;
-    border-radius:10px;
-    margin:3px 10px;
-}
-
-.sidebar-item:hover{
-    background:rgba(124,58,237,0.18);
-    color:#fff;
-}
-
-.sidebar-item.active{
-    background:linear-gradient(135deg,#7c3aed,#9333ea);
-    color:#fff;
-    font-weight:700;
-}
-
-.sidebar-badge{
-    margin-left:auto;
-    background:#16a34a;
-    color:#fff;
-    font-size:11px;
-    padding:1px 8px;
-    border-radius:10px;
-}
 
 /* MAIN */
 .dash-main{
@@ -137,33 +93,8 @@ body{
 
 <body>
 
-<div class="dash-sidebar">
-    <div style="padding-top:20px;">
 
-        <a href="dashboard.php" class="sidebar-item">
-            <i class="fa-solid fa-gauge"></i> Dashboard
-        </a>
-
-        <a href="lista_vagas.php" class="sidebar-item">
-            <i class="fa-solid fa-briefcase"></i> Vagas
-            <span class="sidebar-badge"><?= $totalVagas ?></span>
-        </a>
-
-        <a href="lista-usuarios.php" class="sidebar-item active">
-            <i class="fa-solid fa-users"></i> Usuários
-        </a>
-
-        <a href="lista-empresas.php" class="sidebar-item">
-            <i class="fa-solid fa-building"></i> Empresas
-        </a>
-
-        <a href="global/lista_suporte.php" class="sidebar-item">
-            <i class="fa-solid fa-comment-dots"></i> Chamados
-            <span class="sidebar-badge"><?= $totalAbertos ?></span>
-        </a>
-
-    </div>
-</div>
+<?php include_once "templates/header.php" ?>
 
 <div class="dash-main">
 

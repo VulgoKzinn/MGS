@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/backend/includes/funcoes.php';
-require_once __DIR__ . '/backend/config/conexaoTST.php';
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 validaAcesso();
 
 
@@ -246,45 +245,8 @@ $vagas = VagasDisponiveis();
 </head>
 <body>
 
-<!-- ═══ SIDEBAR ═══ -->
-<aside class="sidebar">
-    <div class="sidebar-logo">
-        <div style="width:32px;height:32px;background:#7c3aed;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;">M</div>
-        <div class="sidebar-logo-text">
-            <strong>MGS</strong><br>
-            <span>Matchwork Admin</span>
-        </div>
-    </div>
 
-    <div class="sidebar-section">Principal</div>
-    <nav>
-        <a href="dashboard.php"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
-        <a href="index.php"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="lista_vagas.php" class="active"><i class="fa-solid fa-briefcase"></i> Vagas <span class="badge"><?= is_array($vagas) ? count($vagas) : 0 ?></span></a>
-        <a href="lista-usuarios.php"><i class="fa-solid fa-users"></i> Usuários</a>
-        <a href="lista_empresas.php"><i class="fa-solid fa-building"></i> Empresas</a>
-    </nav>
-
-    <div class="sidebar-section">Suporte</div>
-    <nav>
-        <a href="global/lista_suporte.php"><i class="fa-solid fa-headset"></i> Chamados</a>
-        <a href="global/assinatura.php"><i class="fa-solid fa-crown"></i> Planos</a>
-    </nav>
-
-    <div class="sidebar-section">Sistema</div>
-    <nav>
-        <a href="configuracoes.php"><i class="fa-solid fa-gear"></i> Configurações</a>
-    </nav>
-
-    <div class="sidebar-footer">
-        <div class="sidebar-avatar">AD</div>
-        <div class="sidebar-footer-info">
-            <strong><?= htmlspecialchars($_SESSION['email'] ?? 'Admin') ?></strong>
-            <span>Administrador</span>
-        </div>
-        <a href="funcoes.php?logout=1" title="Sair"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-    </div>
-</aside>
+<?php include_once "templates/header.php" ?>
 
 <!-- ═══ MAIN ═══ -->
 <div class="main">

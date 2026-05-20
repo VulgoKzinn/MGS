@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/backend/includes/funcoes.php";
+require_once __DIR__ . "/../backend/includes/funcoes.php";
 
 // CADASTRAR
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,8 +21,10 @@ $planos = listarPlanos();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastrar Planos | Matchwork</title>
 
-    <?php require_once __DIR__ . "/assets/templates/head.php"; ?>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <?php
+    require_once '../assets/templates/head.php';
+    ?>
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <style>
         main {
@@ -104,7 +106,7 @@ $planos = listarPlanos();
 <body id="login">
 
 <div id="ImgLogon">
-    <a href="./"><img src="assets/img/Logomaior.png" alt="Logo"></a>
+    <a href="./"><img src="../assets/img/Logomaior.png" alt="Logo"></a>
 </div>
 
 <main>
@@ -158,7 +160,9 @@ $planos = listarPlanos();
     </div>
 </main>
 
-<?php require_once __DIR__ . "/assets/templates/js.php"; ?>
+    <?php
+    require_once '../assets/templates/js.php';
+    ?>
 
 </body>
 </html>
