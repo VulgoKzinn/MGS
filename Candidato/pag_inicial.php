@@ -22,6 +22,15 @@ $Disponiveis = VagasDisponiveis();
     require_once '../assets/templates/head.php';
     ?>
 </head>
+<style>
+    .btn-like {
+        transition: 0.2s;
+    }
+
+    .btn-like:hover {
+        transform: scale(1.1);
+    }
+</style>
 
 <body id="bodypgs">
     <?php
@@ -83,17 +92,22 @@ $Disponiveis = VagasDisponiveis();
                     Ler mais
                 </button>
 
-                <div class="acoes">
+                <<<<<<< Updated upstream
+                    <div class="acoes">
                     <button
                         type="button"
                         class="btn-circle like btn-match"
                         data-vaga="<?= $Disponivel['id'] ?>">
                         ❤
                     </button>
-                    <button type="submit" class="btn-circle dislike">✖</button>
-                    </div>
-
+                    =======
+                    <form class="acoes">
+                        <button type="submit" class="btn-circle btn-like like">❤</button>
+                        >>>>>>> Stashed changes
+                        <button type="submit" class="btn-circle dislike">✖</button>
             </div>
+
+        </div>
 
         </div>
 
@@ -120,27 +134,49 @@ $Disponiveis = VagasDisponiveis();
 
     <script>
         document.querySelectorAll('.btn-match').forEach(botao => {
-            botao.addEventListener('click', function() {
-                let idVaga = this.dataset.vaga;
-                fetch('../assets/api/match-candidato-back.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: 'id_vaga=' + idVaga
-})
-.then(response => response.text())
-.then(data => {
+                    botao.addEventListener('click', function() {
+                                let idVaga = this.dataset.vaga;
+                                fetch('../assets/api/match-candidato-back.php', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded'
+                                        },
+                                        body: 'id_vaga=' + idVaga
+                                    })
+                                    .then(response => response.text())
+                                    .then(data => {
 
-    console.log(data);
+                                        console.log(data);
 
-})
-.catch(error => {
-    console.log(error);
-});
-            });
-        });
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    });
     </script>
+    !--Coração de reaçao-- >
+    < script>
+        document.querySelectorAll('.btn-like').forEach(botao => {
+        botao.addEventListener('click', function(e) {
+
+        e.preventDefault();
+
+        // remove animação anterior
+        this.classList.remove(
+        'animate__animated',
+        'animate__heartBeat'
+        );
+
+        // força reinício da animação
+        void this.offsetWidth;
+
+        // adiciona animação
+        this.classList.add(
+        'animate__animated',
+        'animate__heartBeat'
+        );
+        });
+        });
+        </script>
 </body>
 
 </html>
