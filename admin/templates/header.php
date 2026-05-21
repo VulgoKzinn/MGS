@@ -22,7 +22,7 @@ $totalAbertos  = $conexao->query("SELECT COUNT(*) FROM tb_suporte WHERE ativo = 
         .sidebar-item:hover  { background: rgba(255,255,255,.1); color: #fff; }
         .sidebar-item.active { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; border-left-color: #038C33; }
         .sidebar-item i      { font-size: 16px; width: 20px; text-align: center; }
-        .sidebar-badge       { margin-left: auto; background: #038C33; color: #fff; font-size: 11px; font-weight: 700; border-radius: 10px; padding: 1px 8px; }
+        .sidebar-badge        { margin-left: auto; background: #038C33; color: #fff; font-size: 11px; font-weight: 700; border-radius: 10px; padding: 1px 8px; }
         .sidebar-footer      { padding: 14px 18px; border-top: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; gap: 10px; }
         .sidebar-avatar      { width: 32px; height: 32px; border-radius: 50%; background: #038C33; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
         .sidebar-user-name   { color: #fff; font-size: 13px; font-weight: 600; }
@@ -74,8 +74,7 @@ $totalAbertos  = $conexao->query("SELECT COUNT(*) FROM tb_suporte WHERE ativo = 
         .legend-dot          { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     </style>
 
-<!-- ========== SIDEBAR ========== -->
-    <aside class="dash-sidebar">
+<aside class="dash-sidebar">
         <div class="sidebar-logo">
             <img src="../assets/img/logomaior.png" alt="MGS">
             <div class="sidebar-logo-text">MGS <small>Matchwork Admin</small></div>
@@ -83,12 +82,15 @@ $totalAbertos  = $conexao->query("SELECT COUNT(*) FROM tb_suporte WHERE ativo = 
 
         <nav class="sidebar-nav">
             <div class="sidebar-section">Principal</div>
-            <a href="dashboard.php"      class="sidebar-item active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-            <a href="../"          class="sidebar-item"><i class="fa-solid fa-house"></i> Início</a>
-            <a href="lista_vagas.php"    class="sidebar-item"><i class="fa-solid fa-briefcase"></i> Vagas <span class="sidebar-badge"><?php echo $totalVagas; ?></span></a>
-            <a href="lista-usuarios.php" class="sidebar-item"><i class="fa-solid fa-users"></i> Usuários</a>
-            <a href="lista-empresas.php" class="sidebar-item"><i class="fa-solid fa-building"></i> Empresas</a>
+            <a href="dashboard.php"      class="sidebar-item <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+            <a href="../"                class="sidebar-item"><i class="fa-solid fa-house"></i> Início</a>
+            <a href="lista_vagas.php"    class="sidebar-item <?php echo basename($_SERVER['PHP_SELF']) == 'lista_vagas.php' ? 'active' : ''; ?>"><i class="fa-solid fa-briefcase"></i> Vagas <span class="sidebar-badge"><?php echo $totalVagas; ?></span></a>
+            <a href="lista-usuarios.php" class="sidebar-item <?php echo basename($_SERVER['PHP_SELF']) == 'lista-usuarios.php' ? 'active' : ''; ?>"><i class="fa-solid fa-users"></i> Usuários</a>
+            <a href="lista-empresas.php" class="sidebar-item <?php echo basename($_SERVER['PHP_SELF']) == 'lista-empresas.php' ? 'active' : ''; ?>"><i class="fa-solid fa-building"></i> Empresas</a>
             
+            <a href="listar-match.php"    class="sidebar-item <?php echo basename($_SERVER['PHP_SELF']) == 'listar-match.php' ? 'active' : ''; ?>">
+                <i class="fa-solid fa-heart" style="color: #E91E63;"></i> Matches
+            </a>
 
             <div class="sidebar-section">Suporte</div>
             <a href="../global/lista_suporte.php"  class="sidebar-item"><i class="fa-solid fa-comment-dots"></i> Chamados <span class="sidebar-badge"><?php echo $totalAbertos; ?></span></a>

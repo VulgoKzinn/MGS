@@ -651,3 +651,61 @@ function listarPlanos()
     }
 }
 // =============================================Cadastrar Assinatura======================================
+// ============================================ Listar Matches ============================================
+function listarMatches()
+{
+    try {
+        global $conexao;
+
+        // Traz o ID do match, a data, o e-mail do usuário/candidato e o título da vaga
+        $sql = "SELECT 
+                    m.id, 
+                    m.data_match,
+                    l.email AS usuario_email,
+                    v.vaga AS vaga_titulo,
+                    e.nome_fantasia AS empresa_nome
+                FROM tb_match m
+                INNER JOIN tb_login l ON m.id_usuario = l.id
+                INNER JOIN tb_vagas v ON m.id_vaga = v.id
+                INNER JOIN tb_empresa e ON v.id_empresa = e.id
+                ORDER BY m.id DESC";
+
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return [];
+    }
+}
+// ============================================ Listar Matches ============================================
+// ============================================ Listar Empresas ============================================
+function listarEmpresas()
+{
+    try {
+        global $conexao;
+
+        $sql = "SELECT 
+                    e.id, 
+                    e.nome_fantasia, 
+                    e.rzsocial, 
+                    e.cnpj, 
+                    e.telefone, 
+                    e.cep,
+                    l.email,
+                    l.ativo
+                FROM tb_empresa e
+                INNER JOIN tb_login l ON e.id_login = l.id
+                ORDER BY e.id DESC";
+
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return [];
+    }
+}
+// ============================================ Listar Empresas ============================================
