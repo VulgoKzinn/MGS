@@ -613,3 +613,61 @@ function VagasDisponiveis()
     }
 }
 // =============================================lISTA VAGAS======================================
+// =============================================Cadastrar Assinatura======================================
+function cadastrarAssinatura($nome, $valor)
+{
+    try {
+        global $conexao;
+
+        $sql = "INSERT INTO tb_planos (nome, valor) 
+                VALUES (:nome, :valor)";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':nome', $nome);
+        $comando->bindValue(':valor', $valor);
+
+        $comando->execute();
+
+        return "Plano cadastrado com sucesso!";
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao cadastrar plano";
+    }
+}
+function cadastrarPlano($nome, $valor)
+{
+    try {
+        global $conexao;
+
+        $sql = "INSERT INTO tb_planos (nome, valor) 
+                VALUES (:nome, :valor)";
+
+        $comando = $conexao->prepare($sql);
+        $comando->bindValue(':nome', $nome);
+        $comando->bindValue(':valor', $valor);
+
+        $comando->execute();
+
+        return "Plano cadastrado com sucesso!";
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return "Erro ao cadastrar plano";
+    }
+}
+
+function listarPlanos()
+{
+    try {
+        global $conexao;
+
+        $sql = "SELECT * FROM tb_planos ORDER BY id DESC";
+        $comando = $conexao->prepare($sql);
+        $comando->execute();
+
+        return $comando->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $err) {
+        error_log($err->getMessage());
+        return [];
+    }
+}
+// =============================================Cadastrar Assinatura======================================

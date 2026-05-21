@@ -21,6 +21,7 @@ if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assinaturas | Matchwork</title>
     <?php require_once '../assets/templates/head.php'; ?>
+    
 </head>
 
 <body id="login">
@@ -47,7 +48,7 @@ if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
 
             <div class="flat">
                 <h3 class="card-title text-center">PLANO MATCH PRO</h3>
-                <h4 class="text-center text-primary">R$ 10,99</h4>
+                <h4 class="text-center text-primary">R$ 14,90</h4>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>☑ Tudo do Starter</li>
                     <li>☑ Limite de 15 matchs por dia</li>
@@ -63,7 +64,7 @@ if (isset($_SESSION['id_nivel']) && $_SESSION['id_nivel'] == 1) {
 
             <div class="flat">
                 <h3 class="card-title text-center">PLANO ELITE</h3>
-                <h4 class="text-center text-primary">R$ 20,99</h4>
+                <h4 class="text-center text-primary">R$ 29,90</h4>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>☑ Matchs Ilimitados</li>
                     <li>☑ Análise de currículo por IA</li>
