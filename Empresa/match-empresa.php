@@ -25,18 +25,19 @@ $sql = "SELECT
 tb_perfil_candidato.id,
 tb_perfil_candidato.nome,
 tb_perfil_candidato.telefone,
-tb_perfil_candidato.foto,
 tb_login.email,
-tb_vagas.vaga
-FROM tb_match
+tb_vagas.vaga,
+tb_perfil_candidato_img.perfil FROM tb_match
 INNER JOIN tb_perfil_candidato 
 ON tb_perfil_candidato.id_login = tb_match.id_usuario
 INNER JOIN tb_login 
 ON tb_login.id = tb_perfil_candidato.id_login
 INNER JOIN tb_vagas 
 ON tb_vagas.id = tb_match.id_vaga
-WHERE tb_vagas.id_empresa = :id_empresa
-ORDER BY tb_match.data_match DESC";
+LEFT JOIN tb_perfil_candidato_img
+ON tb_perfil_candidato_img.id_candidato = tb_perfil_candidato.id
+
+WHERE tb_vagas.id_empresa = :id_empresa ORDER BY tb_match.data_match DESC";
 
 $comando = $conexao->prepare($sql);
 

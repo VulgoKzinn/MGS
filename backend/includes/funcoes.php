@@ -340,8 +340,8 @@ function cadastrarVaga($vaga, $area_atuacao, $modalidade, $modelo_de_trabalho, $
         //retorna o id do insert do produto acima
         return $conexao->lastInsertId();
     } catch (PDOException $err) {
-    die($err->getMessage());
-}
+        die($err->getMessage());
+    }
 
     $conexao = null;
 }
@@ -567,6 +567,7 @@ function cadastrarEmpresa($dados, $id_login)
 function VagasDisponiveis()
 {
     try {
+
         global $conexao;
 
         $sql = "SELECT 
@@ -574,19 +575,38 @@ function VagasDisponiveis()
                     tb_empresa.nome_fantasia,
                     tb_img_vaga.imagem AS imagem_vaga
                 FROM tb_vagas
+
                 INNER JOIN tb_empresa 
                     ON tb_vagas.id_empresa = tb_empresa.id
+
                 LEFT JOIN tb_img_vaga
                     ON tb_vagas.id = tb_img_vaga.id_vaga
+
+                WHERE tb_vagas.id NOT IN (
+
+                    SELECT id_vaga
+                    FROM tb_vaga_rejeitada
+                    WHERE id_usuario = :id_usuario
+
+                )
+
                 ORDER BY tb_vagas.id DESC";
 
         $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(
+            ':id_usuario',
+            $_SESSION['id_login']
+        );
+
         $comando->execute();
 
         return $comando->fetchAll(PDO::FETCH_ASSOC);
 
     } catch (PDOException $err) {
+
         error_log($err->getMessage());
+
         echo $err->getMessage();
 
         return "Erro ao listar vagas";

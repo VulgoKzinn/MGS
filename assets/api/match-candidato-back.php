@@ -28,59 +28,139 @@ try {
         exit;
     }
 
-    $idUsuario = $_SESSION['id_login'];
-    $idVaga = $_POST['id_vaga'];
-
-    // VERIFICA SE JÁ EXISTE MATCH
-    $sql = "
-        SELECT id 
-        FROM tb_match
-        WHERE id_usuario = :id_usuario
-        AND id_vaga = :id_vaga
-    ";
-
-    $comando = $conexao->prepare($sql);
-
-    $comando->bindValue(':id_usuario', $idUsuario);
-    $comando->bindValue(':id_vaga', $idVaga);
-
-    $comando->execute();
-
-    $dados = $comando->fetch(PDO::FETCH_ASSOC);
-
-    // SE JÁ EXISTIR MATCH
-    if ($dados) {
+    if (!isset($_POST['acao'])) {
 
         echo json_encode([
             'status' => 'error',
-            'message' => 'Você já deu match nessa vaga'
+            'message' => 'Ação não enviada'
         ]);
 
         exit;
     }
 
-    // INSERE MATCH
-    $sql = "
-        INSERT INTO tb_match (
-            id_usuario,
-            id_vaga
-        ) VALUES (
-            :id_usuario,
-            :id_vaga
-        )
-    ";
+    $idUsuario = $_SESSION['id_login'];
 
-    $comando = $conexao->prepare($sql);
+    $idVaga = $_POST['id_vaga'];
 
-    $comando->bindValue(':id_usuario', $idUsuario);
-    $comando->bindValue(':id_vaga', $idVaga);
+    $acao = $_POST['acao'];
 
-    $comando->execute();
 
-    echo json_encode([
-        'status' => 'success',
-        'message' => 'Match realizado com sucesso!'
-    ]);
+
+    // =========================================
+    // MATCH
+    // =========================================
+
+    if ($acao == 'match') {
+
+        $sql = "
+            SELECT id
+            FROM tb_match
+            WHERE id_usuario = :id_usuario
+            AND id_vaga = :id_vaga
+        ";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(':id_usuario', $idUsuario);
+        $comando->bindValue(':id_vaga', $idVaga);
+
+        $comando->execute();
+
+        $dados = $comando->fetch(PDO::FETCH_ASSOC);
+
+        if ($dados) {
+
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Você já deu match nessa vaga'
+            ]);
+
+            exit;
+        }
+
+        $sql = "
+            INSERT INTO tb_match (
+                id_usuario,
+                id_vaga
+            ) VALUES (
+                :id_usuario,
+                :id_vaga
+            )
+        ";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(':id_usuario', $idUsuario);
+        $comando->bindValue(':id_vaga', $idVaga);
+
+        $comando->execute();
+
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Match realizado com sucesso!'
+        ]);
+
+        exit;
+    }
+
+
+
+    // =========================================
+    // REJEITAR
+    // =========================================
+
+    if ($acao == 'rejeitar') {
+
+        $sql = "
+            SELECT id
+            FROM tb_vaga_rejeitada
+            WHERE id_usuario = :id_usuario
+            AND id_vaga = :id_vaga
+        ";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(':id_usuario', $idUsuario);
+        $comando->bindValue(':id_vaga', $idVaga);
+
+        $comando->execute();
+
+        $dados = $comando->fetch(PDO::FETCH_ASSOC);
+
+        if ($dados) {
+
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Você já rejeitou essa vaga'
+            ]);
+
+            exit;
+        }
+
+        $sql = "
+            INSERT INTO tb_vaga_rejeitada (
+                id_usuario,
+                id_vaga
+            ) VALUES (
+                :id_usuario,
+                :id_vaga
+            )
+        ";
+
+        $comando = $conexao->prepare($sql);
+
+        $comando->bindValue(':id_usuario', $idUsuario);
+        $comando->bindValue(':id_vaga', $idVaga);
+
+        $comando->execute();
+
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Vaga rejeitada com sucesso'
+        ]);
+
+        exit;
+    }
 
 } catch (PDOException $erro) {
 
