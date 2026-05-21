@@ -5,7 +5,7 @@ validaAcesso();
 validaUsuario();
 
 // =============================== PEGA O USUARIO LOGADO E EXIBE NO PERFIL =========================
-$perfil = buscarPerfilCandidato($_SESSION['id_login']);
+
 // =============================== PEGA O USUARIO LOGADO E EXIBE NO PERFIL =========================
 ?>
 
@@ -36,7 +36,7 @@ $perfil = buscarPerfilCandidato($_SESSION['id_login']);
 
     <main class="container mt-4">
         <!-- PERFIL -->
-        <div class="position-relative" style="margin-bottom: 140px;">
+        <div class="position-relative perfil-header" style="margin-bottom: 140px;">
 
             <!-- CAPA -->
             <img src="../assets/img/empresa/perfil-empresa/amazon-capa.jpg"
@@ -61,7 +61,7 @@ $perfil = buscarPerfilCandidato($_SESSION['id_login']);
                 <div class="ms-4" style="margin-bottom: -25px;">
 
                     <h1 class="fw-bold text-black mb-1">
-                         <?= $perfil['nome'] ?>
+                         <!-- <?= $perfil['nome'] ?> -->
                     </h1>
 
                     <p class="fs-5 text-muted mb-0">
@@ -89,17 +89,17 @@ $perfil = buscarPerfilCandidato($_SESSION['id_login']);
 
                     <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-envelope-fill fs-4 me-3"></i>
-                        <span><?= $perfil['email'] ?></span>
+                        <!-- <span><?= $perfil['email'] ?></span> -->
                     </div>
 
                     <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-whatsapp fs-4 me-3"></i>
-                        <span>(19) 99999-9999</span>
+                        <!-- <span><?= $perfil['telefone']?></span> -->
                     </div>
 
                     <div class="d-flex align-items-center">
                         <i class="bi bi-geo-alt-fill fs-4 me-3"></i>
-                        <span>São João da Boa Vista - SP</span>
+                        <!-- <span><?=$perfil['endereco']?></span> -->
                     </div>
 
                 </div>
