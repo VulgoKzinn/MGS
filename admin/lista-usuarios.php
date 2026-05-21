@@ -25,70 +25,8 @@ function nivelBadge($nivel) {
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/dashboard.css">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:'Segoe UI',sans-serif;
-    background:#f4f6fb;
-}
-
-
-/* MAIN */
-.dash-main{
-    margin-left:230px;
-    background:#f4f6fb;
-    min-height:100vh;
-}
-
-.dash-topbar{
-    background:#fff;
-    padding:15px 24px;
-    border-bottom:1px solid #e5e7eb;
-    font-weight:700;
-    color:#2d1b69;
-}
-
-.dash-content{
-    padding:25px;
-}
-
-.dash-card{
-    background:#fff;
-    border-radius:12px;
-    border:1px solid #e5e7eb;
-    padding:18px;
-}
-
-/* PILL STATUS */
-.pill{
-    display:inline-block;
-    padding:3px 10px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:600;
-}
-
-.pill-active{
-    background:#d1fae5;
-    color:#065f46;
-}
-
-.pill-blocked{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-.pill-temp{
-    background:#fef3c7;
-    color:#92400e;
-}
-</style>
 </head>
 
 <body>
